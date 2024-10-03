@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'fakturpro';
+    src:  url('../fonts/fakturpro.eot?4qkbv1');
+    src:  url('../fonts/fakturpro.eot?4qkbv1#iefix') format('embedded-opentype'),
+      url('../fonts/fakturpro.ttf?4qkbv1') format('truetype'),
+      url('../fonts/fakturpro.woff?4qkbv1') format('woff'),
+      url('../fonts/fakturpro.svg?4qkbv1#fakturpro') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'fakturpro' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* color: #000000; */
+}
+
+.icon-pdf:after {
+    font-family: 'fakturpro' !important;
+    content: "\e900";
+}
+
+.icon-pdf-add:after {
+    font-family: 'fakturpro' !important;
+    content: "\e901";
+}
+
+.icon-pdf-add.error:after {
+    color: red;
+}
+
+.fp-desc-table {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+.fp-desc-th {
+    padding: 0px !important;
+}
+
+.fp-desc-td {
+    color: #666 !important;
+    padding: 0px !important;
+    vertical-align: top !important;
+}

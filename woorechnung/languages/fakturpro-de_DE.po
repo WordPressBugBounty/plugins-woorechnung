@@ -1,0 +1,860 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Faktur Pro 3.0.11\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woorechnung\n"
+"Last-Translator: Andreas Schneider <andreas@zweischneider.de>\n"
+"Language-Team: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-10-22T06:49:37+00:00\n"
+"PO-Revision-Date: 2023-10-22 08:24+0000\n"
+"Language: de_DE\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: fakturpro\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: includes/admin/class-fp-admin-settings.php:946
+msgid "\"Paid\" per payment method"
+msgstr "\"Bezahlt\" je Zahlungsart"
+
+#: includes/errors/class-fp-client-error.php:77
+msgid "A secure connection over SSL could not be established. Please check your server configuration."
+msgstr "Es konnte keine sichere Verbindung über SSL hergestellt werden. Bitte überprüfe deine Serverkonfiguration."
+
+#. Description of the plugin
+msgid "Adds invoice creation functionality to WooCommerce."
+msgstr "Erweitert WooCommerce um Funktionen zur Rechnungserstellung."
+
+#: includes/errors/class-fp-server-error.php:327
+#: includes/errors/class-fp-storage-error.php:112
+msgid "An error with an unknown cause has occurred. Please contact support."
+msgstr "Es ist zu einem Fehler mit unbekannter Ursache gekommen. Bitte wende dich an den Support."
+
+#: includes/admin/class-fp-admin-settings.php:1074
+msgid "An optional prefix for the original order number."
+msgstr "Ein optionales Prefix für die ursprüngliche Bestellnummer."
+
+#: includes/admin/class-fp-admin-settings.php:1092
+msgid "An optional suffix for the original order number."
+msgstr "Ein optionales Suffix für die ursprüngliche Bestellnummer."
+
+#: includes/errors/class-fp-server-error.php:245
+msgid "An unexpected server application error occurred. Please contact support."
+msgstr "Es ist zu einem unerwarteten Fehler der Serveranwendung gekommen. Bitte wende dich an den Support."
+
+#: includes/errors/class-fp-client-error.php:101
+#: includes/errors/class-fp-factory-error.php:87
+msgid "An unknown error has occurred. Please contact support if the problem persists."
+msgstr "Ein unbekannter Fehler ist aufgetreten. Bitte wenden Sie sich an den Support, wenn das Problem weiterhin besteht."
+
+#: includes/admin/class-fp-admin-settings.php:450
+msgid "Attach invoice to WooCommerce email"
+msgstr "Rechnung an WooCommerce-E-Mail anhängen"
+
+#: includes/errors/class-fp-server-error.php:172
+msgid "Authentication failed (Error 401)"
+msgstr "Authentifizierung fehlgeschlagen (Fehler 401)"
+
+#: includes/errors/class-fp-server-error.php:196
+msgid "Authorization failed (Error 403)"
+msgstr "Autorisierung fehlgeschlagen (Fehler 403)"
+
+#: includes/admin/class-fp-admin-settings.php:982
+msgid "Automatic cancellation"
+msgstr "Automatische Stornierung"
+
+#: includes/admin/class-fp-admin-settings.php:891
+msgid "Automatic creation"
+msgstr "Automatische Erstellung"
+
+#: includes/admin/class-fp-admin-settings.php:984
+msgid "Automatically cancel invoices"
+msgstr "Rechnungen automatisch stornieren"
+
+#: includes/admin/class-fp-admin-settings.php:893
+msgid "Automatically create invoices for orders"
+msgstr "Rechnungen automatisch für Bestellungen erstellen"
+
+#: includes/admin/class-fp-admin-settings.php:709
+msgid "Basic Settings"
+msgstr "Grundeinstellungen"
+
+#: includes/admin/class-fp-admin-settings.php:864
+msgid "Billing Settings"
+msgstr "Rechnungseinstellungen"
+
+#: includes/errors/class-fp-server-error.php:256
+msgid "Can not reach server (Error 503)"
+msgstr "Server nicht erreichbar (Fehler 503)"
+
+#: includes/admin/class-fp-bulk-actions.php:272
+#: includes/errors/class-fp-client-error.php:100
+#: includes/errors/class-fp-factory-error.php:86
+#: includes/errors/class-fp-server-error.php:326
+#: includes/errors/class-fp-storage-error.php:111
+msgid "Cause unclear"
+msgstr "Ursache unklar"
+
+#: includes/errors/class-fp-server-error.php:303
+msgid "Conflict occurred (Error 409)"
+msgstr "Konflikt aufgetreten (Fehler 409)"
+
+#: includes/errors/class-fp-client-error.php:65
+msgid "Could not connect to the server application. Please check your internet connection."
+msgstr "Es konnte keine Verbindung zur Serveranwendung hergestellt werden. Bitte überprüfe deine Internetverbindung."
+
+#: includes/admin/class-fp-order-action.php:61
+#: includes/admin/class-fp-order-action.php:85
+#: includes/admin/class-fp-order-action.php:214
+msgid "Create invoice"
+msgstr "Rechnung erstellen"
+
+#: includes/admin/class-fp-admin-settings.php:965
+msgid "Creation at 0€"
+msgstr "Erstellung bei 0€"
+
+#: includes/admin/class-fp-admin-settings.php:908
+msgid "Creation for order status"
+msgstr "Erstellung für Bestellstatus"
+
+#: includes/admin/class-fp-admin-settings.php:967
+msgid "Creation of invoices over €0"
+msgstr "Erstellung von Rechnungen über 0€"
+
+#: includes/class-fp-plugin.php:443
+msgid "Customer company name"
+msgstr "Firmenname des Kunden"
+
+#: includes/class-fp-plugin.php:444
+msgid "Customer first name"
+msgstr "Vorname des Kunden"
+
+#: includes/class-fp-plugin.php:445
+msgid "Customer last name"
+msgstr "Nachname des Kunden"
+
+#: includes/class-fp-plugin.php:439
+msgid "Day of invoice date"
+msgstr "Tag des Rechnungsdatum"
+
+#: includes/admin/class-fp-admin-settings.php:1108
+#: includes/admin/class-fp-admin-settings.php:1462
+msgid "Description"
+msgstr "Beschreibung"
+
+#: includes/admin/class-fp-admin-settings.php:1033
+msgid "Description of shipping costs"
+msgstr "Bezeichnung Versandkosten"
+
+#: includes/admin/class-fp-admin-settings.php:449
+msgid "Do not send invoices by email"
+msgstr "Rechnung nicht per E-Mail versenden"
+
+#: includes/admin/class-fp-admin-settings.php:1276
+msgid "Email for attachment"
+msgstr "E-Mail für Anhang"
+
+#: includes/admin/class-fp-admin-settings.php:1294
+msgid "Email for order status"
+msgstr "E-Mail für Bestellstatus"
+
+#: includes/admin/class-fp-admin-settings.php:1441
+msgid "Email HTML content"
+msgstr "E-Mail HTML-Inhalt"
+
+#: includes/admin/class-fp-admin-settings.php:1259
+msgid "Email sending"
+msgstr "E-Mail-Versand"
+
+#: includes/admin/class-fp-admin-settings.php:1232
+msgid "Email Settings"
+msgstr "E-Mail-Einstellungen"
+
+#: includes/admin/class-fp-admin-settings.php:1423
+msgid "Email text content"
+msgstr "E-Mail Textinhalt"
+
+#: includes/admin/class-fp-admin-settings.php:1279
+msgid "Email to which the invoice should be attached."
+msgstr "E-Mail, an die die Rechnung angehängt werden soll."
+
+#. translators: %s: action name
+#: includes/admin/class-fp-bulk-actions.php:356
+msgid "Error with multiple action \"%s\" on orders"
+msgstr "Fehler bei Mehrfachaktion \"%s\" auf Bestellungen"
+
+#: includes/admin/class-fp-bulk-actions.php:273
+msgid "Es ist zu einem unbekannten Fehler gekommen. Bitte kontaktiere den Support, wenn das Problem weiterhin besteht."
+msgstr "Es ist zu einem unbekannten Fehler gekommen. Bitte kontaktiere den Support, wenn das Problem weiterhin besteht."
+
+#: includes/admin/class-fp-admin-settings.php:927
+#: includes/admin/class-fp-admin-settings.php:1313
+msgid "Exceptions for payment methods"
+msgstr "Ausnahmen für Zahlungsarten"
+
+#: includes/admin/class-fp-admin-settings.php:1196
+msgid "Explicit = Use variant description or product description (WooCommerce decides).<br />Inherited = Use variant description if available otherwise product description."
+msgstr "Explizit = Verwende Variantenbeschreibung oder Produktbeschreibung (WooCommerce entscheidet).<br />Vererbt = Verwende Variantenbeschreibung wenn vorhanden ansonsten Produktbeschreibung."
+
+#: includes/admin/class-fp-bulk-actions.php:95
+#: includes/admin/class-fp-bulk-actions.php:357
+#: includes/admin/class-fp-bulk-actions.php:367
+msgid "Export invoices"
+msgstr "Rechnungen exportieren"
+
+#. Plugin Name of the plugin
+msgid "Faktur Pro"
+msgstr "Faktur Pro"
+
+#: includes/admin/class-fp-admin-settings.php:1111
+msgid "File name of the PDF"
+msgstr "Dateiname der PDF"
+
+#: includes/errors/class-fp-storage-error.php:87
+msgid "File read error"
+msgstr "Datei Lesefehler"
+
+#: includes/errors/class-fp-storage-error.php:99
+msgid "File write error"
+msgstr "Datei Schreibfehler"
+
+#: includes/errors/class-fp-storage-error.php:63
+msgid "Folder read error"
+msgstr "Ordner Lesefehler"
+
+#. Plugin URI of the plugin
+msgid "https://www.faktur.pro/"
+msgstr "https://www.faktur.pro/"
+
+#. Author URI of the plugin
+msgid "https://www.zweischneider.de"
+msgstr "https://www.zweischneider.de"
+
+#: includes/admin/class-fp-admin-settings.php:986
+msgid "If you activate this option, cancellation invoices will be automatically created when an order is canceled. Cancellation only occurs if you use an external billing service."
+msgstr "Wenn du diese Option aktivierst, werden automatisch Stornorechnungen erstellt, wenn eine Bestellung stoniert wird. Die Stornierung erfolgt nur dann, wenn du einen externen Rechnungsdienst nutzt."
+
+#: includes/admin/class-fp-admin-settings.php:1003
+msgid "If you activate this option, invoices that you generate using the invoice button in the order overview will be opened in the browser instead of starting a download of the invoice PDF."
+msgstr "Wenn du diese Option aktivierst, werden Rechnungen, die du über den Rechnungsbutton in der Bestellübersicht generierst, im Browser geöffnet statt einen Download der Rechnungs-PDF zu starten."
+
+#: includes/admin/class-fp-admin-settings.php:969
+msgid "If you activate this option, invoices will also be created for orders with a total value of 0 euros. By default, no invoices are created for these orders."
+msgstr "Wenn du diese Option aktivierst, werden Rechnungen auch für Bestellungen erstellt, die einen Gesamtwert von 0 Euro aufweisen. Standardmäßig werden für diese Bestellungen keine Rechnungen erstellt."
+
+#: includes/admin/class-fp-admin-settings.php:1020
+msgid "If you enable this option, a link to download their invoice will be added to the order summary in your customer's account. The link only appears once an invoice has been generated for your order."
+msgstr "Wenn du diese Option aktivierst, wird der Bestellübersicht im Konto deines Kunden ein Link zum Download seiner Rechnung hinzugefügt. Der Link erscheint erst dann, wenn eine Rechnung zu seiner Bestellung erzeugt wurde."
+
+#: includes/admin/class-fp-admin-settings.php:895
+msgid "If you enable this option, invoices will automatically be created for orders when they have a specific status and payment method. You can configure the order status and payment method for which invoices should be created using the following two options."
+msgstr "Wenn du diese Option aktivierst, werden automatisch Rechnungen für Bestellungen erstellt, wenn diese einen bestimmten Status und eine bestimmte Zahlungsart aufweisen. Für welchen Bestellstatus und welche Zahlungsart Rechnungen erstellt werden sollen, kannst du mit den folgenden zwei Optionen konfigurieren."
+
+#: includes/class-fp-customer-link.php:61
+msgid "Invoice"
+msgstr "Rechnung"
+
+#: includes/admin/class-fp-admin-settings.php:1016
+msgid "Invoice for customer"
+msgstr "Rechnung für Kunde"
+
+#: includes/admin/class-fp-bulk-actions.php:218
+msgid "Invoice not found"
+msgstr "Rechnung nicht gefunden"
+
+#: includes/errors/class-fp-server-error.php:280
+msgid "Invoice not found (Error 404)"
+msgstr "Rechnung nicht gefunden (Fehler 404)"
+
+#: includes/class-fp-plugin.php:436
+msgid "Invoice number"
+msgstr "Rechnungsnummer"
+
+#: includes/admin/class-fp-admin-settings.php:1051
+msgid "Item number shipping costs"
+msgstr "Artikelnummer Versandkosten"
+
+#: includes/admin/class-fp-admin-settings.php:1018
+msgid "Make the invoice available for customers to download"
+msgstr "Rechnung für Kunden zum Download bereitstellen"
+
+#: includes/errors/class-fp-server-error.php:314
+msgid "Media type not supported (Error 415)"
+msgstr "Medientyp nicht unterstützt (Fehler 415)"
+
+#: includes/admin/class-fp-admin-settings.php:434
+msgid "Metadata"
+msgstr "Metadaten"
+
+#: includes/errors/class-fp-server-error.php:160
+msgid "Missing configuration (Error 400)"
+msgstr "Fehlende Konfiguration (Fehler 400)"
+
+#: includes/errors/class-fp-server-error.php:99
+msgid "Missing settings. Please check if you have fully configured your billing provider."
+msgstr "Fehlende Einstellungen. Bitte überprüfe, ob du deinen Rechnungsanbieter vollständig konfiguriert hast."
+
+#: includes/errors/class-fp-server-error.php:94
+msgid "Missing setup. Please check if you have fully configured your billing provider."
+msgstr "Fehlende Einrichtung. Bitte überprüfe, ob du deinen Rechnungsanbieter vollständig konfiguriert hast."
+
+#: includes/admin/class-fp-admin-settings.php:426
+msgid "No description"
+msgstr "Keine Beschreibung"
+
+#: includes/errors/class-fp-server-error.php:268
+msgid "Not yet available (Error 501)"
+msgstr "Noch nicht verfügbar (Fehler 501)"
+
+#: includes/admin/class-fp-admin-settings.php:999
+msgid "Open invoice"
+msgstr "Rechnung öffnen"
+
+#: includes/admin/class-fp-admin-settings.php:1001
+msgid "Open the invoice instead of downloading it directly"
+msgstr "Rechnung öffnen statt direkt herunterladen"
+
+#. translators: %s: order id
+#: includes/admin/class-fp-bulk-actions.php:380
+msgid "Order #%s"
+msgstr "Bestellung #%s"
+
+#: includes/errors/class-fp-storage-error.php:75
+msgid "Order cannot be written"
+msgstr "Ordner Schreibfehler"
+
+#: includes/errors/class-fp-factory-error.php:74
+msgid "Order item is not a product"
+msgstr "Bestellposition ist kein Produkt"
+
+#: includes/class-fp-plugin.php:435
+msgid "Order number"
+msgstr "Nummer der Bestellung"
+
+#: includes/admin/class-fp-admin-settings.php:1069
+msgid "Order number prefix"
+msgstr "Bestellnummer Prefix"
+
+#: includes/admin/class-fp-admin-settings.php:1087
+msgid "Order number suffix"
+msgstr "Bestellnummer Suffix"
+
+#: includes/common/class-fp-viewer.php:83
+msgid "PDF data is not valid."
+msgstr "PDF daten sind ungültig."
+
+#: includes/errors/class-fp-server-error.php:173
+msgid "Please check if the store key set in the settings is correct."
+msgstr "Bitte überprüfe, ob der in den Einstellungen festgelegte Shop-Key korrekt ist."
+
+#: includes/errors/class-fp-server-error.php:161
+msgid "Please check that you have fully configured your billing provider."
+msgstr "Bitte überprüfe, ob du deinen Rechnungsanbieter vollständig konfiguriert hast."
+
+#: includes/admin/class-fp-admin-settings.php:1233
+msgid "Please configure sending your invoices by email in this section."
+msgstr "Bitte konfiguriere in diesem Abschnitt den Versand deiner Rechnungen per E-Mail."
+
+#: includes/admin/class-fp-admin-settings.php:865
+msgid "Please configure the details for creating invoices in your shop in this section."
+msgstr "Bitte konfiguriere in diesem Abschnitt die Details zur Erstellung von Rechnungen in deinem Shop."
+
+#: includes/admin/class-fp-admin-settings.php:711
+msgid "Please enter your store's URL and API token to connect to your Faktur Pro account. You can find the API token in your store's settings in the \"API token\" section. If you don't yet have a Faktur Pro user account, register for free at http://www.faktur.pro."
+msgstr "Bitte gib die URL und das API-Token deines Shops ein, um eine Verbindung zu deinem Faktur Pro Konto herzustellen. Das API-Token findest du in den Einstellungen deines Shops im Abschnitt \"API-Token\". Falls du noch kein Benutzerkonto bei Faktur Pro hast, registriere dich kostenlos unter http://www.faktur.pro."
+
+#: includes/admin/class-fp-admin-settings.php:914
+msgid "Please select all order statuses for which invoices should be automatically created by Faktur Pro."
+msgstr "Wähle bitte alle Bestellstati aus, für die die automatische Erstellung von Rechnungen durch Faktur Pro erfolgen soll."
+
+#: includes/admin/class-fp-admin-settings.php:933
+msgid "Please select all payment methods for which Faktur Pro should NOT automatically generate invoices."
+msgstr "Wähle bitte alle Zahlungsarten aus, für die die automatische Erstellung von Rechnungen durch Faktur Pro NICHT erfolgen soll."
+
+#: includes/admin/class-fp-admin-settings.php:952
+msgid "Please select all payment methods for which you would like your invoice to be marked as \"paid\"."
+msgstr "Wähle bitte alle Zahlungsarten aus, für die deine Rechnung als \"bezahlt\" markiert werden soll."
+
+#: includes/errors/class-fp-server-error.php:213
+msgid "Processing failed (Error 422)"
+msgstr "Verarbeitung fehlgeschlagen (Fehler 422)"
+
+#: includes/admin/class-fp-admin-settings.php:429
+msgid "Product and variant description"
+msgstr "Produkt- und Variantenbeschreibung"
+
+#: includes/admin/class-fp-admin-settings.php:430
+#: includes/admin/class-fp-admin-settings.php:1191
+msgid "Product description"
+msgstr "Produktbeschreibung"
+
+#: includes/errors/class-fp-factory-error.php:62
+msgid "Product for order item does not exist"
+msgstr "Produkt zur Bestellposition ist nicht vorhanden"
+
+#: includes/admin/class-fp-admin-settings.php:427
+msgid "Product or variant description explicit"
+msgstr "Produkt- oder Variantenbeschreibung explizit"
+
+#: includes/admin/class-fp-admin-settings.php:428
+msgid "Product or variant description inherited"
+msgstr "Produkt- oder Variantenbeschreibung vererbt"
+
+#: includes/errors/class-fp-client-error.php:88
+msgid "Request timeout"
+msgstr "Timeout der Anfrage"
+
+#: includes/admin/class-fp-bulk-actions.php:96
+msgid "Reset invoices"
+msgstr "Rechnungen zurücksetzen"
+
+#: includes/admin/class-fp-order-action.php:94
+#: includes/admin/class-fp-order-action.php:215
+msgid "Retrieve invoice"
+msgstr "Rechnung abrufen"
+
+#: includes/admin/class-fp-admin-settings.php:451
+msgid "Send invoice in separate email"
+msgstr "Rechnung in separater E-Mail versenden"
+
+#: includes/errors/class-fp-server-error.php:244
+msgid "Server application error (Error 500)"
+msgstr "Fehler der Serveranwendung (Fehler 500)"
+
+#: includes/errors/class-fp-server-error.php:292
+msgid "Services have been blocked (Error 423)"
+msgstr "Services wurden gesperrt (Fehler 423)"
+
+#: includes/admin/class-fp-admin-settings.php:435
+msgid "Shopping cart short description"
+msgstr "Warenkorbkurzbeschreibung"
+
+#: includes/admin/class-fp-admin-settings.php:431
+msgid "Short product description"
+msgstr "Produktkurzbeschreibung"
+
+#: includes/errors/class-fp-client-error.php:76
+msgid "SSL-Error"
+msgstr "SSL-Fehler"
+
+#: includes/admin/class-fp-admin-settings.php:1194
+msgid "Text to be transferred as a product description."
+msgstr "Text, der als Produktbeschreibung übertragen werden soll."
+
+#: includes/errors/class-fp-server-error.php:109
+msgid "The connection to the service provider has been deactivated and must be reactivated."
+msgstr "Die Anbindung zum Dienstleister wurde deaktiviert und muss erneut aktiviert werden."
+
+#: includes/errors/class-fp-server-error.php:114
+msgid "The connection to the service provider is not ready. Please check if you have configured your billing provider correctly."
+msgstr "Die Anbindung zum Dienstleister ist nicht bereit. Bitte überprüfe, ob du deinen Rechunungsanbieter korrekt konfiguriert hast."
+
+#: includes/errors/class-fp-storage-error.php:100
+msgid "The file could not be created."
+msgstr "Die Datei konnte nicht erstellt werden."
+
+#: includes/errors/class-fp-storage-error.php:88
+msgid "The file could not be read."
+msgstr "Die Datei konnte nicht gelesen werden."
+
+#: includes/errors/class-fp-storage-error.php:76
+msgid "The folder could not be created."
+msgstr "Der Ordner konnte nicht erstellt werden."
+
+#: includes/errors/class-fp-storage-error.php:64
+msgid "The folder could not be read."
+msgstr "Der Ordner konnte nicht gelesen werden."
+
+#: includes/admin/class-fp-admin-settings.php:1446
+msgid "The HTML content of your invoice email. You can use HTML here."
+msgstr "Der HTML-Inhalt deiner Rechnungs-E-Mail. Hier darfst du HTML verwenden."
+
+#: includes/admin/class-fp-bulk-actions.php:219
+msgid "The invoice could not be retrieved."
+msgstr "Die Rechnung konnte nicht abgerufen werden."
+
+#: includes/errors/class-fp-server-error.php:281
+msgid "The invoice was not found. Are you sure this bill exists?"
+msgstr "Die Rechnung wurde nicht gefunden. Bist du sicher, dass diese Rechnung existiert?"
+
+#: includes/errors/class-fp-export-error.php:45
+msgid "The invoices could not be exported."
+msgstr "Die Rechnungen konnten nicht exportiert werden."
+
+#: includes/admin/class-fp-admin-settings.php:1056
+msgid "The item number that should appear on the invoice for shipping costs."
+msgstr "Die Artikelnummer, die für Versandkosten auf der Rechnung erscheinen soll."
+
+#: includes/admin/class-fp-admin-settings.php:1116
+msgid "The name of the invoice file that is sent by email (without file extension!)."
+msgstr "Der Name der Rechnungsdatei, die per E-Mail versendet wird (ohne Dateiendung!)."
+
+#: includes/admin/class-fp-admin-settings.php:1038
+msgid "The name that should appear on the invoice for all different shipping cost types (optional)."
+msgstr "Die Bezeichnung, die für alle unterschiedlichen Versandkostenarten auf der Rechnung erscheinen soll (optional)."
+
+#: includes/errors/class-fp-factory-error.php:63
+msgid "The order contains a line item for which the product does not exist (anymore). It is not possible to create invoices that contain items whose product has already been deleted."
+msgstr "Die Bestellung enthält eine Position, zu der das Produkt nicht (mehr) vorhanden ist. Es können keine Rechnungen erstellt werden, die Positionen enthalten, deren Produkt bereits gelöscht wurde."
+
+#: includes/errors/class-fp-factory-error.php:75
+msgid "The order contains an item that is not a product. Please check the order and contact support."
+msgstr "Die Bestellung enthält eine Position, die kein Produkt ist. Bitte prüfe die Bestellung und kontaktiere den Support."
+
+#: includes/admin/class-fp-admin-settings.php:1300
+msgid "The order status for which the invoice should be sent as a separate email."
+msgstr "Die Bestellstati, für die die Rechnung als eigene E-Mail versendet werden soll."
+
+#: includes/admin/class-fp-admin-settings.php:1319
+msgid "The payment methods for which the invoice should NOT be sent by email."
+msgstr "Die Zahlungsmethoden, für die die Rechnung NICHT als E-Mail versendet werden soll."
+
+#: includes/errors/class-fp-server-error.php:104
+msgid "The processing services of your account have been paused. Please check if there are any outstanding payments to Faktur Pro or payments failed and update your payment details if necessary."
+msgstr "Die Verarbeitungsdienste von deinem Account wurden pausiert. Bitte überprüfe, ob noch offene Zahlungen an Faktur Pro ausstehen oder Zahlungen fehlgeschlagen sind und aktualisiere deine Zahlungsdaten wenn nötig."
+
+#: includes/errors/class-fp-client-error.php:89
+msgid "The request to the server took too long. Please try again or increase the timeout limit."
+msgstr "Die Anfrage an den Server hat zu lange gedauert. Bitte versuche es erneut oder erhöhe das Timeout-Limit."
+
+#: includes/errors/class-fp-server-error.php:315
+msgid "The requested media type is not supported by Invoice Pro."
+msgstr "Der angeforderte Medientyp wird von Faktur Pro nicht unterstützt."
+
+#: includes/errors/class-fp-server-error.php:257
+msgid "The server application is temporarily unavailable. Please try again later."
+msgstr "Die Serveranwendung ist temporär nicht erreichbar. Bitte versuche es später noch einmal."
+
+#: includes/admin/class-fp-admin-settings.php:783
+msgid "The shop token should match the token you received in your account for your shop."
+msgstr "Das Shop-Token sollte mit dem Token übereinstimmen, das du in deinem Account für deinen Shop erhalten hast."
+
+#: includes/admin/class-fp-admin-settings.php:767
+msgid "The store URL should match the URL you set for your store in your account."
+msgstr "Die Shop-URL sollte mit der URL übereinstimmen, die du in deinem Account für deinen Shop festgelegt hast."
+
+#: includes/admin/class-fp-admin-settings.php:1359
+msgid "The subject of the invoice email."
+msgstr "Der Betreff der Rechnungs E-Mail."
+
+#: includes/admin/class-fp-admin-settings.php:1428
+msgid "The text content of your invoice email. HTML is not allowed here."
+msgstr "Der Textinhalt deiner Rechnungs-E-Mail. HTML ist hier nicht erlaubt."
+
+#: includes/errors/class-fp-server-error.php:269
+msgid "This function is not currently available, but will be implemented in the future."
+msgstr "Diese Funktion steht aktuell noch nicht zur Verfügung, wird aber in Zukunft umgesetzt."
+
+#: includes/errors/class-fp-server-error.php:232
+msgid "Too many requests (Error 429)"
+msgstr "Zu viele Anfragen (Fehler 429)"
+
+#: includes/errors/class-fp-server-error.php:184
+msgid "Upgrade required (Error 402)"
+msgstr "Upgrade erforderlich (Fehler 402)"
+
+#: includes/admin/class-fp-admin-settings.php:343
+msgid "Validation error: Not all settings were saved because their content was invalid. Settings that were not changed were marked in red."
+msgstr "Validierungsfehler: Nicht alle Einstellungen wurden gespeichert weil deren Inhalt ungültig war. Nicht veränderte Einstellungen wurden rot markiert."
+
+#: includes/admin/class-fp-admin-settings.php:1108
+#: includes/admin/class-fp-admin-settings.php:1462
+msgid "Variable"
+msgstr "Variable"
+
+#: includes/admin/class-fp-admin-settings.php:433
+msgid "Variant description"
+msgstr "Variantenbeschreibung"
+
+#: includes/admin/class-fp-admin-settings.php:436
+msgid "Variant shopping cart short description"
+msgstr "Variante Warenkorbkurzbeschreibung"
+
+#: includes/admin/class-fp-admin-settings.php:432
+msgid "Variant title"
+msgstr "Variantentitel"
+
+#: includes/class-fp-plugin.php:441
+msgid "Year of invoice date"
+msgstr "Jahr des Rechnungsdatum"
+
+#: includes/errors/class-fp-server-error.php:185
+msgid "You cannot create any more invoices this month because your limit has been reached."
+msgstr "Du kannst in diesem Monat keine weiteren Rechnungen mehr erstellen, da dein Limit erreicht ist."
+
+#: includes/errors/class-fp-server-error.php:197
+msgid "You do not have permission to access this invoice"
+msgstr "Du hast keine Berechtigung, auf diese Rechnung zuzugreifen"
+
+#: includes/errors/class-fp-server-error.php:233
+msgid "You sent too many inquiries to Invoice Pro in too short a time. Please wait a moment and then try again."
+msgstr "Du hast zu viele Anfragen in zu kurzer Zeit an Faktur Pro gesendet. Bitte warte einen Moment und versuche es dann erneut."
+
+#. Author of the plugin
+msgid "Zweischneider GmbH & Co. KG"
+msgstr "Zweischneider GmbH & Co. KG"
+
+#: includes/admin/class-fp-admin-notices.php:74
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Aktion fehlgeschlagen. Bitte lade die webseite neu und versuche es noch einmal."
+
+#: includes/admin/class-fp-admin-settings.php:400
+#: includes/admin/class-fp-admin-settings.php:1174
+msgid "Product name"
+msgstr "Produktname"
+
+#: includes/admin/class-fp-admin-settings.php:401
+msgid "Product name and alternate title"
+msgstr "Produktname und alternativer Titel"
+
+#: includes/admin/class-fp-admin-settings.php:402
+msgid "Alternate title and product name"
+msgstr "Alternativer Titel und Produktname"
+
+#: includes/admin/class-fp-admin-settings.php:403
+#: includes/admin/class-fp-admin-settings.php:437
+msgid "Alternate title"
+msgstr "Alternativer Titel"
+
+#: includes/admin/class-fp-admin-settings.php:1177
+msgid "Text to be transferred as a product name."
+msgstr "Text, der als Produktname übertragen werden soll."
+
+#: includes/admin/class-fp-admin-settings.php:410
+msgid "Secondary Title format (Plugin)"
+msgstr "Secondary Title Format (Plugin)"
+
+#: includes/admin/class-fp-admin-settings.php:1157
+msgid "Merge credits"
+msgstr "Guthaben zusammenführen"
+
+#: includes/common/class-fp-factory.php:984
+#: includes/common/class-fp-factory.php:988
+msgid "Credits"
+msgstr "Guthaben"
+
+#: includes/admin/class-fp-admin-settings.php:1159
+msgid "Merges credits to a single invoice line item"
+msgstr "Führe Guthaben zu einer einzigen Rechnungsposition zusammen."
+
+#: includes/admin/class-fp-admin-settings.php:1161
+msgid "Merges credits to a single invoice line item and sum the amount."
+msgstr "Führt Guthaben zu einer einzigen Rechnungsposition zusammen und summiert den Betrag."
+
+#: includes/admin/class-fp-admin-notices.php:103
+msgid "Hide permanently"
+msgstr "Dauerhaft ausblenden"
+
+#: includes/admin/class-fp-admin-settings.php:1130
+msgid "Invoice Items Settings"
+msgstr "Rechnungspositionen-Einstellungen"
+
+#: includes/admin/class-fp-admin-settings.php:1131
+msgid "Please configure the details of invoice items for creating invoices in your shop in this section."
+msgstr "Bitte konfigurieren Sie in diesem Bereich die Details der Rechnungspositionen für die Rechnungserstellung in Ihrem Shop."
+
+#: includes/admin/class-fp-admin-settings.php:1209
+msgid "Price decimal places"
+msgstr "Preis Dezimalstellen"
+
+#: includes/admin/class-fp-admin-settings.php:1210
+msgid "Number of decimal places for product prices to transfer."
+msgstr "Anazahl an Dezimalstellen für Produkt Preise zu übertragen."
+
+#: includes/class-fp-plugin.php:434
+msgid "Order ID"
+msgstr "Bestellung ID"
+
+#: includes/class-fp-plugin.php:468
+msgid "Page title"
+msgstr "Seitentitel"
+
+#: includes/class-fp-plugin.php:437
+msgid "Invoice date US"
+msgstr "Rechnungsdatum US"
+
+#: includes/class-fp-plugin.php:438
+msgid "Invoice date DE"
+msgstr "Rechnungsdatum DE"
+
+#: includes/class-fp-plugin.php:440
+msgid "Month of invoice date"
+msgstr "Monat des Rechnungsdatum"
+
+#: includes/class-fp-plugin.php:463
+msgid "Order date US"
+msgstr "Bestelldatum US"
+
+#: includes/class-fp-plugin.php:464
+msgid "Order date DE"
+msgstr "Bestelldatum DE"
+
+#: includes/class-fp-plugin.php:465
+msgid "Day of order date"
+msgstr "Tag des Bestelldatum"
+
+#: includes/class-fp-plugin.php:466
+msgid "Month of order date"
+msgstr "Monat des Bestelldatum"
+
+#: includes/class-fp-plugin.php:467
+msgid "Year of order date"
+msgstr "Jahr des Bestelldatum"
+
+#: includes/admin/class-fp-admin-settings.php:1211
+msgid "Unless otherwise required, 2 decimal places should be used. If there are more decimal places, rounding errors may occur. These usually occur when creating net invoices because the services calculate the amounts using net prices and convert the sum to gross. If there are more than 2 decimal places, we recommend creating gross invoices."
+msgstr "Wenn nicht anders benötigt, sollten 2 Dezimalstellen genutzt werden. Bei mehr Dezimalstellen können Fehler beim Runden auftreten. Diese treten in der Regel beim Erstellen von Nettorechnungen auf, weil die Dienste die Beträge mit Nettopreisen berechnen und die Summe daraus zu Brutto umrechnen. Bei mehr als 2 Dezimalstellen empfiehlt sich die Erstellung von Bruttorechnungen."
+
+#: includes/admin/class-fp-admin-settings.php:1376
+msgid "Additional email addresses to which the email should be sent. Separate addresses with commas."
+msgstr "Zusätzliche E-Mail-Adressen, an die die E-Mail gesendet werden soll. Trennen Sie Adressen durch Kommas."
+
+#: includes/admin/class-fp-admin-settings.php:1393
+msgid "Additional email addresses to which the email should be sent as a copy. Separate addresses with commas."
+msgstr "Zusätzliche E-Mail-Adressen, an die die E-Mail als Kopie gesendet werden soll. Trennen Sie Adressen durch Kommas."
+
+#: includes/admin/class-fp-admin-settings.php:1410
+msgid "Additional email addresses to which the email should be sent as a blind copy. Separate addresses with commas."
+msgstr "Zusätzliche E-Mail-Adressen, an die die E-Mail als Blindkopie gesendet werden soll. Trennen Sie Adressen durch Kommas."
+
+#: includes/admin/class-fp-admin-settings.php:796
+msgid "Error emails to"
+msgstr "Error E-Mails an"
+
+#: includes/admin/class-fp-admin-settings.php:802
+msgid "Email address of the acting user"
+msgstr "E-Mail-Adresse des handelnden Benutzers"
+
+#: includes/admin/class-fp-admin-settings.php:1354
+msgid "Email subject"
+msgstr "E-Mail Betreff"
+
+#: includes/admin/class-fp-admin-settings.php:1371
+msgid "Email additionally to"
+msgstr "E-Mail zusätzlich an"
+
+#: includes/admin/class-fp-admin-settings.php:1388
+msgid "Email copy (CC)"
+msgstr "E-Mail Kopie (CC)"
+
+#: includes/admin/class-fp-admin-settings.php:1405
+msgid "Email blind copy (BCC)"
+msgstr "E-Mail Blindkopie (BCC)"
+
+#: includes/admin/class-fp-order-action.php:117
+#: includes/support/class-fp-order-adapter.php:545
+msgid "Invoice created"
+msgstr "Rechnung erstellt"
+
+#: includes/support/class-fp-order-adapter.php:555
+msgid "Invoice canceled"
+msgstr "Rechnung storniert"
+
+#: includes/support/class-fp-order-adapter.php:565
+msgid "Invoice completed"
+msgstr "Rechnung abgeschlossen"
+
+#: includes/support/class-fp-order-adapter.php:575
+msgid "Invoice sent with WooCommerce email."
+msgstr "Rechnung mit WooCommerce-E-Mail gesendet."
+
+#: includes/support/class-fp-order-adapter.php:585
+msgid "Invoice sent as email."
+msgstr "Rechnung als E-Mail verschickt."
+
+#: includes/errors/class-fp-server-error.php:214
+msgid "<p>The request processing failed. Please check the following possible causes of error:</p><ul><li>Does the order have all the necessary data for invoicing?</li><li>Have you configured the taxes correctly in your online shop?</li><li>Have you successfully established the connection to your billing provider?</li><li>Can your billing provider process all the information in your order?</li></ul><p>If the cause of the problem is unclear to you, please contact us please contact our support.</p>"
+msgstr "<p>Die Verarbeitung der Anfrage ist fehlgeschlagen. Bitte überprüfe die folgenden möglichen Fehlerursachen:</p><ul><li>Verfügt die Bestellung über alle notwendigen Daten zur Rechnungserstellung?</li><li>Hast du die Steuern in deinem Onlineshop korrekt konfiguriert?</li><li>Hast du die Verbindung zu deinem Rechnungsanbieter erfolgreich hergestellt?</li><li>Kann dein Rechnungsanbieter alle Angaben in deiner Bestellung verarbeiten?</li></ul><p>Falls dir die Ursache des Problem unklar sein sollte, wende dich gerne an unseren Support.</p>"
+
+#: includes/admin/class-fp-order-action.php:219
+msgid "Error on last try"
+msgstr "Fehler beim letzten Versuch"
+
+#: includes/admin/class-fp-admin-settings.php:817
+msgid "Customer Settings"
+msgstr "Kundeneinstellungen"
+
+#: includes/admin/class-fp-admin-settings.php:819
+msgid "Please configure the details of customer data for creating invoices in your shop in this section."
+msgstr "Bitte konfigurieren Sie in diesem Abschnitt die Details der Kundendaten für die Rechnungserstellung in Ihrem Shop."
+
+#: includes/admin/class-fp-admin-settings.php:845
+msgid "Vat ID meta name"
+msgstr "Metaname der Umsatzsteuer-ID"
+
+#: includes/admin/class-fp-admin-settings.php:848
+msgid "The name from the metadata of the customer or the order under which the customers VAT ID is stored."
+msgstr "Der Name aus den Metadaten vom Kunden oder der Bestellung, unter dem die Umsatzsteuer-ID des Kunden gespeichert ist."
+
+#: includes/admin/class-fp-admin-settings.php:850
+msgid "An optional meta field name to find the customers VAT ID."
+msgstr "Ein optionaler Metafeldname, um die Umsatzsteuer-ID des Kunden zu finden."
+
+#: includes/admin/class-fp-admin-settings.php:463
+msgid "No template"
+msgstr "Keine Vorlage"
+
+#: includes/admin/class-fp-admin-settings.php:464
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:29
+msgid "Deliver invoice"
+msgstr "Rechnung ausliefern"
+
+#: includes/admin/class-fp-admin-settings.php:1333
+msgid "Email template"
+msgstr "E-Mail Vorlage"
+
+#. translators: %s: tab name
+#: includes/admin/class-fp-admin-settings.php:1339
+msgid "The email templates can be found in the \"%s\" settings tab."
+msgstr "Die E-Mail Vorlagen können unter dem \"%s\" Einstellungen Tab gefunden werden."
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:30
+msgid "A manual email to send out invoices to the customer."
+msgstr "Eine manuelle E-Mail zum Versenden von Rechnungen an den Kunden."
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:111
+msgid "Your {site_title} invoice is here"
+msgstr "Ihre {site_title} Rechnung ist hier"
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:121
+msgid "Invoice delivery"
+msgstr "Rechnungs-Lieferung"
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:191
+msgid "Your invoice for the order with the number {order_number} is attached to this email."
+msgstr "Ihre Rechnung für die Bestellung mit der Nummer {order_number} ist dieser E-Mail beigefügt."
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:200
+msgid "With this email we send your invoice to your order with the number {order_number}."
+msgstr "Mit dieser E-Mail senden wir Ihnen Ihre Rechnung zu Ihrer Bestellung mit der Nummer {order_number}."
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:240
+msgid "Show order details"
+msgstr "Bestelldetails anzeigen"
+
+#: includes/emails/class-fp-email-customer-deliver-invoice.php:246
+msgid "Show customer details"
+msgstr "Kundendaten anzeigen"
+
+#: includes/class-fp-plugin.php:442
+msgid "Customer company or last name"
+msgstr "Firma oder Nachname des Kunden"
+
+#: includes/admin/class-fp-order-action.php:63
+msgid "Reset invoice"
+msgstr "Rechnung zurücksetzen"
+
+#. translators: %1$s: action name, %2$s: date, %3$s: time
+#: includes/admin/class-fp-bulk-actions.php:363
+msgid "Errors occurred when running the multiple action \"%1$s\" on %2$s at %3$s o'clock on the following orders:"
+msgstr "Beim Ausführen der Mehrfachaktion \"%1$s\" am %2$s um %3$s Uhr sind Fehler zu folgenden Bestellungen aufgetreten:"
+
+#. translators: %s: parameter name
+#: includes/admin/class-fp-order-action.php:141
+msgid "Missing parameter %s"
+msgstr "Fehlender Parameter %s"
+
+#: includes/admin/class-fp-order-action.php:123
+msgid "Invocie was not created"
+msgstr "Rechnung wurde nicht erstellt"

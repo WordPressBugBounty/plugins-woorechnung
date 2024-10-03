@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'fakturpro';
+    src:  url('../fonts/fakturpro.eot?4qkbv1');
+    src:  url('../fonts/fakturpro.eot?4qkbv1#iefix') format('embedded-opentype'),
+      url('../fonts/fakturpro.ttf?4qkbv1') format('truetype'),
+      url('../fonts/fakturpro.woff?4qkbv1') format('woff'),
+      url('../fonts/fakturpro.svg?4qkbv1#fakturpro') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+  Customer account orders view
+*/
+.my_account_orders .button.invoice::after {
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-family: 'fakturpro' !important;
+    font-weight: 900;
+    line-height: inherit;
+    vertical-align: baseline;
+    content: "\e900";
+    margin-left: 0.540791em;
+    font-variant: normal;
+}
