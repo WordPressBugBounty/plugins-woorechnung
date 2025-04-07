@@ -1,13 +1,13 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.5
+Version: 3.1.6
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
 Requires WooCommerce: 3.0.0
-Tested up to: 6.6.2
+Tested up to: 6.7.2
 Tested PHP up to: 8.3
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,7 +59,11 @@ Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
 
-0 3.1.5 (2024-09-25) =
+= 3.1.6 (2025-04-07) =
+* Added: Einstellung "Metaname der Debitorennummer" mit der optional ein Meta-Name angegeben werden kann, über den die Debitorennummer aus den Metadaten der Bestellung oder des Kunden ausgelesen werden soll.
+* Added: Erkennung der Debitorennummer hinzugefügt.
+
+= 3.1.5 (2024-09-25) =
 * Fixed: Da beim Nutzen des Stripe Payment Gateway von WooCommerce mit der neuen Checkout Experience nicht immer ein Method Name existiert, werden jetzt in den FakturPro Einstellungen die Titel der Zahlungsmethode und in Klammern der Wert dazu angezeigt.
 
 = 3.1.4 (2024-07-31) =

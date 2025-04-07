@@ -156,6 +156,11 @@ final class FP_Factory
         $meta_name = $plugin_settings->get_customer_vat_id_meta_name();
         $vat_id = empty($meta_name) ? '' : (string) $order->get_billing_vat_id( [ $meta_name ] );
         $vat_id = empty($vat_id) ? (string) $order->get_billing_vat_id() : $vat_id;
+
+        // Find customer debitor number
+        $meta_name = $plugin_settings->get_customer_debitor_number_meta_name();
+        $debitor_number = empty($meta_name) ? '' : (string) $order->get_billing_debitor_number( [ $meta_name ] );
+        $debitor_number = empty($debitor_number) ? (string) $order->get_billing_debitor_number() : $debitor_number;
         
         $customer = $order->get_customer();
         $vat_exempt = $customer->is_vat_exempt();
@@ -175,6 +180,7 @@ final class FP_Factory
         $result['salutation']       = (string) $order->get_billing_title();
         $result['vat_id']           = $vat_id;
         $result['vat_exempt']       = (bool) $vat_exempt;
+        $result['debitor_number']   = $debitor_number;
 
         return $result;
     }

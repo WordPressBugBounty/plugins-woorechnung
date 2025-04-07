@@ -31,6 +31,7 @@ final class FP_Settings extends FP_Abstract_Settings
         'shop_token',
         'send_error_mails_to',
         'customer_vat_id_meta_name',
+        'customer_debitor_number_meta_name',
         'create_invoices',
         'cancel_invoices',
         'invoice_for_states',
@@ -172,6 +173,27 @@ final class FP_Settings extends FP_Abstract_Settings
     public function get_customer_vat_id_meta_name()
     {
         return $this->get( 'customer_vat_id_meta_name', '' );
+    }
+
+    /**
+     * Set the customer debitor number meta name.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function set_customer_debitor_number_meta_name( $value )
+    {
+        $this->set( 'customer_debitor_number_meta_name', $value );
+    }
+
+    /**
+     * Get the customer debitor number meta name.
+     *
+     * @return string
+     */
+    public function get_customer_debitor_number_meta_name()
+    {
+        return $this->get( 'customer_debitor_number_meta_name', '' );
     }
 
     /**

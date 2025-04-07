@@ -593,7 +593,7 @@ final class FP_Order_Adapter
      * Return the billing vat id for this order.
      *
      * This method returns the billing vat id added to the order object
-     * by extensions like WooCommerce Germanized or other.
+     * by individual field, extensions like WooCommerce Germanized or other.
      *
      * @param  array<string> $meta_fields
      * @return string|null
@@ -676,6 +676,57 @@ final class FP_Order_Adapter
             $billing_vat_id = $this->order->get_meta( $meta_field, true );
             if (!empty($billing_vat_id)) {
                 return $billing_vat_id;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Return the billing debitor number for this order.
+     *
+     * This method returns the billing debitor number added to the order object
+     * by extensions or individual field.
+     *
+     * @param  array<string> $meta_fields
+     * @return string|null
+     */
+    public function get_billing_debitor_number( $meta_fields = null )
+    {
+        $meta_fields = !empty($meta_fields) ? $meta_fields : array(
+            '_billing_debitor',
+            'billing_debitor',
+            '_billing_debitor_number',
+            'billing_debitor_number',
+            '_debitor_number',
+            'debitor_number',
+            '_debitor',
+            'debitor',
+            '_debitorno',
+            'debitorno',
+            'Debitor Number',
+            'debitor number',
+        );
+
+        // Search for vat id in order meta
+        foreach ($meta_fields as $meta_field) {
+            $billing_vat_id = $this->order->get_meta( $meta_field, true );
+            if (!empty($billing_vat_id)) {
+                return $billing_vat_id;
+            }
+        }
+
+        // Search for vat id in customer meta if no vat id was found in order meta
+        $user = $this->order->get_user();
+        if (!empty($user)) {
+            foreach ($meta_fields as $meta_field) {
+                try {
+                    $billing_vat_id = $user->$meta_field;
+                    if (!empty($billing_vat_id)) {
+                        return $billing_vat_id;
+                    }
+                } catch (\Exception $ex) { // @phpstan-ignore-line
+                    // ...
+                }
             }
         }
         return null;
