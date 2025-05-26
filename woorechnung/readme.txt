@@ -1,13 +1,13 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.6
+Version: 3.1.7
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
 Requires WooCommerce: 3.0.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Tested PHP up to: 8.3
-Stable tag: 3.1.6
+Stable tag: 3.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.7 (2025-05-26) =
+* Fixed: Warnung wegen zu frühem Zugriff auf Übersetzungen behoben. Es wurden Bestellstatus Werte aus WooCommerce zu früh abgerufen.
 
 = 3.1.6 (2025-04-07) =
 * Added: Einstellung "Metaname der Debitorennummer" mit der optional ein Meta-Name angegeben werden kann, über den die Debitorennummer aus den Metadaten der Bestellung oder des Kunden ausgelesen werden soll.

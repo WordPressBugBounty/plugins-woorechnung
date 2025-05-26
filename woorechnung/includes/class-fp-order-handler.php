@@ -34,10 +34,12 @@ final class FP_Order_Handler extends FP_Abstract_Module
         $this->add_Filter('wcs_renewal_order_created', 'process_order_object_filter', 9, 1);
 
         // Actions for processing order on status update
-        $statuses = $this->plugin()->get_order_statuses();
-        foreach ( $statuses as $status => $name ) {
-            $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
-        }
+        add_action('init', function () {
+            $statuses = $this->plugin()->get_order_statuses();
+            foreach ( $statuses as $status => $name ) {
+                $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
+            }
+        });
         // $this->add_action('woocommerce_order_status_pending', 'process_order_on_status', 9, 1);
         $this->add_action('woocommerce_order_status_changed', 'process_order_on_status_changed', 9, 4);
         $this->add_action('woocommerce_checkout_order_processed', 'process_order_on_checkout', 9, 3);
