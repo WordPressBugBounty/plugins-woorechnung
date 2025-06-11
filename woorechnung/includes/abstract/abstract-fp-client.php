@@ -110,11 +110,32 @@ abstract class FP_Abstract_Client
     const MIME_TYPE_JSON = 'application/json';
 
     /**
-     * The shop system to be used for identification.
+     * The woocommerce system to be used for identification.
      *
      * @var string
      */
     const SYSTEM_WOOCOMMERCE = 'woocommerce';
+
+    /**
+     * The wordpress system to be used for identification.
+     *
+     * @var string
+     */
+    const SYSTEM_WORDPRESS = 'wordpress';
+
+    /**
+     * The php system to be used for identification.
+     *
+     * @var string
+     */
+    const SYSTEM_PHP = 'php';
+
+    /**
+     * The shop system to be used for identification.
+     *
+     * @var string
+     */
+    private $_shop_system = '';
 
     /**
      * Status codes of successful requests.
@@ -146,6 +167,14 @@ abstract class FP_Abstract_Client
     public function __construct(FP_Plugin $plugin)
     {
         $this->_plugin = $plugin;
+
+        $wc_version = $plugin->get_wc_version();
+        $wp_version = $plugin->get_wp_version();
+        $php_version = phpversion();
+
+        $this->_shop_system = self::SYSTEM_WOOCOMMERCE . ( !empty($wc_version) ? '/' . $wc_version : '' );
+        $this->_shop_system .= ' ' . self::SYSTEM_WORDPRESS . ( !empty($wp_version) ? '/' . $wp_version : '' );
+        $this->_shop_system .= ' ' . self::SYSTEM_PHP . ( !empty($php_version) ? '/' . $php_version : '' );
     }
 
     /**
@@ -273,7 +302,7 @@ abstract class FP_Abstract_Client
             self::HTTP_HEADER_AGENT => $this->load_user_agent(),
             self::HTTP_HEADER_AUTH => "Bearer {$this->load_token()}",
             self::HTTP_HEADER_TRACE_ID => $this->generate_trace_id(),
-            self::HTTP_HEADER_SHOP_SYSTEM => self::SYSTEM_WOOCOMMERCE,
+            self::HTTP_HEADER_SHOP_SYSTEM => $this->_shop_system,
             self::HTTP_HEADER_SHOP_URL => self::load_home_url(),
             self::HTTP_HEADER_CONTENT => self::MIME_TYPE_JSON,
             self::HTTP_HEADER_ACCEPT => self::MIME_TYPE_JSON,

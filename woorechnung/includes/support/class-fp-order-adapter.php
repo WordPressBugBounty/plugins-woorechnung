@@ -109,6 +109,27 @@ final class FP_Order_Adapter
     }
 
     /**
+     * Get the order id from a request.
+     *
+     * @param  array|null $params
+     * @return int|null
+     */
+    public static function get_request_id( $params = null )
+    {
+        if ( !isset( $params ) ) {
+            $params = $_REQUEST;
+        }
+
+        // Check for 'id', 'order_id' and 'post' parameters if there was a redirect.
+        $order_id = null;
+        $order_id = isset( $params['id'] ) ? $params['id'] : $order_id;
+        $order_id = isset( $params['post'] ) ? $params['post'] : $order_id; // woocommerce legacy mode
+        $order_id = isset( $params['order_id'] ) ? $params['order_id'] : $order_id;
+
+        return isset( $order_id ) ? absint( $order_id ) : null;
+    }
+
+    /**
      * Make all order methods directly accessible.
      *
      * @param  string $method

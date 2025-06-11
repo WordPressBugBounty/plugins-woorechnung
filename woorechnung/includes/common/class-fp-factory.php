@@ -195,8 +195,8 @@ final class FP_Factory
     {
         $result = array();
 
-        $country = (string) $order->get_shipping_country('edit');
-        $state = (string) $order->get_shipping_state('edit');
+        $country = (string) $order->get_shipping_country( 'edit' );
+        $state = (string) $order->get_shipping_state( 'edit' );
 
         $result['first_name']       = (string) $order->get_shipping_first_name();
         $result['last_name']        = (string) $order->get_shipping_last_name();
@@ -222,11 +222,11 @@ final class FP_Factory
     private function make_items( FP_Order_Adapter $order )
     {
         $results = array();
-        $results = array_merge($results, $this->make_products($order));
-        $results = array_merge($results, $this->make_shippings($order));
-        $results = array_merge($results, $this->make_fees($order));
-        $results = array_merge($results, $this->make_discounts($order));
-        $results = array_merge($results, $this->make_credits($order));
+        $results = array_merge( $results, $this->make_products( $order ) );
+        $results = array_merge( $results, $this->make_shippings( $order ) );
+        $results = array_merge( $results, $this->make_fees( $order ) );
+        $results = array_merge( $results, $this->make_discounts( $order ) );
+        $results = array_merge( $results, $this->make_credits( $order ) );
         return $results;
     }
 
@@ -240,10 +240,10 @@ final class FP_Factory
      */
     public static function round( $val, int $precision = 0, int $mode = PHP_ROUND_HALF_UP )
     {
-		if (!is_numeric($val)) {
-			$val = floatval($val);
+		if ( ! is_numeric( $val )) {
+			$val = floatval( $val );
 		}
-		return round($val, $precision, $mode);
+		return round( $val, $precision, $mode );
 	}
 
     /**
@@ -313,10 +313,10 @@ final class FP_Factory
 
             $price_num_decimals = $plugin_settings->get_price_num_decimals();
             if ($price_num_decimals > 0) {
-                $result['price_net'] = $this->round( $result['price_net'], $price_num_decimals );
-                $result['price_gross'] = $this->round( $result['price_gross'], $price_num_decimals );
-                $result['total_price_net'] = $this->round( $result['total_price_net'], $price_num_decimals );
-                $result['total_price_gross'] = $this->round( $result['total_price_gross'], $price_num_decimals );
+                $result['price_net'] = self::round( $result['price_net'], $price_num_decimals );
+                $result['price_gross'] = self::round( $result['price_gross'], $price_num_decimals );
+                $result['total_price_net'] = self::round( $result['total_price_net'], $price_num_decimals );
+                $result['total_price_gross'] = self::round( $result['total_price_gross'], $price_num_decimals );
             }
 
             /*if (class_exists('\Automattic\WooCommerce\Utilities\NumberUtil') && method_exists(\Automattic\WooCommerce\Utilities\NumberUtil::class, 'round')) {
@@ -624,10 +624,10 @@ final class FP_Factory
             $tax_rate = array();
             $tax_rate['name'] = $wc_tax['tax_rate_name'];
             $tax_rate['rate'] = $wc_tax['tax_rate'];
-            $tax_rates[ $rate_id ] = $tax_rate;
-            $tax_amounts[ $rate_id ] = 0;
-            $gross_amounts[ $rate_id ] = 0;
-            $net_amounts[ $rate_id ] = 0;
+            $tax_rates[$rate_id] = $tax_rate;
+            $tax_amounts[$rate_id] = 0;
+            $gross_amounts[$rate_id] = 0;
+            $net_amounts[$rate_id] = 0;
         }
 
         /** @var WC_Order_Item_Product $product_item */
@@ -641,21 +641,21 @@ final class FP_Factory
 
             if ( ! empty( $product_rate ) )
             {
-                $net_amount = $product_item->get_subtotal();
-                $tax_amount = $product_item->get_subtotal_tax();
-                $gross_amount = floatval( $net_amount ) + floatval( $tax_amount );
-                $net_amounts [ $product_rate ] += floatval( $net_amount );
-                $tax_amounts [ $product_rate ] += floatval( $tax_amount );
-                $gross_amounts [ $product_rate ] += $gross_amount;
+                $net_amount = floatval( $product_item->get_subtotal() );
+                $tax_amount = floatval( $product_item->get_subtotal_tax() );
+                $gross_amount = $net_amount + $tax_amount;
+                $net_amounts[$product_rate] += $net_amount;
+                $tax_amounts[$product_rate] += $tax_amount;
+                $gross_amounts[$product_rate] += $gross_amount;
             }
         }
 
-        $total_net = array_sum($net_amounts);
-        $total_tax = array_sum($tax_amounts);
-        $total_gross = array_sum($gross_amounts);
+        $total_net = array_sum( $net_amounts );
+        $total_tax = array_sum( $tax_amounts );
+        $total_gross = array_sum( $gross_amounts );
 
         /** @var WC_Order_Item_Shipping $shipping_item */
-        foreach ( $order->get_items('shipping') as $shipping_item )
+        foreach ( $order->get_items( 'shipping' ) as $shipping_item )
         {
             $shipping_name = $shipping_item->get_name();
             $shipping_name = ! empty( $article_name ) ? $article_name : $shipping_name;
@@ -665,9 +665,9 @@ final class FP_Factory
             $shipping_taxes = $shipping_taxes['total'];
             $shipping_taxes = array_filter( $shipping_taxes );
 
-            $shipping_tax = $shipping_item->get_total_tax();
-            $shipping_net = $shipping_item->get_total();
-            $shipping_gross = floatval( $shipping_net ) + floatval( $shipping_tax );
+            $shipping_tax = floatval( $shipping_item->get_total_tax() );
+            $shipping_net = floatval( $shipping_item->get_total() );
+            $shipping_gross = $shipping_net + $shipping_tax;
 
             // Case if no tax rates are applied to shipping
             // This is mostly the case when shipping is free
@@ -743,8 +743,8 @@ final class FP_Factory
                 foreach ( $split_taxes as $split_tax )
                 {
                     $tax_id = $split_tax['tax_rates'][0];
-                    $price_net = $split_tax['net_amount'];
-                    $price_gross = $split_tax['taxable_amount'];
+                    $price_net = floatval( $split_tax['net_amount'] );
+                    $price_gross = floatval( $split_tax['taxable_amount'] );
     
                     $wc_tax = WC_Tax::_get_tax_rate( $tax_id );
                     $tax_name = $wc_tax['tax_rate_name'];
@@ -773,11 +773,11 @@ final class FP_Factory
                 $tax_name = $wc_tax['tax_rate_name'];
                 $tax_rate = $wc_tax['tax_rate'];
 
-                $net_amount = floatval( $net_amounts[ $tax_id ] );
-                $gross_amount = floatval( $gross_amounts[ $tax_id ] );
-                $net_ratio = ($total_net > 0) ? ( $net_amount / $total_net ) : 0;
-                $gross_ratio = ($total_gross > 0) ? ( $gross_amount / $total_gross ) : 0;
-                $price_net = round( floatval( $shipping_net ) * $net_ratio, 4 );
+                $net_amount = $net_amounts[$tax_id];
+                $gross_amount = $gross_amounts[$tax_id];
+                $net_ratio = $total_net > 0 ? ( $net_amount / $total_net ) : 0;
+                $gross_ratio = $total_gross > 0 ? ( $gross_amount / $total_gross ) : 0;
+                $price_net = round( $shipping_net * $net_ratio, 4 );
                 $price_gross = round( $shipping_gross * $gross_ratio, 4 );
 
                 $result = array();
@@ -961,7 +961,7 @@ final class FP_Factory
             $sum = 0;
             foreach ($credits as $credit) {
                 $names[] = $credit['name'];
-                $sum += $credit['amount'];
+                $sum += floatval( $credit['amount'] );
             }
             if ($sum != 0) {
                 $credits = array(
@@ -976,11 +976,12 @@ final class FP_Factory
         $results = array();
 
         foreach ($credits as $credit) {
-            if ($credit['amount'] == 0) {
+            $amount = floatval( $credit['amount'] );
+            if ($amount == 0) {
                 continue;
             }
 
-            $price_net = -$credit['amount'];
+            $price_net = -$amount;
             $price_gross = $price_net;
 
             $result = array();

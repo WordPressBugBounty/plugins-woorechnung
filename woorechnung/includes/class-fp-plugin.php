@@ -206,17 +206,33 @@ final class FP_Plugin extends FP_Abstract_Plugin
     }
 
     /**
+     * Get the current wordpress version.
+     *
+     * @return string
+     */
+    public function get_wp_version()
+    {
+        return function_exists('wp_get_wp_version') ? wp_get_wp_version() : '';
+    }
+
+    /**
      * Get the current version of this plugin.
      *
      * @return string
      */
     public function get_version()
     {
-        if (!function_exists('get_plugin_data')) {
-            require_once(ABSPATH.'wp-admin/includes/plugin.php');
-        }
-        $plugin_data = get_plugin_data( $this->get_file() );
-        return !empty($plugin_data['Version']) ? $plugin_data['Version'] : '';
+        return $this->get_plugin_version( $this->get_file() );
+    }
+
+    /**
+     * Get the current version of woocommerce.
+     *
+     * @return string
+     */
+    public function get_wc_version()
+    {
+        return $this->get_plugin_version( WP_PLUGIN_DIR . '/' . self::PLUGIN_WOOCOMMERCE );
     }
 
     /**
@@ -237,7 +253,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
     public function get_user_agent()
     {
         $version = $this->get_version();
-        return self::USER_AGENT.(!empty($version) ? '/'.$version : '');
+        return self::USER_AGENT . ( !empty( $version ) ? '/' . $version : '' );
     }
 
     /**

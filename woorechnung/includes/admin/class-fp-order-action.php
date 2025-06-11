@@ -29,16 +29,18 @@ final class FP_Order_Action extends FP_Abstract_Module
     public function init_hooks()
     {
         if ( is_admin() ) {
+            // General
+            $this->add_action( 'admin_init', 'handle_actions' );
+            $this->add_action( 'wp_ajax_fakturpro_invoice', 'handle_invoice_button_ajax' );
+
             // Orders list
-            $this->add_action('woocommerce_admin_order_actions_end', 'add_invoice_button');
-            $this->add_action('wp_ajax_fakturpro_invoice', 'handle_invoice_button_ajax');
+            $this->add_action( 'woocommerce_admin_order_actions_end', 'add_invoice_button' );
 
             // Order details
-            $this->add_filter('woocommerce_order_actions', 'add_invoice_actions', 30, 1);
-            $this->add_action('woocommerce_order_actions_start', 'add_invoice_actions_buttons', 30, 1);
-            $this->add_action('woocommerce_order_action_fp_create_invoice', 'handle_create_invoice', 10, 1);
-            $this->add_action('woocommerce_order_action_fp_reset_invoice', 'handle_reset_invoice', 10, 1);
-            $this->add_action('admin_init', 'handle_actions');
+            $this->add_filter( 'woocommerce_order_actions', 'add_invoice_actions', 30, 1 );
+            $this->add_action( 'woocommerce_order_actions_start', 'add_invoice_actions_buttons', 30, 1 );
+            $this->add_action( 'woocommerce_order_action_fp_create_invoice', 'handle_create_invoice', 10, 1 );
+            $this->add_action( 'woocommerce_order_action_fp_reset_invoice', 'handle_reset_invoice', 10, 1 );
         }
     }
 
@@ -52,15 +54,15 @@ final class FP_Order_Action extends FP_Abstract_Module
     {
         global $theorder;
 
-        if ( ! is_a( $theorder, WC_Order::class ) || $theorder->get_status() == 'auto-draft' ) {
+        if ( ! is_a( $theorder, WC_Order::class ) || $theorder->get_status() == 'auto-draft' || empty( $theorder->get_id() ) ) {
             return $actions;
         }
 
         $adapter = new FP_Order_Adapter( $theorder );
         if ( ! $adapter->has_invoice_key() ) {
-            $actions['fp_create_invoice'] = __('Create invoice', 'fakturpro');
+            $actions['fp_create_invoice'] = __( 'Create invoice', 'fakturpro' );
         } else {
-            $actions['fp_reset_invoice'] = __('Reset invoice', 'fakturpro');
+            $actions['fp_reset_invoice'] = __( 'Reset invoice', 'fakturpro' );
         }
         return $actions;
     }
@@ -75,28 +77,28 @@ final class FP_Order_Action extends FP_Abstract_Module
     {
         $adapter = new FP_Order_Adapter( $order_id );
 
-        if ( $adapter->get_status() == 'auto-draft' ) {
+        if ( empty( $adapter ) || $adapter->get_status() == 'auto-draft' || empty( $order_id ) ) {
             return;
         }
 
         echo '<li class="wide">';
         if ( ! $adapter->has_invoice_key() ) {
-            $params = array('page' => 'wc-orders', 'action' => 'edit', 'id' => $order_id, 'fp_action' => 'create_invoice');
+            $params = array( 'page' => 'wc-orders', 'action' => 'edit', 'id' => $adapter->get_id(), 'fp_action' => 'create_invoice' );
             $target = 'admin.php?' . http_build_query( $params );
             $target = wp_nonce_url( admin_url( $target ), 'create_invoice', '_fp_nonce' );
 
             echo '<a href="' . $target . '" class="button button-secondary">';
             echo '<span class="icon-pdf-add"></span> ';
-            echo __('Create invoice', 'fakturpro');
+            echo __( 'Create invoice', 'fakturpro' );
             echo '</a>';
         } else {
-            $params = array('action' => 'fakturpro_invoice', 'order_id' => $order_id);
+            $params = array( 'action' => 'fakturpro_invoice', 'order_id' => $adapter->get_id() );
             $target = 'admin-ajax.php?' . http_build_query( $params );
             $target = wp_nonce_url( admin_url( $target ), 'fakturpro_invoice', '_fp_nonce' );
 
             echo '<a href="' . $target . '" target="_blank" class="button button-secondary">';
             echo '<span class="icon-pdf"></span> ';
-            echo __('Retrieve invoice', 'fakturpro');
+            echo __( 'Retrieve invoice', 'fakturpro' );
             echo '</a>';
         }
         echo '</li>';
@@ -110,46 +112,50 @@ final class FP_Order_Action extends FP_Abstract_Module
     public function handle_actions()
     {
 		if ( isset( $_GET['fp_action'], $_GET['_fp_nonce'] ) ) {
-            if ( 'create_invoice' === wp_unslash( $_GET['fp_action'] ) && wp_verify_nonce( wp_unslash( $_GET['_fp_nonce'] ), 'create_invoice' ) ) {
 
-                if ( isset( $_GET['id'] ) ) {
-                    $order_id = $_GET['id'];
+            $action = wc_clean( wp_unslash( $_GET['fp_action'] ) );
+            $nonce = wp_unslash( $_GET['_fp_nonce'] );
 
+            if ( 'create_invoice' === $action && wp_verify_nonce( $nonce, 'create_invoice' ) ) {
+
+                $order_id = FP_Order_Adapter::get_request_id( $_GET );
+
+                if ( !empty( $order_id ) ) {
                     $adapter = new FP_Order_Adapter( $order_id );
                     $adapter->unset_invoice_error_message();
                     if ( $this->create_invoice( $adapter ) ) {
                         FP_Admin_Notices::add_notice(
-                            __('Invoice created', 'fakturpro'),
+                            __( 'Invoice created', 'fakturpro' ),
                             FP_Admin_Notices::NOTICE_TYPE_SUCCESS,
                             true
                         );
                     } else {
                         FP_Admin_Notices::add_notice(
-                            __('Invocie was not created', 'fakturpro'),
+                            __( 'Invocie was not created', 'fakturpro' ),
                             FP_Admin_Notices::NOTICE_TYPE_ERROR,
                             true
                         );
                     }
 
-                    $params = array('page' => 'wc-orders');
+                    $params = array( 'page' => 'wc-orders' );
                     if ( isset($_GET['action'] ) && wp_unslash( $_GET['action'] ) == 'edit' ) {
                         $params['action'] = 'edit';
                         $params['id'] = $order_id;
                     }
 
-                    wp_safe_redirect( admin_url( 'admin.php?' . http_build_query($params) ) );
+                    wp_safe_redirect( admin_url( 'admin.php?' . http_build_query( $params ) ) );
                     exit;
                 }
 
                 FP_Admin_Notices::add_notice(
                     /* translators: %s: parameter name */
-                    sprintf( __('Missing parameter %s', 'fakturpro'), 'id' ),
+                    sprintf( __( 'Missing parameter %s', 'fakturpro' ), 'id' ),
                     FP_Admin_Notices::NOTICE_TYPE_ERROR,
                     true
                 );
 
                 $params = array( 'page' => 'wc-orders' );
-                wp_safe_redirect( admin_url( 'admin.php?' . http_build_query($params) ) );
+                wp_safe_redirect( admin_url( 'admin.php?' . http_build_query( $params ) ) );
                 exit;
             }
         }
@@ -190,7 +196,7 @@ final class FP_Order_Action extends FP_Abstract_Module
      */
     public function add_invoice_button( $order )
     {
-        $adapter = new FP_Order_Adapter( $order->get_id() );
+        $adapter = new FP_Order_Adapter( $order );
         $params = $this->prepare_params( $adapter );
         $this->button( $params );
     }
@@ -210,25 +216,25 @@ final class FP_Order_Action extends FP_Abstract_Module
         // Prepare the target URL for the action button
 
         $invoice = $order->get_invoice_key();
-        $params = array('action' => 'fakturpro_invoice', 'order_id' => $order->get_id());
-        $target = 'admin-ajax.php?' . http_build_query($params);
-        $target = wp_nonce_url( admin_url($target), 'fakturpro_invoice', '_fp_nonce');
+        $params = array( 'action' => 'fakturpro_invoice', 'order_id' => $order->get_id() );
+        $target = 'admin-ajax.php?' . http_build_query( $params );
+        $target = wp_nonce_url( admin_url( $target ), 'fakturpro_invoice', '_fp_nonce');
 
         $icon_create = 'button icon-pdf-add';
         $icon_fetch = 'button icon-pdf';
-        $text_create = __('Create invoice', 'fakturpro');
-        $text_fetch = __('Retrieve invoice', 'fakturpro');
+        $text_create = __( 'Create invoice', 'fakturpro' );
+        $text_fetch = __( 'Retrieve invoice', 'fakturpro' );
 
         if ( $order->has_invoice_error_message() ) {
             $icon_create .= ' error';
-            $text_create .= ' (' . __('Error on last try', 'fakturpro') . ')';
+            $text_create .= ' (' . __( 'Error on last try', 'fakturpro' ) . ')';
         }
 
         // Return the parameters
         $result = array();
         $result['target'] = $target;
-        $result['class'] = empty($invoice) ? $icon_create : $icon_fetch;
-        $result['text'] = empty($invoice) ? $text_create : $text_fetch;
+        $result['class'] = empty( $invoice ) ? $icon_create : $icon_fetch;
+        $result['text'] = empty( $invoice ) ? $text_create : $text_fetch;
         return $result;
     }
 
@@ -242,12 +248,12 @@ final class FP_Order_Action extends FP_Abstract_Module
     private function button( $params, $target = '_blank' )
     {
         echo '<a '
-            . 'class="'.esc_attr( $params['class'] ).'" '
-            . 'href="'.esc_url( $params['target'] ).'" '
-            . 'alt="'.esc_attr( $params['text'] ).'" '
-            . 'title="'.esc_attr( $params['text'] ).'" '
-            . 'aria-label="'.esc_attr( $params['text'] ).'" '
-            . 'data-tip="'.esc_attr( $params['text'] ).'" '
+            . 'class="' . esc_attr( $params['class'] ) . '" '
+            . 'href="' . esc_url( $params['target'] ) . '" '
+            . 'alt="' . esc_attr( $params['text'] ) . '" '
+            . 'title="' . esc_attr( $params['text'] ) . '" '
+            . 'aria-label="' . esc_attr( $params['text'] ) . '" '
+            . 'data-tip="' . esc_attr( $params['text'] ) . '" '
             . 'target="' . $target . '"'
             . '></a>';
     }
@@ -274,8 +280,8 @@ final class FP_Order_Action extends FP_Abstract_Module
 		}
 
         // Fetch the order id parameter
-        $order_id = absint( wp_unslash( $_GET['order_id'] ) );
-        $order = new FP_Order_Adapter($order_id);
+        $order_id = FP_Order_Adapter::get_request_id( $_GET );
+        $order = new FP_Order_Adapter( $order_id );
 
         // Create invoice if necessary
         if (!$order->has_invoice_key()) {
@@ -300,7 +306,7 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         // Check for waiting time has passed
         if ( !empty( $order ) && !$order->is_create_invoice_request_waiting_time_passed() ) {
-            $this->logger()->verbose('IF !$order->is_create_invoice_request_waiting_time_passed() IN');
+            $this->logger()->verbose( 'IF !$order->is_create_invoice_request_waiting_time_passed() IN' );
             return false;
         }
 
@@ -308,8 +314,8 @@ final class FP_Order_Action extends FP_Abstract_Module
             $order->set_create_invoice_requested_at();
             $model = $this->factory()->create_invoice( $order );
             $result = $this->client()->create_invoice( $model );
-            $order->set_invoice_uuid($result['uuid']);
-            $order->set_invoice_number($result['number']);
+            $order->set_invoice_uuid( $result['uuid'] );
+            $order->set_invoice_number( $result['number'] );
             $order->set_invoice_date( $result['invoice_date'] );
             $order->add_note_invoice_created();
             $this->logger()->create_invoice_success();
@@ -360,7 +366,7 @@ final class FP_Order_Action extends FP_Abstract_Module
         // Catch any exception that might happen during the process
         // Log the exception and let the handler exit properly
 
-        catch (Exception $exception) {
+        catch ( \Exception $exception ) {
             $this->logger()->fetch_invoice_failed();
             $this->logger()->capture($exception);
             $this->handler()->handle($exception);

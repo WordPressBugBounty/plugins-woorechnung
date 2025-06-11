@@ -122,13 +122,49 @@ abstract class FP_Abstract_Plugin
      * @param  string $name
      * @return bool
      */
-    public function is_plugin_active($name)
+    public function is_plugin_active( $name )
     {
-        $active = in_array( $name, get_option('active_plugins') );
+        $active = in_array( $name, get_option( 'active_plugins' ) );
         if ( is_multisite() ) {
-            $active = in_array( $name, array_keys( get_site_option('active_sitewide_plugins') ) ) ? true : $active;
+            $active = in_array( $name, array_keys( get_site_option( 'active_sitewide_plugins' ) ) ) ? true : $active;
         }
         return $active;
+    }
+
+    /**
+     * Get the full plugin path.
+     *
+     * @param  string $name
+     * @return string
+     */
+    public function get_full_plugin_path( $name )
+    {
+        if ( file_exists( $name ) ) {
+            return $name;
+        }
+        if ( defined( 'WP_PLUGIN_DIR' ) && file_exists( WP_PLUGIN_DIR . "/$name" ) ) {
+            return WP_PLUGIN_DIR . "/$name";
+        }
+        if ( defined( 'WPMU_PLUGIN_DIR' ) && file_exists( WPMU_PLUGIN_DIR . "/$name" ) ) {
+            return WPMU_PLUGIN_DIR . "/$name";
+        }
+        return $name;
+    }
+
+    /**
+     * Get the current version of an installed plugin.
+     *
+     * @param  string $name
+     * @return string
+     */
+    public function get_plugin_version( $name )
+    {
+        if ( !function_exists('get_plugin_data') ) {
+            require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        }
+        $name = $this->get_full_plugin_path( $name );
+        $plugin_data = get_file_data( $name, array( 'Version' => 'Version' ) , 'plugin' ); // get_plugin_data( $name );
+        return !empty( $plugin_data['Version'] ) ? $plugin_data['Version'] : '';
     }
 
     /**

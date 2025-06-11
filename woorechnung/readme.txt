@@ -1,13 +1,13 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.7
+Version: 3.1.9
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
 Requires WooCommerce: 3.0.0
 Tested up to: 6.8.1
 Tested PHP up to: 8.3
-Stable tag: 3.1.7
+Stable tag: 3.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,12 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.9 (2025-06-11) =
+* Fixed: Bei Bestellungen mit Selbsabholung fehlte der Wert "0" für die Nettokosten weil der von WooCommerce mit dem Wert "null" angegeben wird.
+
+= 3.1.8 (2025-06-03) =
+* Fixed: Rechnung erstellen Button in der Bestellung unterstützt jetzt den Legacy Modus "Speichern als WordPress-Beiträge (alt)" der Einstellung "Datenspeicher für Bestellungen" von WooCommerce.
 
 = 3.1.7 (2025-05-26) =
 * Fixed: Warnung wegen zu frühem Zugriff auf Übersetzungen behoben. Es wurden Bestellstatus Werte aus WooCommerce zu früh abgerufen.

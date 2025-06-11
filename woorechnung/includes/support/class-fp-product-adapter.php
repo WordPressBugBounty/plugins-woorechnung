@@ -40,6 +40,27 @@ final class FP_Product_Adapter
     }
 
     /**
+     * Get the product id from a request.
+     *
+     * @param  array|null $params
+     * @return int
+     */
+    public static function get_request_id( $params = null )
+    {
+        if ( !isset( $params ) ) {
+            $params = $_REQUEST;
+        }
+
+        // Check for 'id', 'product_id' and 'post' parameters if there was a redirect.
+        $product_id = null;
+        $product_id = isset( $params['id'] ) ? $params['id'] : $product_id;
+        $product_id = isset( $params['post'] ) ? $params['post'] : $product_id; // woocommerce legacy mode
+        $product_id = isset( $params['product_id'] ) ? $params['product_id'] : $product_id;
+
+        return isset( $product_id ) ? absint( $product_id ) : null;
+    }
+
+    /**
      * Make all product methods directly accessible.
      *
      * @param  string $method
