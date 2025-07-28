@@ -972,6 +972,21 @@ final class FP_Settings extends FP_Abstract_Settings
     {
         return FP_Plugin::decode_html_content( $this->get( 'email_content_html', '' ) );
     }
+
+    /**
+     * Sanitize text to remove code.
+     *
+     * @param  string $text
+     * @return string
+     */
+    public function sanitizeText(string $text)
+    {
+        $text = preg_replace('/\[av_((?!\]).)*\]/i', '', $text);
+        $text = preg_replace('/\[\\/av_((?!\]).)*\]/i', '', $text);
+        $text = preg_replace('/(\r\n){3,}/', "\r\n\r\n", $text);
+        $text = preg_replace('/\n{3,}/', "\n\n", $text);
+        return $text;
+    }
 }
 
 endif;

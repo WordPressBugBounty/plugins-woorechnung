@@ -62,10 +62,10 @@ final class FP_Factory
             $subscription = wcs_get_subscription($subscription_id);
             if (!empty($subscription)) {
                 if (empty($payment_method)) {
-                    $payment_method = $subscription->get_payment_method();
+                    $payment_method = $subscription->get_payment_method('edit');
                 }
                 if (empty($payment_title)) {
-                    $payment_title = $subscription->get_payment_method_title();
+                    $payment_title = $subscription->get_payment_method_title('edit');
                 }
             }
         }
@@ -466,7 +466,7 @@ final class FP_Factory
             $name = $this->format_product_name( $name, $alternate_title, $setting );
         }
 
-        return $name;
+        return $settings->sanitizeText( $name );
     }
 
     /**
@@ -485,8 +485,8 @@ final class FP_Factory
         if ( $setting == 'short' ) {
             $product = new FP_Product_Adapter( $product_item, false );
             $description = $product->get_short_description();
-            $description = strip_tags($description);
-            return $description;
+            $description = strip_tags( $description );
+            return $settings->sanitizeText( $description );
         }
 
         // Description explicitly from product or variation
@@ -494,7 +494,7 @@ final class FP_Factory
             $product = new FP_Product_Adapter( $product_item, false );
             $description = $product->get_description();
             $description = strip_tags( $description );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Description inherit from product or variation
@@ -510,7 +510,7 @@ final class FP_Factory
                 $description = $product->get_description();
                 $description = strip_tags( $description );
             }
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Description from product and variation
@@ -529,7 +529,7 @@ final class FP_Factory
             $product_description .= !empty( $product_description ) && !empty( $description ) ? ' ' : '';
             $description = $product_description . $description;
             $description = strip_tags( $description );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Description strictly from product (never from variation)
@@ -537,7 +537,7 @@ final class FP_Factory
             $product = new FP_Product_Adapter( $product_item, true );
             $description = $product->get_description();
             $description = strip_tags( $description );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Description strictly from variation (never from product)
@@ -545,7 +545,7 @@ final class FP_Factory
             $variation = $this->get_product_variation( $product_item );
             $description = $variation->get_description();
             $description = strip_tags( $description );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Use title as description
@@ -553,7 +553,7 @@ final class FP_Factory
             $variation = $this->get_product_variation( $product_item );
             $attributes = $variation->get_variation_attributes();
             $description = implode( ', ', $attributes );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Use meta data as description
@@ -567,7 +567,7 @@ final class FP_Factory
                 $properties[] = "{$property->key}: {$value}";
             }
             $description = implode( PHP_EOL, $properties );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Use mini description
@@ -575,7 +575,7 @@ final class FP_Factory
             $product = new FP_Product_Adapter( $product_item, false );
             $description = $product->get_meta( '_mini_desc', true );
             $description = strip_tags( strval( $description ) );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Use variation mini description
@@ -583,7 +583,7 @@ final class FP_Factory
             $variation = $this->get_product_variation( $product_item );
             $description = $variation->get_meta( '_mini_desc', true );
             $description = strip_tags( strval( $description ) );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         // Use alternate title
@@ -591,7 +591,7 @@ final class FP_Factory
             $product = new FP_Product_Adapter( $product_item, false );
             $description = $this->get_product_alternate_title( $product, $setting );
             $description = strip_tags( strval( $description ) );
-            return $description;
+            return $settings->sanitizeText( $description );
         }
 
         return '';
