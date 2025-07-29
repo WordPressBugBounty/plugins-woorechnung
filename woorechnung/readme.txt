@@ -1,7 +1,7 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.10
-Stable tag: 3.1.10
+Version: 3.1.11
+Stable tag: 3.1.11
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
@@ -58,6 +58,9 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.11 (2025-07-29) =
+* Fixed: Initialisierung für das Prüfen der Bestellstatus-Änderungen behoben, damit die Reihenfolge der Erstellung der Rechnung vor dem Senden der WooCommerce E-Mails wieder gegeben ist.
 
 = 3.1.10 (2025-07-28) =
 * Added: Filtern von "av" Code in Produkt-Beschreibungen die durch "Enfold" Themes bzw. "Avia Layout Editor/Builder" hinzugefügt wurden.
