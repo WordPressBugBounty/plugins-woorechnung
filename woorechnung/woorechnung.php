@@ -4,8 +4,8 @@
  * Plugin Name: Faktur Pro
  * Plugin URI: https://www.faktur.pro/
  * Description: Adds invoice creation functionality to WooCommerce.
- * Version: 3.1.11
- * Stable tag: 3.1.11
+ * Version: 3.1.12
+ * Stable tag: 3.1.12
  * Author: Zweischneider GmbH & Co. KG
  * Author URI: https://www.zweischneider.de
  *
@@ -16,7 +16,7 @@
  * Tested up to: 6.8.2
  * Tested PHP up to: 8.3
  * WC requires at least: 3.0.0
- * WC tested up to: 10.0.4
+ * WC tested up to: 10.1.1
  *
  * @package FakturPro
  * @category Core
