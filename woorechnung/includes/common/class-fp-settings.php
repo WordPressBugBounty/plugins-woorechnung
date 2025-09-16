@@ -197,6 +197,27 @@ final class FP_Settings extends FP_Abstract_Settings
     }
 
     /**
+     * Set the customer reference number meta name.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function set_customer_reference_number_meta_name( $value )
+    {
+        $this->set( 'customer_reference_number_meta_name', $value );
+    }
+
+    /**
+     * Get the customer reference number meta name.
+     *
+     * @return string
+     */
+    public function get_customer_reference_number_meta_name()
+    {
+        return $this->get( 'customer_reference_number_meta_name', '' );
+    }
+
+    /**
      * Decide if both the shop url and the shop token have been set.
      *
      * @return bool

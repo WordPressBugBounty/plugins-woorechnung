@@ -682,6 +682,12 @@ final class FP_Factory
         $meta_name = $plugin_settings->get_customer_debitor_number_meta_name();
         $debitor_number = empty($meta_name) ? '' : (string) $order->get_billing_debitor_number( [ $meta_name ] );
         $debitor_number = empty($debitor_number) ? (string) $order->get_billing_debitor_number() : $debitor_number;
+
+        // Find customer reference number
+        $meta_name = $plugin_settings->get_customer_reference_number_meta_name();
+        $customer_reference = empty($meta_name) ? '' : (string) $order->get_customer_reference_number( [ $meta_name ] );
+        $customer_reference = empty($customer_reference) ? (string) $order->get_customer_reference_number() : $customer_reference;
+
         
         $customer = $order->get_customer();
         $vat_exempt = $customer->is_vat_exempt();
@@ -702,6 +708,7 @@ final class FP_Factory
         $result['vat_id']           = $vat_id;
         $result['vat_exempt']       = (bool) $vat_exempt;
         $result['debitor_number']   = $debitor_number;
+        $result['customer_reference'] = $customer_reference;
 
         return $result;
     }

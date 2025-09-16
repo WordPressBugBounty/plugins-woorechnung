@@ -1,7 +1,7 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.12
-Stable tag: 3.1.12
+Version: 3.1.13
+Stable tag: 3.1.13
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
@@ -59,8 +59,11 @@ Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
 
+= 3.1.13 (2025-09-16) =
+* Added: Einstellung "Metaname der Käuferreferenz / Leitweg-ID" mit der optional ein Meta-Name angegeben werden kann, über den die Käuferreferenz / Leitweg-ID aus den Metadaten der Bestellung oder des Kunden ausgelesen werden soll.
+
 = 3.1.12 (2025-08-21) =
-* Added: Prüfung und Umwandlung von ausgeschriebenen Ländern bei den Adressen der Bestellung, wenn kein zweistelligen Ländercodes gespeichert wurden.
+* Added: Prüfung und Umwandlung von ausgeschriebenen Ländern bei den Adressen der Bestellung, wenn keine zweistelligen Ländercodes gespeichert wurden.
 
 = 3.1.11 (2025-07-29) =
 * Fixed: Initialisierung für das Prüfen der Bestellstatus-Änderungen behoben, damit die Reihenfolge der Erstellung der Rechnung vor dem Senden der WooCommerce E-Mails wieder gegeben ist.

@@ -730,9 +730,9 @@ final class FP_Order_Adapter
 
         // Search for vat id in order meta
         foreach ($meta_fields as $meta_field) {
-            $billing_vat_id = $this->order->get_meta( $meta_field, true );
-            if (!empty($billing_vat_id)) {
-                return $billing_vat_id;
+            $billing_debitor = $this->order->get_meta( $meta_field, true );
+            if (!empty($billing_debitor)) {
+                return $billing_debitor;
             }
         }
 
@@ -741,9 +741,67 @@ final class FP_Order_Adapter
         if (!empty($user)) {
             foreach ($meta_fields as $meta_field) {
                 try {
-                    $billing_vat_id = $user->$meta_field;
-                    if (!empty($billing_vat_id)) {
-                        return $billing_vat_id;
+                    $billing_debitor = $user->$meta_field;
+                    if (!empty($billing_debitor)) {
+                        return $billing_debitor;
+                    }
+                } catch (\Exception $ex) { // @phpstan-ignore-line
+                    // ...
+                }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Return the customer reference number for this order.
+     *
+     * This method returns the customer reference number added to the order object
+     * by extensions or individual field.
+     *
+     * @param  array<string> $meta_fields
+     * @return string|null
+     */
+    public function get_customer_reference_number( $meta_fields = null )
+    {
+        $meta_fields = !empty($meta_fields) ? $meta_fields : array(
+            '_customer_reference',
+            'customer_reference',
+            '_customer_reference_number',
+            'customer_reference_number',
+            'Customer Reference Number',
+            'customer reference number',
+            '_customer_route_id',
+            'customer_route_id',
+            'customer route id',
+            'Customer Route ID',
+            '_customer_route_id_number',
+            'customer_route_id_number',
+            'Customer Route ID Number',
+            'customer route id number',
+            '_leitweg_id',
+            'leitweg-id',
+            'leitweg_id',
+            'Leitweg-ID',
+            'Leitweg ID',
+        );
+
+        // Search for vat id in order meta
+        foreach ($meta_fields as $meta_field) {
+            $customer_reference = $this->order->get_meta( $meta_field, true );
+            if (!empty($customer_reference)) {
+                return $customer_reference;
+            }
+        }
+
+        // Search for vat id in customer meta if no vat id was found in order meta
+        $user = $this->order->get_user();
+        if (!empty($user)) {
+            foreach ($meta_fields as $meta_field) {
+                try {
+                    $customer_reference = $user->$meta_field;
+                    if (!empty($customer_reference)) {
+                        return $customer_reference;
                     }
                 } catch (\Exception $ex) { // @phpstan-ignore-line
                     // ...

@@ -158,6 +158,15 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             }
         }
 
+        if (isset($_POST['fakturpro_customer_reference_number_meta_name']) ) {
+            $fakturpro_customer_reference_number_meta_name = sanitize_text_field( $_POST['fakturpro_customer_reference_number_meta_name'] );
+            if ( empty( $fakturpro_customer_reference_number_meta_name ) || $fakturpro_customer_reference_number_meta_name = $this->validate_allowed_chars( $fakturpro_customer_reference_number_meta_name ) ) {
+                $data['fakturpro_customer_reference_number_meta_name'] = $fakturpro_customer_reference_number_meta_name;
+            } else {
+                $this->error_fields[] = 'fakturpro_customer_reference_number_meta_name';
+            }
+        }
+
         if ( isset( $_POST['fakturpro_create_invoices'] ) ) {
             $fakturpro_create_invoices = strval( absint( $_POST['fakturpro_create_invoices'] ) );
             $fakturpro_create_invoices = in_array( $fakturpro_create_invoices, ['0', '1']) ? $fakturpro_create_invoices : '1';
@@ -639,6 +648,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result[] = $this->section_customer_start();
         $result[] = $this->field_customer_vat_id_meta_name();
         $result[] = $this->field_customer_debitor_number_meta_name();
+        $result[] = $this->field_customer_reference_number_meta_name();
         $result[] = $this->section_customer_end();
         return $result;
     }
@@ -880,6 +890,24 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             'desc'      => __('The name from the metadata of the customer or the order under which the customers debitor number is stored.', 'fakturpro'),
             'default'   => '',
             'desc_tip'  => __('An optional meta field name to find the customers debitor number.', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Field customer reference number meta name.
+     * 
+     * @return array<string, mixed>
+     */
+    private function field_customer_reference_number_meta_name()
+    {
+        return array(
+            'id'        => 'fakturpro_customer_reference_number_meta_name',
+            'title'     => __('Buyer reference / route id meta name', 'fakturpro'),
+            'type'      => 'text',
+            'css'       => $this->field_css('fakturpro_customer_reference_number_meta_name'),
+            'desc'      => __('The name from the metadata of the customer or the order under which the customers buyer reference / route id number is stored.', 'fakturpro'),
+            'default'   => '',
+            'desc_tip'  => __('An optional meta field name to find the customers buyer reference / route id number.', 'fakturpro'),
         );
     }
 
