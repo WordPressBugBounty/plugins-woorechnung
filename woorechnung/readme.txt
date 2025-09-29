@@ -1,7 +1,7 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.13
-Stable tag: 3.1.13
+Version: 3.1.14
+Stable tag: 3.1.14
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
@@ -58,6 +58,10 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.14 (2025-09-29) =
+* Added: Buttons zum manuellen Erstellen und Abrufen einer Stornorechnung in der Bestellung Detail Seite.
+* Added: Button in den Faktur Pro Plugin Einstellungen, der die Faktur Pro Webseite aufruft, um dort den Rechnungsservice-Anbieter konfigurieren zu können.
 
 = 3.1.13 (2025-09-16) =
 * Added: Einstellung "Metaname der Käuferreferenz / Leitweg-ID" mit der optional ein Meta-Name angegeben werden kann, über den die Käuferreferenz / Leitweg-ID aus den Metadaten der Bestellung oder des Kunden ausgelesen werden soll.

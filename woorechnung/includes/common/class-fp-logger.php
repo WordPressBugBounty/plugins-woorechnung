@@ -98,6 +98,26 @@ final class FP_Logger extends FP_Abstract_Logger
     }
 
     /**
+     * Log that the download of an cancellation invoice succeeded.
+     *
+     * @return void
+     */
+    public function fetch_cancellation_invoice_success()
+    {
+        $this->notice( 'fetch an cancellation invoice success' );
+    }
+
+    /**
+     * Log that the download of an cancellation invoice failed.
+     *
+     * @return void
+     */
+    public function fetch_cancellation_invoice_failed()
+    {
+        $this->error( 'failed to fetch an cancellation invoice' );
+    }
+
+    /**
      * Log that an invoice has been mailed successfully.
      *
      * @return void

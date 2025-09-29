@@ -95,4 +95,10 @@ jQuery(document).ready(function($)
 
   change_email_template_setting(email_template.val());
   change_email_settings(email_selected.val());
+
+  jQuery('.fakturpro-confirm').on('click', function (event) {
+    if (!confirm(jQuery(this).data('fakturpro-question'))) {
+      event.preventDefault();
+    }
+  });
 });

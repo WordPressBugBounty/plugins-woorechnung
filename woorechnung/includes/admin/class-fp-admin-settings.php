@@ -728,11 +728,21 @@ final class FP_Admin_Settings extends FP_Abstract_Module
      */
     private function section_general_start()
     {
+        $settings = $this->settings();
+        $external_settings_url = 'https://www.faktur.pro/';
+        $external_settings_url .= $settings->has_shop_token()
+            ? 'shops/' . $settings->get_shop_token() . '/invoices/settings'
+            : 'register';
+        $external_settings_text = $settings->has_shop_token()
+            ? __( 'Configure invoice service provider', 'fakturpro' )
+            : __( 'Create Faktur Pro account', 'fakturpro' );
+        $external_settings_link = '<a href="' . $external_settings_url . '" target="_blank" class="button button-secondary">' . $external_settings_text . '</a>';
+        $description = __('Please enter your store\'s URL and API token to connect to your Faktur Pro account. You can find the API token in your store\'s settings in the "API token" section. If you don\'t yet have a Faktur Pro user account, register for free at http://www.faktur.pro. There are additional settings in your Faktur Pro account.', 'fakturpro');
         return array(
             'id'        => 'fakturpro_section_general',
             'title'     => __('Basic Settings', 'fakturpro'),
             'type'      => 'title',
-            'desc'      => __('Please enter your store\'s URL and API token to connect to your Faktur Pro account. You can find the API token in your store\'s settings in the "API token" section. If you don\'t yet have a Faktur Pro user account, register for free at http://www.faktur.pro.', 'fakturpro')
+            'desc'      => $description . '<br><br>' . $external_settings_link
         );
     }
 
@@ -801,7 +811,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
     {
         return array(
             'id'        => 'fakturpro_shop_token',
-            'title'     => 'Shop Token',
+            'title'     => 'Shop API Token',
             'type'      => 'text',
             'css'       => $this->field_css('fakturpro_shop_token'),
             'desc_tip'  => __('The shop token should match the token you received in your account for your shop.', 'fakturpro'),
@@ -1043,7 +1053,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             'type'      => 'checkbox',
             'desc'      => __('Automatically cancel invoices', 'fakturpro'),
             'default'   => 'no',
-            'desc_tip'  => __('If you activate this option, cancellation invoices will be automatically created when an order is canceled. Cancellation only occurs if you use an external billing service.', 'fakturpro'),
+            'desc_tip'  => __('If you activate this option, cancellation invoices will be automatically created when an order is canceled or refunded.', 'fakturpro'),
         );
     }
 

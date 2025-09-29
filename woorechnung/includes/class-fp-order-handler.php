@@ -289,6 +289,11 @@ final class FP_Order_Handler extends FP_Abstract_Module
         // Check for waiting time has passed
         if ( !empty( $order ) && ! $order->is_create_invoice_request_waiting_time_passed() ) {
             $this->logger()->verbose('IF !$order->is_create_invoice_request_waiting_time_passed() IN');
+            FP_Admin_Notices::add_notice(
+                __( 'Too many attempts to create the invoice in a short period of time. Please wait a few minutes before trying again.', 'fakturpro' ),
+                FP_Admin_Notices::NOTICE_TYPE_WARNING,
+                true
+            );
             return;
         }
 
@@ -370,6 +375,11 @@ final class FP_Order_Handler extends FP_Abstract_Module
         // Check for waiting time has passed
         if ( ! $order->is_cancel_invoice_request_waiting_time_passed() ) {
             $this->logger()->verbose( 'IF !$order->is_cancel_invoice_request_waiting_time_passed() IN' );
+            FP_Admin_Notices::add_notice(
+                __( 'Too many attempts to cancel the invoice in a short period of time. Please wait a few minutes before trying again.', 'fakturpro' ),
+                FP_Admin_Notices::NOTICE_TYPE_WARNING,
+                true
+            );
             return;
         }
 
