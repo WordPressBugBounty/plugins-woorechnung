@@ -303,32 +303,19 @@ final class FP_Factory
             'zimbabwe' => 'ZW',
 
             // German
-            'afghanistan'=> 'AF',
             'alandinseln'=> 'AX',
             'albanien'=> 'AL',
             'algerien'=> 'DZ',
             'amerikanisch-samoa'=> 'AS',
-            'andorra'=> 'AD',
-            'angola'=> 'AO',
-            'anguilla'=> 'AI',
             'antarktis'=> 'AQ',
             'antigua und barbuda'=> 'AG',
             'argentinien'=> 'AR',
             'armenien'=> 'AM',
-            'aruba'=> 'AW',
             'australien'=> 'AU',
             'österreich'=> 'AT',
             'aserbaidschan'=> 'AZ',
-            'bahamas'=> 'BS',
-            'bahrain'=> 'BH',
             'bangladesch'=> 'BD',
-            'barbados'=> 'BB',
-            'belarus'=> 'BY',
             'belgien'=> 'BE',
-            'belize'=> 'BZ',
-            'benin'=> 'BJ',
-            'bermuda'=> 'BM',
-            'bhutan'=> 'BT',
             'bolivien'=> 'BO',
             'bosnien und herzegowina'=> 'BA',
             'botsuana'=> 'BW',
@@ -337,8 +324,6 @@ final class FP_Factory
             'britisches territorium im indischen ozean'=> 'IO',
             'brunei darussalam'=> 'BN',
             'bulgarien'=> 'BG',
-            'burkina faso'=> 'BF',
-            'burundi'=> 'BI',
             'cabo verde'=> 'CV',
             'kambodscha'=> 'KH',
             'kamerun'=> 'CM',
@@ -347,8 +332,6 @@ final class FP_Factory
             'kaimaninseln'=> 'KY',
             'zentralafrikanische republik'=> 'CF',
             'tschad'=> 'TD',
-            'chile'=> 'CL',
-            'china'=> 'CN',
             'weihnachtsinsel'=> 'CX',
             'kokosinseln'=> 'CC',
             'kolumbien'=> 'CO',
@@ -356,7 +339,6 @@ final class FP_Factory
             'kongo-brazzaville'=> 'CG',
             'kongo-kinshasa'=> 'CD',
             'cookinseln'=> 'CK',
-            'costa rica'=> 'CR',
             'kroatien'=> 'HR',
             'kuba'=> 'CU',
             'curaçao'=> 'CW',
@@ -365,13 +347,9 @@ final class FP_Factory
             'côte d’ivoire'=> 'CI',
             'dänemark'=> 'DK',
             'dschibuti'=> 'DJ',
-            'dominica'=> 'DM',
             'dominikanische republik'=> 'DO',
-            'ecuador'=> 'EC',
             'ägypten'=> 'EG',
-            'el salvador'=> 'SV',
             'äquatorialguinea'=> 'GQ',
-            'eritrea'=> 'ER',
             'estland'=> 'EE',
             'eswatini'=> 'SZ',
             'äthiopien'=> 'ET',
@@ -384,105 +362,55 @@ final class FP_Factory
             'französisch-polynesien'=> 'PF',
             'französische süd- und antarktisgebiete'=> 'TF',
             'gabun'=> 'GA',
-            'gambia'=> 'GM',
             'georgien'=> 'GE',
             'deutschland'=> 'DE',
-            'ghana'=> 'GH',
-            'gibraltar'=> 'GI',
             'griechenland'=> 'GR',
             'grönland'=> 'GL',
-            'grenada'=> 'GD',
-            'guadeloupe'=> 'GP',
-            'guam'=> 'GU',
-            'guatemala'=> 'GT',
-            'guernsey'=> 'GG',
-            'guinea'=> 'GN',
             'guinea-bissau'=> 'GW',
-            'guyana'=> 'GY',
-            'haiti'=> 'HT',
             'heard und mcdonaldinseln'=> 'HM',
-            'honduras'=> 'HN',
             'hongkong'=> 'HK',
             'ungarn'=> 'HU',
             'island'=> 'IS',
             'indien'=> 'IN',
             'indonesien'=> 'ID',
-            'iran'=> 'IR',
             'irak'=> 'IQ',
             'irland'=> 'IE',
-            'isle of man'=> 'IM',
-            'israel'=> 'IL',
             'italien'=> 'IT',
             'jamaika'=> 'JM',
-            'japan'=> 'JP',
-            'jersey'=> 'JE',
             'jordanien'=> 'JO',
             'kasachstan'=> 'KZ',
             'kenia'=> 'KE',
-            'kiribati'=> 'KI',
             'nordkorea'=> 'KP',
             'südkorea'=> 'KR',
-            'kosovo'=> 'XK',
-            'kuwait'=> 'KW',
             'kirgisistan'=> 'KG',
-            'laos'=> 'LA',
             'lettland'=> 'LV',
             'libanon'=> 'LB',
-            'lesotho'=> 'LS',
-            'liberia'=> 'LR',
             'libyen'=> 'LY',
-            'liechtenstein'=> 'LI',
             'litauen'=> 'LT',
             'luxemburg'=> 'LU',
             'macau'=> 'MO',
             'nordmazedonien'=> 'MK',
             'madagaskar'=> 'MG',
-            'malawi'=> 'MW',
-            'malaysia'=> 'MY',
             'malediven'=> 'MV',
-            'mali'=> 'ML',
-            'malta'=> 'MT',
             'marshallinseln'=> 'MH',
-            'martinique'=> 'MQ',
             'mauretanien'=> 'MR',
-            'mauritius'=> 'MU',
-            'mayotte'=> 'YT',
             'mexiko'=> 'MX',
             'mikronesien'=> 'FM',
             'republik moldau'=> 'MD',
-            'monaco'=> 'MC',
             'mongolei'=> 'MN',
-            'montenegro'=> 'ME',
-            'montserrat'=> 'MS',
             'marokko'=> 'MA',
             'mosambik'=> 'MZ',
-            'myanmar'=> 'MM',
-            'namibia'=> 'NA',
-            'nauru'=> 'NR',
-            'nepal'=> 'NP',
             'niederlande'=> 'NL',
             'neukaledonien'=> 'NC',
             'neuseeland'=> 'NZ',
-            'nicaragua'=> 'NI',
-            'niger'=> 'NE',
-            'nigeria'=> 'NG',
-            'niue'=> 'NU',
             'norfolkinsel'=> 'NF',
             'nördliche marianen'=> 'MP',
             'norwegen'=> 'NO',
-            'oman'=> 'OM',
-            'pakistan'=> 'PK',
-            'palau'=> 'PW',
             'palästina'=> 'PS',
-            'panama'=> 'PA',
             'papua-neuguinea'=> 'PG',
-            'paraguay'=> 'PY',
-            'peru'=> 'PE',
             'philippinen'=> 'PH',
             'pitcairninseln'=> 'PN',
             'polen'=> 'PL',
-            'portugal'=> 'PT',
-            'puerto rico'=> 'PR',
             'katar'=> 'QA',
             'réunion'=> 'RE',
             'rumänien'=> 'RO',
@@ -495,57 +423,35 @@ final class FP_Factory
             'st. martin'=> 'MF',
             'st. pierre und miquelon'=> 'PM',
             'st. vincent und die grenadinen'=> 'VC',
-            'samoa'=> 'WS',
-            'san marino'=> 'SM',
             'são tomé und príncipe'=> 'ST',
             'saudi-arabien'=> 'SA',
-            'senegal'=> 'SN',
             'serbien'=> 'RS',
             'seychellen'=> 'SC',
-            'sierra leone'=> 'SL',
             'singapur'=> 'SG',
-            'sint maarten'=> 'SX',
             'slowakei'=> 'SK',
             'slowenien'=> 'SI',
             'salomonen'=> 'SB',
-            'somalia'=> 'SO',
             'südafrika'=> 'ZA',
             'südgeorgien und die südlichen sandwichinseln'=> 'GS',
             'südsudan'=> 'SS',
             'spanien'=> 'ES',
-            'sri lanka'=> 'LK',
-            'sudan'=> 'SD',
-            'suriname'=> 'SR',
             'spitzbergen und jan mayen'=> 'SJ',
             'schweden'=> 'SE',
             'schweiz'=> 'CH',
             'syrien'=> 'SY',
-            'taiwan'=> 'TW',
             'tadschikistan'=> 'TJ',
             'tansania'=> 'TZ',
-            'thailand'=> 'TH',
             'timor-leste'=> 'TL',
-            'togo'=> 'TG',
-            'tokelau'=> 'TK',
-            'tonga'=> 'TO',
             'trinidad und tobago'=> 'TT',
             'tunesien'=> 'TN',
             'türkei'=> 'TR',
-            'turkmenistan'=> 'TM',
             'turks- und caicosinseln'=> 'TC',
-            'tuvalu'=> 'TV',
             'amerikanische überseeinseln'=> 'UM',
-            'uganda'=> 'UG',
-            'ukraine'=> 'UA',
             'vereinigte arabische emirate'=> 'AE',
             'vereinigtes königreich'=> 'GB',
             'vereinigte staaten'=> 'US',
-            'uruguay'=> 'UY',
             'usbekistan'=> 'UZ',
-            'vanuatu'=> 'VU',
             'vatikanstadt'=> 'VA',
-            'venezuela'=> 'VE',
-            'vietnam'=> 'VN',
             'britische jungferninseln'=> 'VG',
             'amerikanische jungferninseln'=> 'VI',
             'wallis und futuna'=> 'WF',
@@ -786,12 +692,12 @@ final class FP_Factory
         $order = $adapter->get_order();
         $products = array();
 
-        /** @var WC_Order_Item_Product $product_item */
+        /** @var WC_Order_Item_Product|null $product_item */
         foreach ( $order->get_items() as $product_item )
         {
             $name = $product_item->get_name();
 
-            if ( !is_a( $product_item, 'WC_Order_Item_Product' ) ) {
+            if ( ! is_a( $product_item, 'WC_Order_Item_Product' ) ) {
                 throw new FP_Factory_Error(
                     json_encode(['name' => $name]), 
                     FP_Factory_Error::WRONG_ORDER_ITEM_ERROR
@@ -807,8 +713,8 @@ final class FP_Factory
             }
 
             $product_subtype = null;
-            $product_subtype = is_callable( array( $product, 'is_downloadable' ) ) && $product->is_downloadable() ? 'download' : null;
-            $product_subtype = is_callable( array( $product, 'is_virtual' ) ) && $product->is_virtual() ? 'virtual' : $product_subtype;
+            $product_subtype = is_callable( array( $product, 'is_downloadable' ) ) && $product->is_downloadable() ? 'download' : null; // @phpstan-ignore-line
+            $product_subtype = is_callable( array( $product, 'is_virtual' ) ) && $product->is_virtual() ? 'virtual' : $product_subtype; // @phpstan-ignore-line
             $product_subtype = $product->get_meta( '_service', true ) === 'yes' ? 'service' : $product_subtype;
 
             $product_rate = $adapter->get_item_tax_id($product_item);
@@ -910,7 +816,7 @@ final class FP_Factory
         ) {
             if (
                 function_exists('has_secondary_title')
-                && function_exists('get_secondary_title')    
+                && function_exists('get_secondary_title')
             ) {
                 $alternate_title = has_secondary_title( $product->get_id() )
                     ? get_secondary_title( $product->get_id() )
@@ -998,6 +904,48 @@ final class FP_Factory
     }
 
     /**
+     * Format meta properties to strings.
+     *
+     * @param  string $name
+     * @param  mixed $value
+     * @return array<int, string>
+     */
+    private function format_meta_property( $name, $value )
+    {
+        if ( substr( $name, 0, 1 ) === '_' ) {
+            return array();
+        }
+        $name = str_replace( '_', ' ', $name );
+        if ( is_array( $value ) || is_object( $value ) ) {
+            $properties = array();
+            foreach ( $value as $name2 => $value2 ) {
+                $properties = array_merge( $properties, $this->format_meta_property( "{$name} {$name2}", $value2 ) );
+            }
+            return $properties;
+        }
+        $value = is_string( $value ) ? strip_tags( $value ) : $value;
+        return array( "{$name}: {$value}" );
+    }
+
+    /**
+     * Format meta properties to strings.
+     *
+     * @param  array<int, WC_Meta_Data> $meta_data
+     * @return array<int, string>
+     */
+    private function format_meta_properties( $meta_data )
+    {
+        $properties = array();
+        foreach ( $meta_data as $property ) {
+            $data = $property->get_data();
+            $key = $data['key'];
+            $value = $data['value'];
+            $properties = array_merge( $properties, $this->format_meta_property( $key, $value ) );
+        }
+        return $properties;
+    }
+
+    /**
      * Create the product description of the order item.
      *
      * @param  WC_Order_Item $product_item
@@ -1027,7 +975,7 @@ final class FP_Factory
 
         // Description inherit from product or variation
         if ( $setting == 'article_or_variation_inherit' ) {
-            $description = '';
+            $description = null;
             if ( ! empty( $variation_id ) ) {
                 $variation = $this->get_product_variation( $product_item );
                 $description = $variation->get_description();
@@ -1086,14 +1034,8 @@ final class FP_Factory
 
         // Use meta data as description
         if ( $setting == 'meta_data' ) {
-            $properties = array();
-            foreach ( $product_item->get_meta_data() as $property ) {
-                if ( substr( $property->key, 0, 1 ) === '_' ) {
-                    continue;
-                }
-                $value = strip_tags( $property->value );
-                $properties[] = "{$property->key}: {$value}";
-            }
+            $meta_data = $product_item->get_meta_data();
+            $properties = $this->format_meta_properties( $meta_data );
             $description = implode( PHP_EOL, $properties );
             return $settings->sanitizeText( $description );
         }
@@ -1273,11 +1215,11 @@ final class FP_Factory
                     $tax_id = $split_tax['tax_rates'][0];
                     $price_net = floatval( $split_tax['net_amount'] );
                     $price_gross = floatval( $split_tax['taxable_amount'] );
-    
+
                     $wc_tax = WC_Tax::_get_tax_rate( $tax_id );
                     $tax_name = $wc_tax['tax_rate_name'];
                     $tax_rate = $wc_tax['tax_rate'];
-    
+
                     $result = array();
                     $result['type'] = 'shipping';
                     $result['unit'] = null;
@@ -1294,7 +1236,7 @@ final class FP_Factory
 
                 continue;
             }
-            
+
             foreach( $shipping_taxes as $tax_id => $tax_amount )
             {
                 $wc_tax = WC_Tax::_get_tax_rate( $tax_id );
@@ -1468,6 +1410,34 @@ final class FP_Factory
             $result['tax_name'] = $tax_name;
             $results[] = $result;
         }*/
+
+        // Yith gift cards discounts
+        $ywgc_gift_card_updated_as_fee = $order->get_meta( 'ywgc_gift_card_updated_as_fee', true, 'edit' );
+        if ( empty($ywgc_gift_card_updated_as_fee) ) {
+            $ywgc_applied_gift_cards = $order->get_meta( '_ywgc_applied_gift_cards' );
+			$ywgc_applied_gift_cards_totals = $order->get_meta( '_ywgc_applied_gift_cards_totals' );
+
+            if ( $ywgc_applied_gift_cards && $ywgc_applied_gift_cards_totals ) {
+                $ywgc_applied_codes = array();
+                foreach ( $ywgc_applied_gift_cards as $code => $amount ) {
+                    $ywgc_applied_codes[] = $code;
+                }
+                $applied_codes_string = implode( ', ', $ywgc_applied_codes );
+                $amount = round( - 1 * floatval( $ywgc_applied_gift_cards_totals ), 2 );
+                $results[] = array(
+                    'type' => 'discount',
+                    'name' => 'Gift Card (' . $applied_codes_string . ')',
+                    'unit' => null,
+                    'number' => null,
+                    'quantity' => 1,
+                    'description' => __( 'Discount', 'fakturpro' ),
+                    'price_net' => $amount,
+                    'price_gross' => $amount,
+                    'tax_rate' => 0,
+                    'tax_name' => '',
+                );
+            }
+        }
 
         return $results;
     }

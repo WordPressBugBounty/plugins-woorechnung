@@ -38,8 +38,8 @@ final class FP_Client extends FP_Abstract_Client
     /**
      * Download cancellation invoice as PDF.
      *
-     * Retrieve an cancel invoice given its key. A base64 encoded
-     * string of the invoice pdf is returned from the server.
+     * Retrieve an cancellation invoice given its key. A base64 encoded
+     * string of the cancellation invoice pdf is returned from the server.
      *
      * @param  string $key
      * @return array<string, mixed>
@@ -51,6 +51,24 @@ final class FP_Client extends FP_Abstract_Client
         }
 
         return $this->send_get( 'shop/invoices/' . $key . '/cancel' );
+    }
+
+    /**
+     * Download delivery note as PDF.
+     *
+     * Retrieve an delivery note given its key. A base64 encoded
+     * string of the delivery note pdf is returned from the server.
+     *
+     * @param  string $key
+     * @return array<string, mixed>
+     */
+    public function get_delivery_note( $key )
+    {
+        if ( empty( $key ) ) {
+            throw new \Exception( "Can't fetch delivery note without uuid" );
+        }
+
+        return $this->send_get( 'shop/invoices/' . $key . '/delivery_note' );
     }
 
     /**

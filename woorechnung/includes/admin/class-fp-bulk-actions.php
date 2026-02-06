@@ -228,7 +228,7 @@ final class FP_Bulk_Actions extends FP_Abstract_Module
      * @param  FP_Order_Adapter|null $order
      * @return string|null
      */
-    private function create_invoice( FP_Order_Adapter $order = null )
+    private function create_invoice( ?FP_Order_Adapter $order = null )
     {
         // Try to create an invoice for a given order
         // Store the invoice UUID on success an add an order note
@@ -244,10 +244,7 @@ final class FP_Bulk_Actions extends FP_Abstract_Module
             $order->set_create_invoice_requested_at();
             $model = $this->factory()->create_invoice( $order );
             $result = $this->client()->create_invoice( $model );
-            $order->set_invoice_uuid( $result['uuid'] );
-            $order->set_invoice_number( $result['number'] );
-            $order->set_invoice_date( $result['invoice_date'] );
-            $order->add_note_invoice_created();
+            $order->handle_invoice_created_result( $result );
             $this->logger()->create_invoice_success();
             return $result['uuid'];
         }

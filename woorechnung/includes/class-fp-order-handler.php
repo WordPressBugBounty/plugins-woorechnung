@@ -301,11 +301,8 @@ final class FP_Order_Handler extends FP_Abstract_Module
             $order->set_create_invoice_requested_at();
             $model = $this->factory()->create_invoice( $order );
             $result = $this->client()->create_invoice( $model );
-            $order->set_invoice_uuid( $result['uuid'] );
-            $order->set_invoice_number( $result['number'] );
-            $order->set_invoice_date( $result['invoice_date'] );
-            $order->add_note_invoice_created();
-            $order->do_action_invoice_created();
+            $order->handle_invoice_created_result( $result );
+            $order->do_action_send_invoice();
             $this->logger()->create_invoice_success();
         }
 
@@ -389,10 +386,8 @@ final class FP_Order_Handler extends FP_Abstract_Module
             $order->set_cancel_invoice_requested_at();
             $key = $order->get_invoice_key();
             $model = $this->factory()->create_invoice( $order );
-            $this->client()->cancel_invoice( $key, $model );
-            $order->add_note_invoice_cancelled();
-            $order->do_action_invoice_cancelled();
-            $order->set_invoice_canceled();
+            $result = $this->client()->cancel_invoice( $key, $model );
+            $order->handle_invoice_cancelled_result( $result );
             $this->logger()->cancel_invoice_success();
         }
 

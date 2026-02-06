@@ -143,6 +143,7 @@ final class FP_Server_Error extends FP_Abstract_Error
             case 422: return $this->error_unprocessable_entity();
             case 423: return $this->error_resource_locked();
             case 429: return $this->error_too_many_requests();
+            case 460: return $this->error_too_many_attempts();
             case 500: return $this->error_server_internal();
             case 501: return $this->error_method_not_implemented();
             case 503: return $this->error_server_unavailable();
@@ -231,6 +232,18 @@ final class FP_Server_Error extends FP_Abstract_Error
     {
         $title = __('Too many requests (Error 429)', 'fakturpro');
         $message = __('You sent too many inquiries to Invoice Pro in too short a time. Please wait a moment and then try again.', 'fakturpro');
+        return array('title' => $title, 'message' => $message);
+    }
+
+    /**
+     * Render a too many attempts error to the user.
+     *
+     * @return array<string, string>
+     */
+    private function error_too_many_attempts()
+    {
+        $title = __('Too many attempts (Error 460)', 'fakturpro');
+        $message = __('Too many attempts in a short period of time. Please wait a few minutes before trying again.', 'fakturpro');
         return array('title' => $title, 'message' => $message);
     }
 

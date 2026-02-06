@@ -118,6 +118,26 @@ final class FP_Logger extends FP_Abstract_Logger
     }
 
     /**
+     * Log that the download of an delivery note succeeded.
+     *
+     * @return void
+     */
+    public function fetch_delivery_note_success()
+    {
+        $this->notice( 'fetch an delivery note success' );
+    }
+
+    /**
+     * Log that the download of an delivery note failed.
+     *
+     * @return void
+     */
+    public function fetch_delivery_note_failed()
+    {
+        $this->error( 'failed to fetch an delivery note' );
+    }
+
+    /**
      * Log that an invoice has been mailed successfully.
      *
      * @return void

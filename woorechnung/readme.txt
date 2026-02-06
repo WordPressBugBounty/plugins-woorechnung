@@ -1,13 +1,13 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.14
-Stable tag: 3.1.14
+Version: 3.1.19
+Stable tag: 3.1.19
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
-Requires WooCommerce: 3.0.0
-Tested up to: 6.8.2
-Tested PHP up to: 8.3
+Requires WooCommerce: 3.2.0
+Tested up to: 6.9
+Tested PHP up to: 8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,22 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.19 (2026-01-26) =
+* Fixed: Manuelles senden von WooCommerce E-Mails wurde doppelt ausgeführt.
+
+= 3.1.18 (2026-01-14) =
+* Added: Button zum manuellen Senden der Rechnung per E-Mail in der Bestellung Detail Seite.
+
+= 3.1.17 (2025-12-04) =
+* Added: Button zum manuellen Abrufen des Lieferscheins in der Bestellung Detail Seite.
+* Fixed: Prüfung für das Plugin "Yith WooCommerce Gift Cards" ob Gutscheine bereits zu einer Gebührenposition umgewaldelt wurden damit die Gutscheine nicht doppelt auf der Rechnung erscheinen.
+
+= 3.1.16 (2025-11-26) =
+* Added: Unterstützung der Rabatte von Gutscheinen für das Plugin "Yith WooCommerce Gift Cards".
+
+= 3.1.15 (2025-10-20) =
+* Fixed: Bei der Einstellung "Produktbeschreibung: Metadaten" konnte es zu einem Fehler kommen, wenn in den Metadaten ein Array verwendet wurde. Jetzt können Arrays in den Metadaten verwendet werden.
 
 = 3.1.14 (2025-09-29) =
 * Added: Buttons zum manuellen Erstellen und Abrufen einer Stornorechnung in der Bestellung Detail Seite.

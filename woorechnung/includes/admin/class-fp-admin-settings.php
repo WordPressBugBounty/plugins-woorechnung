@@ -390,12 +390,13 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $settings = array_merge( $settings, $this->section_invoice() );
         $settings = array_merge( $settings, $this->section_invoice_items() );
         $settings = array_merge( $settings, $this->section_email() );
+        $settings = array_merge( $settings, $this->section_separate_email() );
         return $settings;
     }
 
     /**
      * Get order states.
-     * 
+     *
      * @return array<string>
      */
     private function get_order_states()
@@ -407,7 +408,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get line names.
-     * 
+     *
      * @return array<string, string>
      */
     private function get_line_names()
@@ -520,7 +521,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get email types.
-     * 
+     *
      * @return array<string, string>
      */
     private function get_email_types()
@@ -597,7 +598,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get payment methods.
-     * 
+     *
      * @return array<string>
      */
     private function get_payment_methods()
@@ -623,7 +624,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section general.
-     * 
+     *
      * @return array<array<string, mixed>>
      */
     private function section_general()
@@ -639,7 +640,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section customer.
-     * 
+     *
      * @return array<array<string, mixed>>
      */
     private function section_customer()
@@ -655,7 +656,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice.
-     * 
+     *
      * @return array<array<string, mixed>>
      */
     private function section_invoice()
@@ -679,7 +680,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice items.
-     * 
+     *
      * @return array<array<string, mixed>>
      */
     private function section_invoice_items()
@@ -698,7 +699,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section email.
-     * 
+     *
      * @return array<array<string, mixed>>
      */
     private function section_email()
@@ -709,6 +710,14 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result[] = $this->field_email_to_append_to();
         $result[] = $this->field_email_for_states();
         $result[] = $this->field_no_email_for_methods();
+        $result[] = $this->section_email_end();
+        return $result;
+    }
+
+    private function section_separate_email()
+    {
+        $result = array();
+        $result[] = $this->section_separate_email_start();
         $result[] = $this->field_email_template();
         $result[] = $this->field_email_subject();
         $result[] = $this->field_email_to();
@@ -717,13 +726,13 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result[] = $this->field_email_content_text();
         $result[] = $this->field_email_content_html();
         $result[] = $this->field_email_content_placeholders();
-        $result[] = $this->section_email_end();
+        $result[] = $this->section_separate_email_end();
         return $result;
     }
 
     /**
      * Section general start.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_general_start()
@@ -748,7 +757,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section general end.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_general_end()
@@ -761,7 +770,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field desctiption table.
-     * 
+     *
      * @param  array<string> $columns
      * @param  array<array<string>> $rows
      * @return string
@@ -787,7 +796,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field shop url.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_shop_url()
@@ -804,7 +813,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field shop token.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_shop_token()
@@ -820,7 +829,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field send error mails to.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_send_error_mails_to()
@@ -841,7 +850,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section customer start.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_customer_start()
@@ -856,7 +865,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section customer end.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_customer_end()
@@ -869,7 +878,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field customer vat id meta name.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_customer_vat_id_meta_name()
@@ -887,7 +896,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field customer debitor number meta name.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_customer_debitor_number_meta_name()
@@ -905,7 +914,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field customer reference number meta name.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_customer_reference_number_meta_name()
@@ -923,7 +932,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice start.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_invoice_start()
@@ -938,7 +947,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice end.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_invoice_end()
@@ -951,7 +960,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field create invoices.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_create_invoices()
@@ -968,7 +977,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field invoices for states.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_invoices_for_states()
@@ -987,7 +996,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field no invoices for methods.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_no_invoices_for_methods()
@@ -1006,7 +1015,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field paid for methods.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_paid_for_methods()
@@ -1025,7 +1034,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field zero value invoices.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_zero_value_invoices()
@@ -1042,7 +1051,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field cancel invoices.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_cancel_invoices()
@@ -1059,7 +1068,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field open invoices.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_open_invoices()
@@ -1076,7 +1085,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field customer link.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_customer_link()
@@ -1093,7 +1102,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field article name shipping.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_article_name_shipping()
@@ -1111,7 +1120,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field article number shipping.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_article_number_shipping()
@@ -1129,7 +1138,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field order number prefix.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_order_number_prefix()
@@ -1147,7 +1156,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field order number suffix.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_order_number_suffix()
@@ -1165,7 +1174,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email filename.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_filename()
@@ -1189,7 +1198,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice items start.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_invoice_items_start()
@@ -1204,7 +1213,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section invoice items end.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_invoice_items_end()
@@ -1217,7 +1226,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field merge credits.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_merge_credits()
@@ -1234,7 +1243,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field line name.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_line_name()
@@ -1251,7 +1260,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field line description.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_line_description()
@@ -1269,7 +1278,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field price num decimals.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_price_num_decimals()
@@ -1291,7 +1300,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section email start.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_email_start()
@@ -1306,7 +1315,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Section email end.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function section_email_end()
@@ -1319,7 +1328,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field invoice email.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_invoice_email()
@@ -1336,7 +1345,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email to append to.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_to_append_to()
@@ -1354,7 +1363,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email for states.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_for_states()
@@ -1373,7 +1382,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field no email for methods.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_no_email_for_methods()
@@ -1391,8 +1400,37 @@ final class FP_Admin_Settings extends FP_Abstract_Module
     }
 
     /**
+     * Section separate email start.
+     *
+     * @return array<string, mixed>
+     */
+    private function section_separate_email_start()
+    {
+        return array(
+            'id'         => 'fakturpro_separate_section_email',
+            'type'       => 'title',
+            'title'      => __('Separate Email Settings', 'fakturpro'),
+            'desc'       => __('Please configure the appearance of the separate email for sending your invoices in this section. These settings will be used for the separate email that is also sent when the invoice is sent manually.', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Section separate email end.
+     *
+     * @return array<string, mixed>
+     */
+    private function section_separate_email_end()
+    {
+        return array(
+            'id'         => 'fakturpro_separate_section_email',
+            'type'       => 'sectionend',
+        );
+    }
+
+
+    /**
      * Field email template.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_template()
@@ -1414,7 +1452,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email subject.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_subject()
@@ -1432,7 +1470,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email to.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_to()
@@ -1449,7 +1487,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email copy.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_copy()
@@ -1466,7 +1504,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email blind copy.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_blind_copy()
@@ -1483,7 +1521,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email content text.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_content_text()
@@ -1501,7 +1539,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email content html.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_content_html()
@@ -1519,7 +1557,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Field email content placeholders.
-     * 
+     *
      * @return array<string, mixed>
      */
     private function field_email_content_placeholders()
@@ -1540,7 +1578,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Output description.
-     * 
+     *
      * @param  array<string, mixed> $value
      * @return void
      */

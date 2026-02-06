@@ -21,6 +21,34 @@ if ( ! class_exists( 'FP_Order_Adapter' ) ):
 final class FP_Order_Adapter
 {
     /**
+     * The meta key for cancellation invoice numbers.
+     *
+     * @var string CANCELLATION_INVOICE_NO_KEY
+     */
+    const CANCELLATION_INVOICE_NO_KEY = 'fakturpro_cancellation_invoice_number';
+
+    /**
+     * The meta key for cancellation invoice numbers.
+     *
+     * @var string CANCELLATION_INVOICE_DATE_KEY
+     */
+    const CANCELLATION_INVOICE_DATE_KEY = 'fakturpro_cancellation_invoice_date';
+
+    /**
+     * The meta key for delivery note numbers.
+     *
+     * @var string DELIVERY_NOTE_NO_KEY
+     */
+    const DELIVERY_NOTE_NO_KEY = 'fakturpro_delivery_note_number';
+
+    /**
+     * The meta key for delivery note numbers.
+     *
+     * @var string DELIVERY_NOTE_DATE_KEY
+     */
+    const DELIVERY_NOTE_DATE_KEY = 'fakturpro_delivery_note_date';
+
+    /**
      * The meta data key for invoice identifiers.
      *
      * @var string INVOICE_META_KEY
@@ -50,7 +78,7 @@ final class FP_Order_Adapter
 
     /**
      * The meta key for invoice was canceled
-     * 
+     *
      * @var string INVOICE_CANCELED
      */
     const INVOICE_CANCELED = 'fakturpro_invoice_canceled';
@@ -111,7 +139,7 @@ final class FP_Order_Adapter
     /**
      * Get the order id from a request.
      *
-     * @param  array|null $params
+     * @param  array<string, mixed>|null $params
      * @return int|null
      */
     public static function get_request_id( $params = null )
@@ -215,7 +243,8 @@ final class FP_Order_Adapter
      */
     public function get_invoice_id()
     {
-        return trim( $this->order->get_meta( self::INVOICE_OLD_KEY ) );
+        $value = $this->order->get_meta( self::INVOICE_OLD_KEY );
+        return is_string( $value ) ? trim( $value ) : $value;
     }
 
     /**
@@ -256,7 +285,8 @@ final class FP_Order_Adapter
      */
     public function get_invoice_uuid()
     {
-        return trim( $this->order->get_meta( self::INVOICE_META_KEY, true ) );
+        $value = $this->order->get_meta( self::INVOICE_META_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
     }
 
     /**
@@ -299,11 +329,12 @@ final class FP_Order_Adapter
      */
     public function get_invoice_number()
     {
-        return trim( $this->order->get_meta( self::INVOICE_NO_KEY, true ) );
+        $value = $this->order->get_meta( self::INVOICE_NO_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
     }
 
     /**
-     * Set the invoice UUID for the order and save it.
+     * Set the invoice number for the order and save it.
      *
      * @param  string $number
      * @return void
@@ -315,7 +346,7 @@ final class FP_Order_Adapter
     }
 
     /**
-     * Unset the invoice UUID for the order and save it.
+     * Unset the invoice number for the order and save it.
      *
      * @return void
      */
@@ -332,7 +363,8 @@ final class FP_Order_Adapter
      */
     public function get_invoice_date()
     {
-        return trim( $this->order->get_meta( self::INVOICE_DATE, true ) );
+        $value = $this->order->get_meta( self::INVOICE_DATE, true );
+        return is_string( $value ) ? trim( $value ) : $value;
     }
 
     /**
@@ -399,6 +431,162 @@ final class FP_Order_Adapter
     public function unset_invoice_canceled()
     {
         $this->order->delete_meta_data( self::INVOICE_CANCELED );
+        $this->order->save();
+    }
+
+    /**
+     * Decide if this order has an cancellation invoice number attached to.
+     *
+     * @return bool
+     */
+    public function has_cancellation_invoice_number()
+    {
+        return $this->order->meta_exists( self::CANCELLATION_INVOICE_NO_KEY );
+    }
+
+    /**
+     * Return the cancellation invoice number attached to the order.
+     *
+     * @return string|null
+     */
+    public function get_cancellation_invoice_number()
+    {
+        $value = $this->order->get_meta( self::CANCELLATION_INVOICE_NO_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
+    }
+
+    /**
+     * Set the cancellation invoice number for the order and save it.
+     *
+     * @param  string $number
+     * @return void
+     */
+    public function set_cancellation_invoice_number( $number )
+    {
+        $this->order->update_meta_data( self::CANCELLATION_INVOICE_NO_KEY, $number );
+        $this->order->save();
+    }
+
+    /**
+     * Unset the cancellation invoice number for the order and save it.
+     *
+     * @return void
+     */
+    public function unset_cancellation_invoice_number()
+    {
+        $this->order->delete_meta_data( self::CANCELLATION_INVOICE_NO_KEY );
+        $this->order->save();
+    }
+
+    /**
+     * Return the cancellation invoice date attached to the order.
+     *
+     * @return string|int|null
+     */
+    public function get_cancellation_invoice_date()
+    {
+        $value = $this->order->get_meta( self::CANCELLATION_INVOICE_DATE_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
+    }
+
+    /**
+     * Set the cancellation invoice date for the order and save it.
+     *
+     * @param  string $date
+     * @return void
+     */
+    public function set_cancellation_invoice_date( $date )
+    {
+        $this->order->update_meta_data( self::CANCELLATION_INVOICE_DATE_KEY, $date );
+        $this->order->save();
+    }
+
+    /**
+     * Unset the cancellation invoice date for the order and save it.
+     *
+     * @return void
+     */
+    public function unset_cancellation_invoice_date()
+    {
+        $this->order->delete_meta_data( self::CANCELLATION_INVOICE_DATE_KEY );
+        $this->order->save();
+    }
+
+    /**
+     * Decide if this order has an delivery note number attached to.
+     *
+     * @return bool
+     */
+    public function has_delivery_note_number()
+    {
+        return $this->order->meta_exists( self::DELIVERY_NOTE_NO_KEY );
+    }
+
+    /**
+     * Return the delivery note number attached to the order.
+     *
+     * @return string|null
+     */
+    public function get_delivery_note_number()
+    {
+        $value = $this->order->get_meta( self::DELIVERY_NOTE_NO_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
+    }
+
+    /**
+     * Set the delivery note number for the order and save it.
+     *
+     * @param  string $number
+     * @return void
+     */
+    public function set_delivery_note_number( $number )
+    {
+        $this->order->update_meta_data( self::DELIVERY_NOTE_NO_KEY, $number );
+        $this->order->save();
+    }
+
+    /**
+     * Unset the delivery note number for the order and save it.
+     *
+     * @return void
+     */
+    public function unset_delivery_note_number()
+    {
+        $this->order->delete_meta_data( self::DELIVERY_NOTE_NO_KEY );
+        $this->order->save();
+    }
+
+    /**
+     * Return the delivery note date attached to the order.
+     *
+     * @return string|int|null
+     */
+    public function get_delivery_note_date()
+    {
+        $value = $this->order->get_meta( self::DELIVERY_NOTE_DATE_KEY, true );
+        return is_string( $value ) ? trim( $value ) : $value;
+    }
+
+    /**
+     * Set the delivery note date for the order and save it.
+     *
+     * @param  string $date
+     * @return void
+     */
+    public function set_delivery_note_date( $date )
+    {
+        $this->order->update_meta_data( self::DELIVERY_NOTE_DATE_KEY, $date );
+        $this->order->save();
+    }
+
+    /**
+     * Unset the delivery note date for the order and save it.
+     *
+     * @return void
+     */
+    public function unset_delivery_note_date()
+    {
+        $this->order->delete_meta_data( self::DELIVERY_NOTE_DATE_KEY );
         $this->order->save();
     }
 
@@ -561,6 +749,16 @@ final class FP_Order_Adapter
     }
 
     /**
+     * Add a note that an delivery note has been created.
+     *
+     * @return void
+     */
+    public function add_note_delivery_note_created()
+    {
+        $this->add_note( __( 'Delivery note created', 'fakturpro' ) );
+    }
+
+    /**
      * Add a note that an invoice has been created.
      *
      * @return void
@@ -663,7 +861,7 @@ final class FP_Order_Adapter
                     if (!empty($billing_vat_id)) {
                         return $billing_vat_id;
                     }
-                } catch (\Exception $ex) { // @phpstan-ignore-line
+                } catch (\Exception $ex) {
                     // ...
                 }
             }
@@ -745,14 +943,14 @@ final class FP_Order_Adapter
                     if (!empty($billing_debitor)) {
                         return $billing_debitor;
                     }
-                } catch (\Exception $ex) { // @phpstan-ignore-line
+                } catch (\Exception $ex) {
                     // ...
                 }
             }
         }
         return null;
     }
-    
+
     /**
      * Return the customer reference number for this order.
      *
@@ -803,7 +1001,7 @@ final class FP_Order_Adapter
                     if (!empty($customer_reference)) {
                         return $customer_reference;
                     }
-                } catch (\Exception $ex) { // @phpstan-ignore-line
+                } catch (\Exception $ex) {
                     // ...
                 }
             }
@@ -974,12 +1172,22 @@ final class FP_Order_Adapter
      */
     public function reset_invoice()
     {
+        // Invoice
         $this->unset_invoice_key();
         $this->unset_invoice_number();
         $this->unset_invoice_date();
-        $this->unset_invoice_canceled();
         $this->unset_invoice_error_message();
 
+        // Cancellation invoice
+        $this->unset_invoice_canceled();
+        $this->unset_cancellation_invoice_number();
+        $this->unset_cancellation_invoice_date();
+
+        // Delivery note
+        $this->unset_delivery_note_number();
+        $this->unset_delivery_note_date();
+
+        // Request timestamps
         $this->unset_create_invoice_requested_at();
         $this->unset_complete_invoice_requested_at();
         $this->unset_cancel_invoice_requested_at();
@@ -1139,13 +1347,75 @@ final class FP_Order_Adapter
     }
 
     /**
+     * Handles result of invoice creation process.
+     *
+     * @param array<string, mixed> $result
+     * @return void
+     */
+    public function handle_invoice_created_result( $result )
+    {
+        // Invoice result
+        $this->set_invoice_uuid( $result['uuid'] );
+        $this->set_invoice_number( $result['number'] );
+        $this->set_invoice_date( $result['invoice_date'] );
+        $this->add_note_invoice_created();
+
+        // Delivery note result
+        $delivery_note_number = array_key_exists( 'delivery_note_number', $result ) ? $result['delivery_note_number'] : null;
+        $delivery_note_date = array_key_exists( 'delivery_note_date', $result ) ? $result['delivery_note_date'] : null;
+        if ( !empty( $delivery_note_number ) ) {
+            $this->set_delivery_note_number( $delivery_note_number );
+            $this->set_delivery_note_date( $delivery_note_date );
+            $this->add_note_delivery_note_created();
+        }
+
+        if ( !empty( $result['uuid'] ) ) {
+            $this->do_action_invoice_created();
+        }
+        if ( !empty( $delivery_note_number ) ) {
+            $this->do_action_delivery_note_created();
+        }
+    }
+
+    /**
+     * Handles result of invoice cancel process.
+     *
+     * @param array<string, mixed> $result
+     * @return void
+     */
+    public function handle_invoice_cancelled_result( $result )
+    {
+        $cancellation_invoice_number = array_key_exists( 'cancellation_invoice_number', $result ) ? $result['cancellation_invoice_number'] : null;
+        $cancellation_invoice_date = array_key_exists( 'cancellation_invoice_date', $result ) ? $result['cancellation_invoice_date'] : null;
+        $this->add_note_invoice_cancelled();
+        if ( !empty( $cancellation_invoice_number ) ) {
+            $this->set_cancellation_invoice_number( $cancellation_invoice_number );
+            $this->set_cancellation_invoice_date( $cancellation_invoice_date );
+        }
+        $this->do_action_invoice_cancelled();
+        $this->set_invoice_canceled();
+    }
+
+    /**
+     * Trigger send invoice action for this order.
+     *
+     * @param  bool $force
+     * @param  bool $throw_exceptions
+     * @return void
+     */
+    public function do_action_send_invoice( bool $force = false, bool $throw_exceptions = false )
+    {
+        do_action( 'fakturpro_send_invoice', $this, $force, $throw_exceptions );
+    }
+
+    /**
      * Trigger invoice created action for this order.
      *
      * @return void
      */
     public function do_action_invoice_created()
     {
-        do_action( 'fakturpro_invoice_created' , $this );
+        do_action( 'fakturpro_invoice_created', $this );
     }
 
     /**
@@ -1155,7 +1425,17 @@ final class FP_Order_Adapter
      */
     public function do_action_invoice_cancelled()
     {
-        do_action( 'fakturpro_invoice_cancelled' , $this );
+        do_action( 'fakturpro_invoice_cancelled', $this );
+    }
+
+    /**
+     * Trigger delivery note created action for this order.
+     *
+     * @return void
+     */
+    public function do_action_delivery_note_created()
+    {
+        do_action( 'fakturpro_delivery_note_created', $this );
     }
 }
 

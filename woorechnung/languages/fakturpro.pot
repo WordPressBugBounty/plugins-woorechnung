@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Zweischneider GmbH & Co. KG
+# Copyright (C) 2026 Zweischneider GmbH & Co. KG
 # This file is distributed under the same license as the Faktur Pro plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Faktur Pro 3.1.14\n"
+"Project-Id-Version: Faktur Pro 3.1.17\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/source\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-29T11:12:31+00:00\n"
+"POT-Creation-Date: 2026-01-14T08:58:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: fakturpro\n"
@@ -46,449 +46,457 @@ msgstr ""
 msgid "Validation error: Not all settings were saved because their content was invalid. Settings that were not changed were marked in red."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:416
-#: includes/admin/class-fp-admin-settings.php:1244
+#: includes/admin/class-fp-admin-settings.php:417
+#: includes/admin/class-fp-admin-settings.php:1253
 msgid "Product name"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:417
+#: includes/admin/class-fp-admin-settings.php:418
 msgid "Product name and alternate title"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:418
+#: includes/admin/class-fp-admin-settings.php:419
 msgid "Alternate title and product name"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:419
-#: includes/admin/class-fp-admin-settings.php:453
+#: includes/admin/class-fp-admin-settings.php:420
+#: includes/admin/class-fp-admin-settings.php:454
 msgid "Alternate title"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:426
+#: includes/admin/class-fp-admin-settings.php:427
 msgid "Secondary Title format (Plugin)"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:442
+#: includes/admin/class-fp-admin-settings.php:443
 msgid "No description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:443
+#: includes/admin/class-fp-admin-settings.php:444
 msgid "Product or variant description explicit"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:444
+#: includes/admin/class-fp-admin-settings.php:445
 msgid "Product or variant description inherited"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:445
+#: includes/admin/class-fp-admin-settings.php:446
 msgid "Product and variant description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:446
-#: includes/admin/class-fp-admin-settings.php:1261
+#: includes/admin/class-fp-admin-settings.php:447
+#: includes/admin/class-fp-admin-settings.php:1270
 msgid "Product description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:447
+#: includes/admin/class-fp-admin-settings.php:448
 msgid "Short product description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:448
+#: includes/admin/class-fp-admin-settings.php:449
 msgid "Variant title"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:449
+#: includes/admin/class-fp-admin-settings.php:450
 msgid "Variant description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:450
+#: includes/admin/class-fp-admin-settings.php:451
 msgid "Metadata"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:451
+#: includes/admin/class-fp-admin-settings.php:452
 msgid "Shopping cart short description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:452
+#: includes/admin/class-fp-admin-settings.php:453
 msgid "Variant shopping cart short description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:465
+#: includes/admin/class-fp-admin-settings.php:466
 msgid "Do not send invoices by email"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:466
+#: includes/admin/class-fp-admin-settings.php:467
 msgid "Attach invoice to WooCommerce email"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:467
+#: includes/admin/class-fp-admin-settings.php:468
 msgid "Send invoice in separate email"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:479
+#: includes/admin/class-fp-admin-settings.php:480
 msgid "No template"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:480
+#: includes/admin/class-fp-admin-settings.php:481
 #: includes/emails/class-fp-email-customer-deliver-invoice.php:29
 msgid "Deliver invoice"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:737
+#: includes/admin/class-fp-admin-settings.php:746
 msgid "Configure invoice service provider"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:738
+#: includes/admin/class-fp-admin-settings.php:747
 msgid "Create Faktur Pro account"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:740
+#: includes/admin/class-fp-admin-settings.php:749
 msgid "Please enter your store's URL and API token to connect to your Faktur Pro account. You can find the API token in your store's settings in the \"API token\" section. If you don't yet have a Faktur Pro user account, register for free at http://www.faktur.pro. There are additional settings in your Faktur Pro account."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:743
+#: includes/admin/class-fp-admin-settings.php:752
 msgid "Basic Settings"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:801
+#: includes/admin/class-fp-admin-settings.php:810
 msgid "The store URL should match the URL you set for your store in your account."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:817
+#: includes/admin/class-fp-admin-settings.php:826
 msgid "The shop token should match the token you received in your account for your shop."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:830
+#: includes/admin/class-fp-admin-settings.php:839
 msgid "Error emails to"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:836
+#: includes/admin/class-fp-admin-settings.php:845
 msgid "Email address of the acting user"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:851
+#: includes/admin/class-fp-admin-settings.php:860
 msgid "Customer Settings"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:853
+#: includes/admin/class-fp-admin-settings.php:862
 msgid "Please configure the details of customer data for creating invoices in your shop in this section."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:879
+#: includes/admin/class-fp-admin-settings.php:888
 msgid "Vat ID meta name"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:882
+#: includes/admin/class-fp-admin-settings.php:891
 msgid "The name from the metadata of the customer or the order under which the customers VAT ID is stored."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:884
+#: includes/admin/class-fp-admin-settings.php:893
 msgid "An optional meta field name to find the customers VAT ID."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:897
+#: includes/admin/class-fp-admin-settings.php:906
 msgid "Debitor number meta name"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:900
+#: includes/admin/class-fp-admin-settings.php:909
 msgid "The name from the metadata of the customer or the order under which the customers debitor number is stored."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:902
+#: includes/admin/class-fp-admin-settings.php:911
 msgid "An optional meta field name to find the customers debitor number."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:915
+#: includes/admin/class-fp-admin-settings.php:924
 msgid "Buyer reference / route id meta name"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:918
+#: includes/admin/class-fp-admin-settings.php:927
 msgid "The name from the metadata of the customer or the order under which the customers buyer reference / route id number is stored."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:920
+#: includes/admin/class-fp-admin-settings.php:929
 msgid "An optional meta field name to find the customers buyer reference / route id number."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:934
+#: includes/admin/class-fp-admin-settings.php:943
 msgid "Billing Settings"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:935
+#: includes/admin/class-fp-admin-settings.php:944
 msgid "Please configure the details for creating invoices in your shop in this section."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:961
+#: includes/admin/class-fp-admin-settings.php:970
 msgid "Automatic creation"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:963
+#: includes/admin/class-fp-admin-settings.php:972
 msgid "Automatically create invoices for orders"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:965
+#: includes/admin/class-fp-admin-settings.php:974
 msgid "If you enable this option, invoices will automatically be created for orders when they have a specific status and payment method. You can configure the order status and payment method for which invoices should be created using the following two options."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:978
+#: includes/admin/class-fp-admin-settings.php:987
 msgid "Creation for order status"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:984
+#: includes/admin/class-fp-admin-settings.php:993
 msgid "Please select all order statuses for which invoices should be automatically created by Faktur Pro."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:997
-#: includes/admin/class-fp-admin-settings.php:1383
+#: includes/admin/class-fp-admin-settings.php:1006
+#: includes/admin/class-fp-admin-settings.php:1392
 msgid "Exceptions for payment methods"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1003
+#: includes/admin/class-fp-admin-settings.php:1012
 msgid "Please select all payment methods for which Faktur Pro should NOT automatically generate invoices."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1016
+#: includes/admin/class-fp-admin-settings.php:1025
 msgid "\"Paid\" per payment method"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1022
+#: includes/admin/class-fp-admin-settings.php:1031
 msgid "Please select all payment methods for which you would like your invoice to be marked as \"paid\"."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1035
+#: includes/admin/class-fp-admin-settings.php:1044
 msgid "Creation at 0€"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1037
+#: includes/admin/class-fp-admin-settings.php:1046
 msgid "Creation of invoices over €0"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1039
+#: includes/admin/class-fp-admin-settings.php:1048
 msgid "If you activate this option, invoices will also be created for orders with a total value of 0 euros. By default, no invoices are created for these orders."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1052
+#: includes/admin/class-fp-admin-settings.php:1061
 msgid "Automatic cancellation"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1054
+#: includes/admin/class-fp-admin-settings.php:1063
 msgid "Automatically cancel invoices"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1056
+#: includes/admin/class-fp-admin-settings.php:1065
 msgid "If you activate this option, cancellation invoices will be automatically created when an order is canceled or refunded."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1069
+#: includes/admin/class-fp-admin-settings.php:1078
 msgid "Open invoice"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1071
+#: includes/admin/class-fp-admin-settings.php:1080
 msgid "Open the invoice instead of downloading it directly"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1073
+#: includes/admin/class-fp-admin-settings.php:1082
 msgid "If you activate this option, invoices that you generate using the invoice button in the order overview will be opened in the browser instead of starting a download of the invoice PDF."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1086
+#: includes/admin/class-fp-admin-settings.php:1095
 msgid "Invoice for customer"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1088
+#: includes/admin/class-fp-admin-settings.php:1097
 msgid "Make the invoice available for customers to download"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1090
+#: includes/admin/class-fp-admin-settings.php:1099
 msgid "If you enable this option, a link to download their invoice will be added to the order summary in your customer's account. The link only appears once an invoice has been generated for your order."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1103
+#: includes/admin/class-fp-admin-settings.php:1112
 msgid "Description of shipping costs"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1108
+#: includes/admin/class-fp-admin-settings.php:1117
 msgid "The name that should appear on the invoice for all different shipping cost types (optional)."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1121
+#: includes/admin/class-fp-admin-settings.php:1130
 msgid "Item number shipping costs"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1126
+#: includes/admin/class-fp-admin-settings.php:1135
 msgid "The item number that should appear on the invoice for shipping costs."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1139
+#: includes/admin/class-fp-admin-settings.php:1148
 msgid "Order number prefix"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1144
+#: includes/admin/class-fp-admin-settings.php:1153
 msgid "An optional prefix for the original order number."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1157
+#: includes/admin/class-fp-admin-settings.php:1166
 msgid "Order number suffix"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1162
+#: includes/admin/class-fp-admin-settings.php:1171
 msgid "An optional suffix for the original order number."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1178
-#: includes/admin/class-fp-admin-settings.php:1532
+#: includes/admin/class-fp-admin-settings.php:1187
+#: includes/admin/class-fp-admin-settings.php:1570
 msgid "Variable"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1178
-#: includes/admin/class-fp-admin-settings.php:1532
+#: includes/admin/class-fp-admin-settings.php:1187
+#: includes/admin/class-fp-admin-settings.php:1570
 msgid "Description"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1181
+#: includes/admin/class-fp-admin-settings.php:1190
 msgid "File name of the PDF"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1186
+#: includes/admin/class-fp-admin-settings.php:1195
 msgid "The name of the invoice file that is sent by email (without file extension!)."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1200
+#: includes/admin/class-fp-admin-settings.php:1209
 msgid "Invoice Items Settings"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1201
+#: includes/admin/class-fp-admin-settings.php:1210
 msgid "Please configure the details of invoice items for creating invoices in your shop in this section."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1227
+#: includes/admin/class-fp-admin-settings.php:1236
 msgid "Merge credits"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1229
+#: includes/admin/class-fp-admin-settings.php:1238
 msgid "Merges credits to a single invoice line item"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1231
+#: includes/admin/class-fp-admin-settings.php:1240
 msgid "Merges credits to a single invoice line item and sum the amount."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1247
+#: includes/admin/class-fp-admin-settings.php:1256
 msgid "Text to be transferred as a product name."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1264
+#: includes/admin/class-fp-admin-settings.php:1273
 msgid "Text to be transferred as a product description."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1266
+#: includes/admin/class-fp-admin-settings.php:1275
 msgid "Explicit = Use variant description or product description (WooCommerce decides).<br />Inherited = Use variant description if available otherwise product description."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1279
+#: includes/admin/class-fp-admin-settings.php:1288
 msgid "Price decimal places"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1280
+#: includes/admin/class-fp-admin-settings.php:1289
 msgid "Number of decimal places for product prices to transfer."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1281
+#: includes/admin/class-fp-admin-settings.php:1290
 msgid "Unless otherwise required, 2 decimal places should be used. If there are more decimal places, rounding errors may occur. These usually occur when creating net invoices because the services calculate the amounts using net prices and convert the sum to gross. If there are more than 2 decimal places, we recommend creating gross invoices."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1302
+#: includes/admin/class-fp-admin-settings.php:1311
 msgid "Email Settings"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1303
+#: includes/admin/class-fp-admin-settings.php:1312
 msgid "Please configure sending your invoices by email in this section."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1329
+#: includes/admin/class-fp-admin-settings.php:1338
 msgid "Email sending"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1346
+#: includes/admin/class-fp-admin-settings.php:1355
 msgid "Email for attachment"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1349
+#: includes/admin/class-fp-admin-settings.php:1358
 msgid "Email to which the invoice should be attached."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1364
+#: includes/admin/class-fp-admin-settings.php:1373
 msgid "Email for order status"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1370
+#: includes/admin/class-fp-admin-settings.php:1379
 msgid "The order status for which the invoice should be sent as a separate email."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1389
+#: includes/admin/class-fp-admin-settings.php:1398
 msgid "The payment methods for which the invoice should NOT be sent by email."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1403
+#: includes/admin/class-fp-admin-settings.php:1412
+msgid "Separate Email Settings"
+msgstr ""
+
+#: includes/admin/class-fp-admin-settings.php:1413
+msgid "Please configure the appearance of the separate email for sending your invoices in this section. These settings will be used for the separate email that is also sent when the invoice is sent manually."
+msgstr ""
+
+#: includes/admin/class-fp-admin-settings.php:1441
 msgid "Email template"
 msgstr ""
 
 #. translators: %s: tab name
-#: includes/admin/class-fp-admin-settings.php:1409
+#: includes/admin/class-fp-admin-settings.php:1447
 msgid "The email templates can be found in the \"%s\" settings tab."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1424
+#: includes/admin/class-fp-admin-settings.php:1462
 msgid "Email subject"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1429
+#: includes/admin/class-fp-admin-settings.php:1467
 msgid "The subject of the invoice email."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1441
+#: includes/admin/class-fp-admin-settings.php:1479
 msgid "Email additionally to"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1446
+#: includes/admin/class-fp-admin-settings.php:1484
 msgid "Additional email addresses to which the email should be sent. Separate addresses with commas."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1458
+#: includes/admin/class-fp-admin-settings.php:1496
 msgid "Email copy (CC)"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1463
+#: includes/admin/class-fp-admin-settings.php:1501
 msgid "Additional email addresses to which the email should be sent as a copy. Separate addresses with commas."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1475
+#: includes/admin/class-fp-admin-settings.php:1513
 msgid "Email blind copy (BCC)"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1480
+#: includes/admin/class-fp-admin-settings.php:1518
 msgid "Additional email addresses to which the email should be sent as a blind copy. Separate addresses with commas."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1493
+#: includes/admin/class-fp-admin-settings.php:1531
 msgid "Email text content"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1498
+#: includes/admin/class-fp-admin-settings.php:1536
 msgid "The text content of your invoice email. HTML is not allowed here."
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1511
+#: includes/admin/class-fp-admin-settings.php:1549
 msgid "Email HTML content"
 msgstr ""
 
-#: includes/admin/class-fp-admin-settings.php:1516
+#: includes/admin/class-fp-admin-settings.php:1554
 msgid "The HTML content of your invoice email. You can use HTML here."
 msgstr ""
 
 #: includes/admin/class-fp-bulk-actions.php:95
-#: includes/admin/class-fp-bulk-actions.php:357
-#: includes/admin/class-fp-bulk-actions.php:367
+#: includes/admin/class-fp-bulk-actions.php:354
+#: includes/admin/class-fp-bulk-actions.php:364
 msgid "Export invoices"
 msgstr ""
 
@@ -504,98 +512,117 @@ msgstr ""
 msgid "The invoice could not be retrieved."
 msgstr ""
 
-#: includes/admin/class-fp-bulk-actions.php:272
+#: includes/admin/class-fp-bulk-actions.php:269
 #: includes/errors/class-fp-client-error.php:100
 #: includes/errors/class-fp-factory-error.php:86
-#: includes/errors/class-fp-server-error.php:326
+#: includes/errors/class-fp-server-error.php:339
 #: includes/errors/class-fp-storage-error.php:111
 msgid "Cause unclear"
 msgstr ""
 
-#: includes/admin/class-fp-bulk-actions.php:273
+#: includes/admin/class-fp-bulk-actions.php:270
 msgid "Es ist zu einem unbekannten Fehler gekommen. Bitte kontaktiere den Support, wenn das Problem weiterhin besteht."
 msgstr ""
 
 #. translators: %s: action name
-#: includes/admin/class-fp-bulk-actions.php:356
+#: includes/admin/class-fp-bulk-actions.php:353
 msgid "Error with multiple action \"%s\" on orders"
 msgstr ""
 
 #. translators: %1$s: action name, %2$s: date, %3$s: time
-#: includes/admin/class-fp-bulk-actions.php:363
+#: includes/admin/class-fp-bulk-actions.php:360
 msgid "Errors occurred when running the multiple action \"%1$s\" on %2$s at %3$s o'clock on the following orders:"
 msgstr ""
 
 #. translators: %s: order id
-#: includes/admin/class-fp-bulk-actions.php:380
+#: includes/admin/class-fp-bulk-actions.php:377
 msgid "Order #%s"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:65
-#: includes/admin/class-fp-order-action.php:97
-#: includes/admin/class-fp-order-action.php:313
+#: includes/admin/class-fp-order-action.php:66
+#: includes/admin/class-fp-order-action.php:157
+#: includes/admin/class-fp-order-action.php:401
 msgid "Create invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:67
+#: includes/admin/class-fp-order-action.php:68
 msgid "Reset invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:69
+#: includes/admin/class-fp-order-action.php:70
 msgid "Cancel invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:108
-#: includes/admin/class-fp-order-action.php:314
+#: includes/admin/class-fp-order-action.php:163
+#: includes/admin/class-fp-order-action.php:402
 msgid "Retrieve invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:116
-msgid "Do you really want to cancel this invoice?"
+#: includes/admin/class-fp-order-action.php:169
+msgid "Send invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:121
+#: includes/admin/class-fp-order-action.php:171
+msgid "Resend invoice"
+msgstr ""
+
+#: includes/admin/class-fp-order-action.php:179
+msgid "Retrieve delivery note"
+msgstr ""
+
+#: includes/admin/class-fp-order-action.php:187
 msgid "Create cancellation invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:132
+#: includes/admin/class-fp-order-action.php:188
+msgid "Do you really want to cancel this invoice?"
+msgstr ""
+
+#: includes/admin/class-fp-order-action.php:194
 msgid "Retrieve cancellation invoice"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:159
-#: includes/support/class-fp-order-adapter.php:570
+#: includes/admin/class-fp-order-action.php:211
+#: includes/support/class-fp-order-adapter.php:768
 msgid "Invoice created"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:165
-msgid "Invocie was not created"
+#: includes/admin/class-fp-order-action.php:217
+msgid "Invoice was not created"
 msgstr ""
 
-#. translators: %s: parameter name
-#: includes/admin/class-fp-order-action.php:183
-#: includes/admin/class-fp-order-action.php:225
-msgid "Missing parameter %s"
+#: includes/admin/class-fp-order-action.php:234
+msgid "Invoice sent"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:201
+#: includes/admin/class-fp-order-action.php:240
+msgid "Invoice was not sent"
+msgstr ""
+
+#: includes/admin/class-fp-order-action.php:258
 msgid "Cancellation invoice created"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:207
-msgid "Cancellation invocie was not created"
+#: includes/admin/class-fp-order-action.php:264
+msgid "Cancellation invoice was not created"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:318
+#. translators: %s: parameter name
+#: includes/admin/class-fp-order-action.php:313
+msgid "Missing parameter %s"
+msgstr ""
+
+#: includes/admin/class-fp-order-action.php:406
 msgid "Error on last try"
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:434
+#: includes/admin/class-fp-order-action.php:561
 #: includes/class-fp-order-handler.php:293
 msgid "Too many attempts to create the invoice in a short period of time. Please wait a few minutes before trying again."
 msgstr ""
 
-#: includes/admin/class-fp-order-action.php:491
-#: includes/class-fp-order-handler.php:379
+#: includes/admin/class-fp-order-action.php:619
+#: includes/class-fp-order-handler.php:376
 msgid "Too many attempts to cancel the invoice in a short period of time. Please wait a few minutes before trying again."
 msgstr ""
 
@@ -603,84 +630,88 @@ msgstr ""
 msgid "Invoice"
 msgstr ""
 
-#: includes/class-fp-plugin.php:450
+#: includes/class-fp-plugin.php:449
 msgid "Order ID"
 msgstr ""
 
-#: includes/class-fp-plugin.php:451
+#: includes/class-fp-plugin.php:450
 msgid "Order number"
 msgstr ""
 
-#: includes/class-fp-plugin.php:452
+#: includes/class-fp-plugin.php:451
 msgid "Invoice number"
 msgstr ""
 
-#: includes/class-fp-plugin.php:453
+#: includes/class-fp-plugin.php:452
 msgid "Invoice date US"
 msgstr ""
 
-#: includes/class-fp-plugin.php:454
+#: includes/class-fp-plugin.php:453
 msgid "Invoice date DE"
 msgstr ""
 
-#: includes/class-fp-plugin.php:455
+#: includes/class-fp-plugin.php:454
 msgid "Day of invoice date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:456
+#: includes/class-fp-plugin.php:455
 msgid "Month of invoice date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:457
+#: includes/class-fp-plugin.php:456
 msgid "Year of invoice date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:458
+#: includes/class-fp-plugin.php:457
 msgid "Customer company or last name"
 msgstr ""
 
-#: includes/class-fp-plugin.php:459
+#: includes/class-fp-plugin.php:458
 msgid "Customer company name"
 msgstr ""
 
-#: includes/class-fp-plugin.php:460
+#: includes/class-fp-plugin.php:459
 msgid "Customer first name"
 msgstr ""
 
-#: includes/class-fp-plugin.php:461
+#: includes/class-fp-plugin.php:460
 msgid "Customer last name"
 msgstr ""
 
-#: includes/class-fp-plugin.php:479
+#: includes/class-fp-plugin.php:478
 msgid "Order date US"
 msgstr ""
 
-#: includes/class-fp-plugin.php:480
+#: includes/class-fp-plugin.php:479
 msgid "Order date DE"
 msgstr ""
 
-#: includes/class-fp-plugin.php:481
+#: includes/class-fp-plugin.php:480
 msgid "Day of order date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:482
+#: includes/class-fp-plugin.php:481
 msgid "Month of order date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:483
+#: includes/class-fp-plugin.php:482
 msgid "Year of order date"
 msgstr ""
 
-#: includes/class-fp-plugin.php:484
+#: includes/class-fp-plugin.php:483
 msgid "Page title"
 msgstr ""
 
-#: includes/common/class-fp-factory.php:1517
-#: includes/common/class-fp-factory.php:1521
+#: includes/common/class-fp-factory.php:1433
+msgid "Discount"
+msgstr ""
+
+#: includes/common/class-fp-factory.php:1487
+#: includes/common/class-fp-factory.php:1491
 msgid "Credits"
 msgstr ""
 
-#: includes/common/class-fp-viewer.php:83
+#: includes/common/class-fp-viewer.php:84
 msgid "PDF data is not valid."
 msgstr ""
 
@@ -777,103 +808,111 @@ msgstr ""
 msgid "The connection to the service provider is not ready. Please check if you have configured your billing provider correctly."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:160
+#: includes/errors/class-fp-server-error.php:161
 msgid "Missing configuration (Error 400)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:161
+#: includes/errors/class-fp-server-error.php:162
 msgid "Please check that you have fully configured your billing provider."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:172
+#: includes/errors/class-fp-server-error.php:173
 msgid "Authentication failed (Error 401)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:173
+#: includes/errors/class-fp-server-error.php:174
 msgid "Please check if the store key set in the settings is correct."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:184
+#: includes/errors/class-fp-server-error.php:185
 msgid "Upgrade required (Error 402)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:185
+#: includes/errors/class-fp-server-error.php:186
 msgid "You cannot create any more invoices this month because your limit has been reached."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:196
+#: includes/errors/class-fp-server-error.php:197
 msgid "Authorization failed (Error 403)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:197
+#: includes/errors/class-fp-server-error.php:198
 msgid "You do not have permission to access this invoice"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:213
+#: includes/errors/class-fp-server-error.php:214
 msgid "Processing failed (Error 422)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:214
+#: includes/errors/class-fp-server-error.php:215
 msgid "<p>The request processing failed. Please check the following possible causes of error:</p><ul><li>Does the order have all the necessary data for invoicing?</li><li>Have you configured the taxes correctly in your online shop?</li><li>Have you successfully established the connection to your billing provider?</li><li>Can your billing provider process all the information in your order?</li></ul><p>If the cause of the problem is unclear to you, please contact us please contact our support.</p>"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:232
+#: includes/errors/class-fp-server-error.php:233
 msgid "Too many requests (Error 429)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:233
+#: includes/errors/class-fp-server-error.php:234
 msgid "You sent too many inquiries to Invoice Pro in too short a time. Please wait a moment and then try again."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:244
-msgid "Server application error (Error 500)"
-msgstr ""
-
 #: includes/errors/class-fp-server-error.php:245
-msgid "An unexpected server application error occurred. Please contact support."
+msgid "Too many attempts (Error 460)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:256
-msgid "Can not reach server (Error 503)"
+#: includes/errors/class-fp-server-error.php:246
+msgid "Too many attempts in a short period of time. Please wait a few minutes before trying again."
 msgstr ""
 
 #: includes/errors/class-fp-server-error.php:257
-msgid "The server application is temporarily unavailable. Please try again later."
+msgid "Server application error (Error 500)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:268
-msgid "Not yet available (Error 501)"
+#: includes/errors/class-fp-server-error.php:258
+msgid "An unexpected server application error occurred. Please contact support."
 msgstr ""
 
 #: includes/errors/class-fp-server-error.php:269
-msgid "This function is not currently available, but will be implemented in the future."
+msgid "Can not reach server (Error 503)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:280
-msgid "Invoice not found (Error 404)"
+#: includes/errors/class-fp-server-error.php:270
+msgid "The server application is temporarily unavailable. Please try again later."
 msgstr ""
 
 #: includes/errors/class-fp-server-error.php:281
+msgid "Not yet available (Error 501)"
+msgstr ""
+
+#: includes/errors/class-fp-server-error.php:282
+msgid "This function is not currently available, but will be implemented in the future."
+msgstr ""
+
+#: includes/errors/class-fp-server-error.php:293
+msgid "Invoice not found (Error 404)"
+msgstr ""
+
+#: includes/errors/class-fp-server-error.php:294
 msgid "The invoice was not found. Are you sure this bill exists?"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:292
+#: includes/errors/class-fp-server-error.php:305
 msgid "Services have been blocked (Error 423)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:303
+#: includes/errors/class-fp-server-error.php:316
 msgid "Conflict occurred (Error 409)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:314
+#: includes/errors/class-fp-server-error.php:327
 msgid "Media type not supported (Error 415)"
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:315
+#: includes/errors/class-fp-server-error.php:328
 msgid "The requested media type is not supported by Invoice Pro."
 msgstr ""
 
-#: includes/errors/class-fp-server-error.php:327
+#: includes/errors/class-fp-server-error.php:340
 #: includes/errors/class-fp-storage-error.php:112
 msgid "An error with an unknown cause has occurred. Please contact support."
 msgstr ""
@@ -910,18 +949,22 @@ msgstr ""
 msgid "The file could not be created."
 msgstr ""
 
-#: includes/support/class-fp-order-adapter.php:580
+#: includes/support/class-fp-order-adapter.php:758
+msgid "Delivery note created"
+msgstr ""
+
+#: includes/support/class-fp-order-adapter.php:778
 msgid "Invoice canceled"
 msgstr ""
 
-#: includes/support/class-fp-order-adapter.php:590
+#: includes/support/class-fp-order-adapter.php:788
 msgid "Invoice completed"
 msgstr ""
 
-#: includes/support/class-fp-order-adapter.php:600
+#: includes/support/class-fp-order-adapter.php:798
 msgid "Invoice sent with WooCommerce email."
 msgstr ""
 
-#: includes/support/class-fp-order-adapter.php:610
+#: includes/support/class-fp-order-adapter.php:808
 msgid "Invoice sent as email."
 msgstr ""

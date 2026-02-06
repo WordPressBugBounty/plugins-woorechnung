@@ -90,7 +90,8 @@ final class FP_Settings extends FP_Abstract_Settings
      */
     public function get_shop_url()
     {
-        return trim( $this->get( 'shop_url', get_home_url() ) );
+        $value = $this->get( 'shop_url', get_home_url() );
+        return is_string( $value ) ? trim( $value ) : null;
     }
 
     /**
@@ -991,7 +992,8 @@ final class FP_Settings extends FP_Abstract_Settings
      */
     public function get_email_content_html()
     {
-        return FP_Plugin::decode_html_content( $this->get( 'email_content_html', '' ) );
+        $value = $this->get( 'email_content_html', '' );
+        return is_string( $value ) ? FP_Plugin::decode_html_content( $value ) : null;
     }
 
     /**

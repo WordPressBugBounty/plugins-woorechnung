@@ -43,8 +43,8 @@ jQuery(document).ready(function($)
       email_to_append_to.hide();
       email_for_states.hide();
       email_for_methods.hide();
-      email_template.hide();
-      /*email_subject.hide();
+      /*email_template.show();
+      email_subject.hide();
       email_to.hide();
       email_copy.hide();
       email_blind_copy.hide();
@@ -52,37 +52,37 @@ jQuery(document).ready(function($)
       email_content_html.hide();
       email_content_placeholders.hide();
       */
-      change_email_template_setting("");
+      // change_email_template_setting("");
     }
     if ("append" === selection)
     {
       email_to_append_to.show();
       email_for_methods.show();
       email_for_states.hide();
-      email_template.hide();
-      /*email_subject.hide();
+      /*email_template.show();
+      email_subject.hide();
       email_to.hide();
       email_copy.hide();
       email_blind_copy.hide();
       email_content_text.hide();
       email_content_html.hide();
       email_content_placeholders.hide();*/
-      change_email_template_setting("");
+      // change_email_template_setting("");
     }
     if ("separate" === selection)
     {
       email_to_append_to.hide();
       email_for_states.show();
       email_for_methods.show();
-      email_template.show();
-      /*email_subject.show();
+      /*email_template.show();
+      email_subject.show();
       email_to.show();
       email_copy.show();
       email_blind_copy.show();
       email_content_text.show();
       email_content_html.show();
       email_content_placeholders.show();*/
-      change_email_template_setting(email_template.val());
+      // change_email_template_setting(email_template.val());
     };
   };
 

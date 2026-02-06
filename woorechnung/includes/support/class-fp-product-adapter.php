@@ -42,7 +42,7 @@ final class FP_Product_Adapter
     /**
      * Get the product id from a request.
      *
-     * @param  array|null $params
+     * @param  array<string, mixed>|null $params
      * @return int
      */
     public static function get_request_id( $params = null )

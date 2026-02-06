@@ -32,7 +32,7 @@ final class FP_Email_Handler extends FP_Abstract_Module
     public function init_hooks()
     {
         $this->add_action('phpmailer_init', 'configure_phpmailer', 8, 1);
-        $this->add_action('fakturpro_invoice_created', 'process_mailing', 10, 1);
+        $this->add_action('fakturpro_send_invoice', 'process_mailing', 10, 3);
         $this->add_action('woocommerce_order_status_changed', 'process_mailing_delayed', 11, 3);
         /*if ($this->plugin()->is_woocommerce_subscriptions_active()) {
             $this->add_action('woocommerce_subscription_status_changed', 'process_mailing_delayed', 11, 3);
@@ -85,30 +85,34 @@ final class FP_Email_Handler extends FP_Abstract_Module
      * Process the mailing of an invoice.
      *
      * @param  FP_Order_Adapter $order
+     * @param  bool $force
+     * @param  bool $throw_exceptions
      * @return bool
      */
-    public function process_mailing( FP_Order_Adapter $order )
+    public function process_mailing( FP_Order_Adapter $order, bool $force = false, bool $throw_exceptions = false )
     {
-        // Abort if invoice is not to be sent as email
-        $settings = $this->settings();
-        if ( ! $settings->send_invoice_as_email() ) {
-            return false;
-        }
+        if ($force == false) {
+            // Abort if invoice is not to be sent as email
+            $settings = $this->settings();
+            if ( ! $settings->send_invoice_as_email() ) {
+                return false;
+            }
 
-        // Abort if email is not to be sent for this state
-        $status = $order->get_status();
-        if ( ! $settings->send_email_for_state( $status ) ) {
-            return false;
-        }
+            // Abort if email is not to be sent for this state
+            $status = $order->get_status();
+            if ( ! $settings->send_email_for_state( $status ) ) {
+                return false;
+            }
 
-        // Abort if invoice is not to be sent for its payment method
-        $method = $order->get_payment_method();
-        if ( ! $settings->send_email_for_method( $method ) ) {
-            return false;
+            // Abort if invoice is not to be sent for its payment method
+            $method = $order->get_payment_method();
+            if ( ! $settings->send_email_for_method( $method ) ) {
+                return false;
+            }
         }
 
         // Send the invoice as an own email
-        $this->send_invoice_as_email( $order );
+        $this->send_invoice_as_email( $order, $throw_exceptions );
         return true;
     }
 
@@ -116,9 +120,10 @@ final class FP_Email_Handler extends FP_Abstract_Module
      * Actually send the invoice as an email.
      *
      * @param  FP_Order_Adapter $order
+     * @param  bool $throw_exceptions
      * @return void
      */
-    private function send_invoice_as_email( FP_Order_Adapter $order )
+    private function send_invoice_as_email( FP_Order_Adapter $order, bool $throw_exceptions = false )
     {
         // Try to download and send the invoice via email
         // Add an order note to signal the successful sent
@@ -139,6 +144,9 @@ final class FP_Email_Handler extends FP_Abstract_Module
         catch ( \Exception $exception ) {
             $this->logger()->send_invoice_as_email_failed();
             $this->logger()->capture( $exception );
+            if ( $throw_exceptions ) {
+                throw $exception;
+            }
         }
     }
 
@@ -308,25 +316,25 @@ final class FP_Email_Handler extends FP_Abstract_Module
             $subject = $settings->get_email_subject();
             $content_html = $settings->get_email_content_html();
             $content_text = $settings->get_email_content_text();
-    
+
             // replace placeholders with new format (e.g. {order_id})
             $replaces = $this->create_placeholders($order, false, true);
             $subject = $this->replace_placeholders($subject, $replaces);
             $content_text = $this->replace_placeholders($content_text, $replaces);
             $content_html = $this->replace_placeholders($content_html, $replaces);
-    
+
             // replace placeholders with old format (e.g. %order_id%)
             $replaces = $this->create_placeholders($order, false, false);
             $subject = $this->replace_placeholders($subject, $replaces);
             $content_text = $this->replace_placeholders($content_text, $replaces);
             $content_html = $this->replace_placeholders($content_html, $replaces);
-    
+
             $content_html = empty($content_html) ? $content_text : $content_html;
-    
+
             $this->_mail_alt_body = $content_text;
-    
+
             $customer = apply_filters('fakturpro_filter_send_invoice_email_recipient', $customer, $order); // ->get_user());
-    
+
             // Send email with own mailer
             $mailer = $this->mailer();
             $mailer->add_recipient( $customer );
@@ -339,6 +347,7 @@ final class FP_Email_Handler extends FP_Abstract_Module
             $mailer->send_email();
         } else {
             // Send invoice email with woocommerce email template and mailer
+            WC_Emails::instance(); // Initialize emails in woocommerce
             $attachments = array( $filepath );
             do_action( 'fakturpro_email_' . $template, $order->get_id(), $order, $attachments );
         }
@@ -372,7 +381,7 @@ final class FP_Email_Handler extends FP_Abstract_Module
      *
      * @param  array<string>  $attachments
      * @param  string $type
-     * @param  WC_Order|null $post
+     * @param  mixed $post
      * @param  WC_Email|null $email
      * @return array<string>
      */

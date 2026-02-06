@@ -41,14 +41,15 @@ final class FP_Viewer
      */
     private function validate_pdf( $data )
     {
-        return is_string( $data ) && is_string( base64_decode( $data ) );
+        return is_string( $data )
+            && base64_decode( $data );
     }
 
     /**
      * View a PDF file, given its key and base64 data.
      *
      * @param string $key
-     * @param string $data
+     * @param mixed $data
      * @return void
      */
     public function view_pdf( $key, $data )

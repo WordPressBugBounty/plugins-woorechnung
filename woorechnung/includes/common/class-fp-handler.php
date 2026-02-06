@@ -29,7 +29,7 @@ final class FP_Handler
      *
      * @var string
      */
-     const WEBSITE_LINK = 'https://www.faktur.pro';
+    const WEBSITE_LINK = 'https://www.faktur.pro';
 
     /**
      * The URI of the Faktur Pro knowledge base for customer self-support.

@@ -56,7 +56,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
      *
      * @var string
      */
-     const ENV_DEVELOPMENT = 'development';
+    const ENV_DEVELOPMENT = 'development';
 
     /**
      * String representing production environment;
@@ -93,7 +93,6 @@ final class FP_Plugin extends FP_Abstract_Plugin
      */
     const PLUGIN_SECONDARY_TITLE = 'secondary-title/secondary-title.php';
 
-    
     /**
      * The path of the Secondary Title plugin.
      *
@@ -364,7 +363,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
 
     /**
      * Decide if now is in range.
-     * 
+     *
      * @param  \DateTime|string|null $from
      * @param  \DateTime|string|null $to
      * @param  \DateTime|string|null $check
@@ -409,7 +408,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
 
     /**
      * Array map assoc.
-     * 
+     *
      * @param  callable $callback
      * @param  array<string, mixed> $array
      * @return array<string, mixed>
@@ -422,7 +421,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
 
     /**
      * Array map placeholders.
-     * 
+     *
      * @param  array<string, mixed> $placeholders
      * @param  bool $brackets
      * @return array<string, mixed>
@@ -572,20 +571,20 @@ final class FP_Plugin extends FP_Abstract_Plugin
      *
      * @return FP_Client
      */
-     public function get_client()
-     {
-        return $this->_client;
-     }
+    public function get_client()
+    {
+    return $this->_client;
+    }
 
     /**
      * Get the invoice factory to create invoices.
      *
      * @return FP_Factory
      */
-     public function get_factory()
-     {
-        return $this->_factory;
-     }
+    public function get_factory()
+    {
+    return $this->_factory;
+    }
 
     /**
      * Get the plugin mailer instance.
