@@ -34,13 +34,14 @@ final class FP_Order_Handler extends FP_Abstract_Module
         $this->add_Filter('wcs_renewal_order_created', 'process_order_object_filter', 9, 1);
 
         // Actions for processing order on status update
-        $statuses = $this->plugin()->get_order_statuses();
-        foreach ( $statuses as $status => $name ) {
+        $states = $this->settings()->get_invoice_for_states();
+        foreach ( $states as $status ) {
             $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
         }
         // $this->add_action('woocommerce_order_status_pending', 'process_order_on_status', 9, 1);
         $this->add_action('woocommerce_order_status_changed', 'process_order_on_status_changed', 9, 4);
         $this->add_action('woocommerce_checkout_order_processed', 'process_order_on_checkout', 9, 3);
+        $this->add_action('init', 'wp_init', 9);
 
         // Actions for processing subscription order on status update
         /*if ($this->plugin()->is_woocommerce_subscriptions_active()) {
@@ -56,6 +57,23 @@ final class FP_Order_Handler extends FP_Abstract_Module
 		// Don't carry fakturpro meta data to renewal orders
 		$this->add_filter('wcs_renewal_order_meta_query', 'remove_renewal_order_meta_query', 10);
         $this->add_filter('wcs_renewal_order_meta', 'exclude_core_renewal_order_meta_properties');
+    }
+
+    /**
+     * Wordpress init.
+     *
+     * @return void
+     */
+    public function wp_init()
+    {
+        $states = $this->plugin()->get_order_statuses(); // NOTE: must be called on wp "init" or later because "wc_get_order_statuses" use translations
+        $settings_states = $this->settings()->get_invoice_for_states();
+        foreach ( $states as $status => $name ) {
+            if ( in_array( $status, $settings_states ) ) {
+                continue;
+            }
+            $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
+        }
     }
 
     /**

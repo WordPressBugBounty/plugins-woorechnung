@@ -283,6 +283,24 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             }
         }
 
+        if ( isset( $_POST['fakturpro_cancellation_invoice_filename'] ) ) {
+            $fakturpro_cancellation_invoice_filename = sanitize_text_field( $_POST['fakturpro_cancellation_invoice_filename'] );
+            if ( $fakturpro_cancellation_invoice_filename = $this->validate_allowed_chars( $fakturpro_cancellation_invoice_filename ) ) {
+                $data['fakturpro_cancellation_invoice_filename'] = $fakturpro_cancellation_invoice_filename;
+            } else {
+                $this->error_fields[] = 'fakturpro_cancellation_invoice_filename';
+            }
+        }
+
+        if ( isset( $_POST['fakturpro_delivery_note_filename'] ) ) {
+            $fakturpro_delivery_note_filename = sanitize_text_field( $_POST['fakturpro_delivery_note_filename'] );
+            if ( $fakturpro_delivery_note_filename = $this->validate_allowed_chars( $fakturpro_delivery_note_filename ) ) {
+                $data['fakturpro_delivery_note_filename'] = $fakturpro_delivery_note_filename;
+            } else {
+                $this->error_fields[] = 'fakturpro_delivery_note_filename';
+            }
+        }
+
         if ( isset( $_POST['fakturpro_invoice_email'] ) ) {
             $fakturpro_invoice_email = sanitize_key( $_POST['fakturpro_invoice_email'] );
             $fakturpro_invoice_email = in_array($fakturpro_invoice_email, array_keys( $this->get_invoice_email_options() ) ) ? $fakturpro_invoice_email : 'append';
@@ -389,6 +407,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $settings = array_merge( $settings, $this->section_customer() );
         $settings = array_merge( $settings, $this->section_invoice() );
         $settings = array_merge( $settings, $this->section_invoice_items() );
+        $settings = array_merge( $settings, $this->section_filenames() );
         $settings = array_merge( $settings, $this->section_email() );
         $settings = array_merge( $settings, $this->section_separate_email() );
         return $settings;
@@ -434,7 +453,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get line descriptions.
-     * 
+     *
      * @return array<string, string>
      */
     private function get_line_descriptions()
@@ -457,7 +476,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get invoice email options.
-     * 
+     *
      * @return array<string, string>
      */
     public function get_invoice_email_options()
@@ -471,7 +490,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
 
     /**
      * Get email template options.
-     * 
+     *
      * @return array<string, string>
      */
     private function get_email_template_options()
@@ -673,8 +692,23 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result[] = $this->field_customer_link();
         $result[] = $this->field_order_number_prefix();
         $result[] = $this->field_order_number_suffix();
-        $result[] = $this->field_email_filename();
         $result[] = $this->section_invoice_end();
+        return $result;
+    }
+
+    /**
+     * Section filenames.
+     *
+     * @return array<array<string, mixed>>
+     */
+    private function section_filenames()
+    {
+        $result = array();
+        $result[] = $this->section_filenames_start();
+        $result[] = $this->field_invoice_filename();
+        $result[] = $this->field_cancellation_invoice_filename();
+        $result[] = $this->field_delivery_note_filename();
+        $result[] = $this->section_filenames_end();
         return $result;
     }
 
@@ -1173,26 +1207,88 @@ final class FP_Admin_Settings extends FP_Abstract_Module
     }
 
     /**
-     * Field email filename.
+     * Section filenames start.
      *
      * @return array<string, mixed>
      */
-    private function field_email_filename()
+    private function section_filenames_start()
     {
-        $variables = $this->plugin()->get_invoice_filename_variables();
+        return array(
+            'id'        => 'fakturpro_section_filenames',
+            'type'      => 'title',
+            'title'     => __('Filenames Settings', 'fakturpro'),
+            'desc'      => __('Please configure the filenames in this section.', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Section filenames end.
+     *
+     * @return array<string, mixed>
+     */
+    private function section_filenames_end()
+    {
+        return array(
+            'id'        => 'fakturpro_section_filenames',
+            'type'      => 'sectionend',
+        );
+    }
+
+    /**
+     * Field invoice filename.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_invoice_filename()
+    {
+        return array(
+            'id'        => 'fakturpro_email_filename',
+            'title'     => __('Invoice filename', 'fakturpro'),
+            'type'      => 'text',
+            'css'       => $this->field_css('fakturpro_email_filename'),
+            'default'   => __('Invoice', 'fakturpro') . ' {invoice_no}',
+            'desc_tip'  => __('The name of the invoice file (without file extension!).', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Field cancellation invoice filename.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_cancellation_invoice_filename()
+    {
+        return array(
+            'id'        => 'fakturpro_cancellation_invoice_filename',
+            'title'     => __('Cancellation invoice filename', 'fakturpro'),
+            'type'      => 'text',
+            'css'       => $this->field_css('fakturpro_cancellation_invoice_filename'),
+            'default'   => __('Cancellation invoice', 'fakturpro') . ' {cancellation_invoice_no}',
+            'desc_tip'  => __('The name of the cancellation invoice file (without file extension!).', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Field delivery note filename.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_delivery_note_filename()
+    {
+        $variables = $this->placeholders()->get_invoice_filename_variables();
         $rows = array();
         foreach ($variables as $name => $description) {
             $rows[] = array( $name, $description );
         }
         $desc = $this->field_description_table(array(__('Variable', 'fakturpro'), __('Description', 'fakturpro')), $rows);
         return array(
-            'id'        => 'fakturpro_email_filename',
-            'title'     => __('File name of the PDF', 'fakturpro'),
+            'id'        => 'fakturpro_delivery_note_filename',
+            'title'     => __('Delivery note filename', 'fakturpro'),
             'type'      => 'text',
-            'css'       => $this->field_css('fakturpro_email_filename'),
+            'css'       => $this->field_css('fakturpro_delivery_note_filename'),
             'desc'      => $desc,
-            'default'   => '',
-            'desc_tip'  => __('The name of the invoice file that is sent by email (without file extension!).', 'fakturpro'),
+            'default'   => __('Delivery note', 'fakturpro') . ' {delivery_note_number}',
+            'desc_tip'  => __('The name of the delivery note file (without file extension!).', 'fakturpro'),
         );
     }
 
@@ -1562,7 +1658,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
      */
     private function field_email_content_placeholders()
     {
-        $variables = $this->plugin()->get_invoice_placeholder_variables();
+        $variables = $this->placeholders()->get_invoice_variables();
         $rows = array();
         foreach ($variables as $name => $description) {
             $rows[] = array( $name, $description );

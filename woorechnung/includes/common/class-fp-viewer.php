@@ -48,17 +48,17 @@ final class FP_Viewer
     /**
      * View a PDF file, given its key and base64 data.
      *
-     * @param string $key
+     * @param string $filename
      * @param mixed $data
      * @return void
      */
-    public function view_pdf( $key, $data )
+    public function view_pdf( $filename, $data )
     {
         if ( $this->validate_pdf( $data ) ) {
 
             if ( $this->_plugin->get_settings()->get_open_invoices() ) {
                 header( 'Content-type: application/pdf' );
-                header( 'Content-Disposition: inline; filename="' . esc_attr( $key ) . '.pdf"' );
+                header( 'Content-Disposition: inline; filename="' . esc_attr( $filename ) . '"' );
                 header( 'Content-Transfer-Encoding: binary' );
                 header( 'Accept-Ranges: bytes' );
 
@@ -67,7 +67,7 @@ final class FP_Viewer
                 echo base64_decode( $data );
             } else {
                 header( 'Content-Description: File Transfer' );
-                header( 'Content-Disposition: attachment; filename="' . esc_attr( $key ) . '.pdf"' );
+                header( 'Content-Disposition: attachment; filename="' . esc_attr( $filename ) . '"' );
                 header( 'Content-Type: application/octet-stream' );
                 header( 'Content-Transfer-Encoding: binary' );
                 header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );

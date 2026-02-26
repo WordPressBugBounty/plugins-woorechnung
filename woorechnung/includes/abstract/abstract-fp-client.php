@@ -405,7 +405,7 @@ abstract class FP_Abstract_Client
 
         // Send the request prepared and return the response
         $response = wp_remote_request( $url, $args );
-        
+
         // Get the http code
         $code = wp_remote_retrieve_response_code( $response );
 

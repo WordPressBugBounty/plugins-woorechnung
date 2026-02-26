@@ -699,7 +699,7 @@ final class FP_Factory
 
             if ( ! is_a( $product_item, 'WC_Order_Item_Product' ) ) {
                 throw new FP_Factory_Error(
-                    json_encode(['name' => $name]), 
+                    json_encode(['name' => $name]),
                     FP_Factory_Error::WRONG_ORDER_ITEM_ERROR
                 );
             }

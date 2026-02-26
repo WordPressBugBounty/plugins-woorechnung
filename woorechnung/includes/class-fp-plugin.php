@@ -115,6 +115,13 @@ final class FP_Plugin extends FP_Abstract_Plugin
     private $_logger;
 
     /**
+     * The placeholders instance to replace placeholder vars.
+     *
+     * @var FP_Placeholders
+     */
+    private $_placeholders;
+
+    /**
      * The session instance to store session data.
      *
      * @var FP_Session
@@ -420,74 +427,6 @@ final class FP_Plugin extends FP_Abstract_Plugin
     }
 
     /**
-     * Array map placeholders.
-     *
-     * @param  array<string, mixed> $placeholders
-     * @param  bool $brackets
-     * @return array<string, mixed>
-     */
-    public function array_map_placeholders( $placeholders, $brackets = true )
-    {
-        return $this->array_map_assoc(
-            function ( $key, $value ) use ( $brackets ) {
-                return [ $brackets ? '{' . $key . '}' : '%' . $key . '%', $value ];
-            },
-            $placeholders
-        );
-    }
-
-    /**
-     * Return the variable names and descriptions for the invoice filename.
-     *
-     * @param  bool $brackets
-     * @return array<string, string>
-     */
-    public function get_invoice_filename_variables( $brackets = true )
-    {
-        return $this->array_map_placeholders(
-            array(
-                'order_id' => __('Order ID', 'fakturpro'),
-                'order_no' => __('Order number', 'fakturpro'),
-                'invoice_no' => __('Invoice number', 'fakturpro'),
-                'invoice_date' => __('Invoice date US', 'fakturpro'),
-                'invoice_date_de' => __('Invoice date DE', 'fakturpro'),
-                'invoice_date_day' => __('Day of invoice date', 'fakturpro'),
-                'invoice_date_month' => __('Month of invoice date', 'fakturpro'),
-                'invoice_date_year' => __('Year of invoice date', 'fakturpro'),
-                'company_or_name' => __('Customer company or last name', 'fakturpro'),
-                'company' => __('Customer company name', 'fakturpro'),
-                'first_name' => __('Customer first name', 'fakturpro'),
-                'last_name' => __('Customer last name', 'fakturpro')
-            ),
-            $brackets
-        );
-    }
-
-    /**
-     * Return the variable names and descriptions for replacements in texts.
-     *
-     * @param  bool $brackets
-     * @return array<string, string>
-     */
-    public function get_invoice_placeholder_variables( $brackets = true )
-    {
-        return array_merge(
-            $this->get_invoice_filename_variables( $brackets ),
-            $this->array_map_placeholders(
-                array(
-                    'order_date' => __('Order date US', 'fakturpro'),
-                    'order_date_de' => __('Order date DE', 'fakturpro'),
-                    'order_date_day' => __('Day of order date', 'fakturpro'),
-                    'order_date_month' => __('Month of order date', 'fakturpro'),
-                    'order_date_year' => __('Year of order date', 'fakturpro'),
-                    'page_title' => __('Page title', 'fakturpro'),
-                ),
-                $brackets
-            )
-        );
-    }
-
-    /**
      * Return all available order statuses.
      *
      * @param  bool $with_names
@@ -500,7 +439,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
         foreach ($wc_statuses as $index => $value) {
             $statuses[str_replace('wc-', '', $index)] = $value;
         }
-        return $with_names ? $statuses : array_keys($statuses);
+        return $with_names ? $statuses : array_keys( $statuses );
     }
 
     /**
@@ -594,6 +533,16 @@ final class FP_Plugin extends FP_Abstract_Plugin
     public function get_mailer()
     {
         return $this->_mailer;
+    }
+
+    /**
+     * Get the plugin placeholders instance.
+     *
+     * @return FP_Placeholders
+     */
+    public function get_placeholders()
+    {
+        return $this->_placeholders;
     }
 
     /**
@@ -720,6 +669,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
         $this->_factory = new FP_Factory($this);
         $this->_settings = new FP_Settings($this);
         $this->_mailer = new FP_Mailer($this);
+        $this->_placeholders = new FP_Placeholders($this);
         $this->_storage = new FP_Storage($this);
         $this->_viewer = new FP_Viewer($this);
         $this->_handler = new FP_Handler($this);

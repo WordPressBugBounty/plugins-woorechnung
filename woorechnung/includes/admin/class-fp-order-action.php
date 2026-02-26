@@ -677,8 +677,9 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         try {
             $key = $order->get_invoice_key();
+            $filename = $this->placeholders()->get_invoice_filename( $order );
             $result = $this->client()->get_invoice( $key );
-            $this->viewer()->view_pdf($key, $result['data']);
+            $this->viewer()->view_pdf( $filename, $result['data'] );
             $this->logger()->fetch_invoice_success();
         }
 
@@ -687,8 +688,8 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         catch ( \Exception $exception ) {
             $this->logger()->fetch_invoice_failed();
-            $this->logger()->capture($exception);
-            $this->handler()->handle($exception);
+            $this->logger()->capture( $exception );
+            $this->handler()->handle( $exception );
         }
     }
 
@@ -705,8 +706,9 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         try {
             $key = $order->get_invoice_key();
+            $filename = $this->placeholders()->get_cancellation_invoice_filename( $order );
             $result = $this->client()->get_cancellation_invoice( $key );
-            $this->viewer()->view_pdf($key, $result['data']);
+            $this->viewer()->view_pdf( $filename, $result['data'] );
             $this->logger()->fetch_cancellation_invoice_success();
         }
 
@@ -715,8 +717,8 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         catch ( \Exception $exception ) {
             $this->logger()->fetch_cancellation_invoice_failed();
-            $this->logger()->capture($exception);
-            $this->handler()->handle($exception);
+            $this->logger()->capture( $exception );
+            $this->handler()->handle( $exception );
         }
     }
 
@@ -733,8 +735,9 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         try {
             $key = $order->get_invoice_key();
+            $filename = $this->placeholders()->get_delivery_note_filename( $order );
             $result = $this->client()->get_delivery_note( $key );
-            $this->viewer()->view_pdf($key, $result['data']);
+            $this->viewer()->view_pdf( $filename, $result['data'] );
             $this->logger()->fetch_delivery_note_success();
         }
 
@@ -743,8 +746,8 @@ final class FP_Order_Action extends FP_Abstract_Module
 
         catch ( \Exception $exception ) {
             $this->logger()->fetch_delivery_note_failed();
-            $this->logger()->capture($exception);
-            $this->handler()->handle($exception);
+            $this->logger()->capture( $exception );
+            $this->handler()->handle( $exception );
         }
     }
 

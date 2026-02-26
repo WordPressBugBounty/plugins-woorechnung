@@ -164,6 +164,16 @@ abstract class FP_Abstract_Module
     }
 
     /**
+     * Convenient method to access the placeholders from inside this module.
+     *
+     * @return FP_Placeholders
+     */
+    public function placeholders()
+    {
+        return $this->_plugin->get_placeholders();
+    }
+
+    /**
      * Convenient method to access the settings from inside this module.
      *
      * @return FP_Settings

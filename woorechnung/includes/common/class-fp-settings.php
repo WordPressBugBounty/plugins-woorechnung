@@ -562,7 +562,7 @@ final class FP_Settings extends FP_Abstract_Settings
 
     /**
      * Set price number decimals.
-     * 
+     *
      * @param  int $value
      * @return void
      */
@@ -831,6 +831,48 @@ final class FP_Settings extends FP_Abstract_Settings
     public function get_email_filename()
     {
         return $this->get( 'email_filename', 'Rechnung' );
+    }
+
+    /**
+     * Set the cancellation invoice filename setting.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function set_cancellation_invoice_filename( $value )
+    {
+        $this->set( 'cancellation_invoice_filename', $value );
+    }
+
+    /**
+     * Get the name of the file that is to be used for cancellation files.
+     *
+     * @return string
+     */
+    public function get_cancellation_invoice_filename()
+    {
+        return $this->get( 'cancellation_invoice_filename', 'Stornorechnung' );
+    }
+
+    /**
+     * Set the delivery note filename setting.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function set_delivery_note_filename( $value )
+    {
+        $this->set( 'delivery_note_filename', $value );
+    }
+
+    /**
+     * Get the name of the file that is to be used for delivery note files.
+     *
+     * @return string
+     */
+    public function get_delivery_note_filename()
+    {
+        return $this->get( 'delivery_note_filename', 'Lieferschein' );
     }
 
     /**

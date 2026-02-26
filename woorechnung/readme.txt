@@ -1,13 +1,14 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.19
-Stable tag: 3.1.19
+Version: 3.1.20
+Stable tag: 3.1.20
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
 Requires WooCommerce: 3.2.0
-Tested up to: 6.9
+Tested up to: 6.9.1
 Tested PHP up to: 8.5
+Tested WooCommerce up to: 10.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +59,10 @@ Wir empfehlen Preise immer in Netto anzugeben, da es oft zu Rundungsproblemen f�
 Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
+
+= 3.1.20 (2026-02-26) =
+* Added: Einstellung für Dateinamen von Lieferscheinen und Stornorechnungen.
+* Changed: Beim Anzeigen bzw. Herunterladen von Rechnungsdateien wird jetzt der Dateiname aus den Einstellungen verwendet und nicht mehr die uuid der Rechnung.
 
 = 3.1.19 (2026-01-26) =
 * Fixed: Manuelles senden von WooCommerce E-Mails wurde doppelt ausgeführt.

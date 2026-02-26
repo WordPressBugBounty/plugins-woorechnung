@@ -109,9 +109,10 @@ final class FP_Customer_Link extends FP_Abstract_Module
         try {
             $order = new FP_Order_Adapter( absint( wp_unslash( $_GET['order'] ) ) );
             $key = $order->get_invoice_key();
+            $filename = $this->placeholders()->get_invoice_filename( $order );
             $result = $this->client()->get_invoice( $key );
             $this->logger()->customer_download_success();
-            $this->viewer()->view_pdf( $key, $result['data'] );
+            $this->viewer()->view_pdf( $filename, $result['data'] );
         }
 
         // Catch any exception that happens during the process

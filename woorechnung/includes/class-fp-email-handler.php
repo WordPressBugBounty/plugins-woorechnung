@@ -54,7 +54,7 @@ final class FP_Email_Handler extends FP_Abstract_Module
     {
         require_once ( $this->plugin()->get_path( 'includes/emails/class-fp-email-customer-deliver-invoice.php' ) );
         $plugin_emails = array(
-            'FP_Email_Customer_Deliver_Invoice' => new FP_Email_Customer_Deliver_Invoice( $this->plugin(), $this->settings(), $this ),
+            'FP_Email_Customer_Deliver_Invoice' => new FP_Email_Customer_Deliver_Invoice( $this->plugin(), $this->settings() ),
         );
         return array_merge( $emails, $plugin_emails );
     }
@@ -151,107 +151,6 @@ final class FP_Email_Handler extends FP_Abstract_Module
     }
 
     /**
-     * Creates placeholders array.
-     *
-     * @param  FP_Order_Adapter $order
-     * @param  bool $filename
-     * @param  bool $brackets
-     * @return array<string, mixed>
-     */
-    public function create_placeholders( $order, $filename = false, $brackets = true )
-    {
-        $settings = $this->settings();
-
-        $company = $order->get_billing_company();
-        $last_name = $order->get_billing_last_name();
-
-        $replaces = array(
-            'order_id' => $order->get_id(),
-            'order_no' => $settings->get_order_number( $order->get_order_number() ),
-            'invoice_no' => $order->get_invoice_number(),
-            'invoice_key' => $order->get_invoice_key(),
-            'company' => $order->get_billing_company(),
-            'company_or_name' => empty( $company ) ? $last_name : $company,
-            'first_name' => $order->get_billing_first_name(),
-            'last_name' => $order->get_billing_last_name(),
-            'invoice_date' => '',
-            'invoice_date_de' => '',
-            'invoice_date_day' => '',
-            'invoice_date_month' => '',
-            'invoice_date_year' => '',
-        );
-
-        // Invoice date
-        $invoice_date_raw = $order->get_invoice_date();
-        if ( !empty( $invoice_date_raw ) ) {
-            try {
-                $invoice_date_time = is_int( $invoice_date_raw )
-                    ? (new \DateTime())->setTimestamp( $invoice_date_raw )
-                    : new \DateTime( is_numeric( $invoice_date_raw ) ? '@' . $invoice_date_raw : $invoice_date_raw );
-                $replaces = array_merge(
-                    $replaces,
-                    array(
-                        'invoice_date' => $invoice_date_time->format('Y-m-d'),
-                        'invoice_date_de' => $invoice_date_time->format('d.m.Y'),
-                        'invoice_date_day' => $invoice_date_time->format('d'),
-                        'invoice_date_month' => $invoice_date_time->format('m'),
-                        'invoice_date_year' => $invoice_date_time->format('Y'),
-                    )
-                );
-            } catch ( \Exception $exception ) {
-                // Ignore any exceptions
-            }
-        }
-
-        if ($filename == false) {
-            $replaces['page_title'] = wp_get_document_title();
-            $replaces['order_date'] = '';
-            $replaces['order_date_de'] = '';
-            $replaces['order_date_day'] = '';
-            $replaces['order_date_month'] = '';
-            $replaces['order_date_year'] = '';
-
-            // Order date
-            $order_date_raw = $order->get_date_created();
-            if (!empty($order_date_raw)) {
-                try {
-                    $order_date_time = is_int($order_date_raw)
-                        ? (new \DateTime())->setTimestamp($order_date_raw)
-                        : new \DateTime(is_numeric($order_date_raw) ? '@' . $order_date_raw : $order_date_raw);
-                    $replaces = array_merge(
-                        $replaces,
-                        array(
-                            'order_date' => $order_date_time->format('Y-m-d'),
-                            'order_date_de' => $order_date_time->format('d.m.Y'),
-                            'order_date_day' => $order_date_time->format('d'),
-                            'order_date_month' => $order_date_time->format('m'),
-                            'order_date_year' => $order_date_time->format('Y'),
-                        )
-                    );
-                } catch (\Exception $exception) {
-                    // Ignore any exceptions
-                }
-            }
-        }
-
-        $replaces = $this->plugin()->array_map_placeholders( $replaces, $brackets );
-
-        return $replaces;
-    }
-
-    /**
-     * Replaces placeholder variables.
-     *
-     * @param  string $text
-     * @param  array<string, mixed>|null $placeholders
-     * @return string
-     */
-    public function replace_placeholders( $text, $placeholders = null )
-    {
-        return str_replace( array_keys( $placeholders ), array_values( $placeholders ), $text );
-    }
-
-    /**
      * Store invoice in temp folder to send it as email.
      *
      * @param  FP_Order_Adapter $order
@@ -260,31 +159,12 @@ final class FP_Email_Handler extends FP_Abstract_Module
      */
     private function store_invoice($order, $data)
     {
-        // Construct filename and filepath
-        $replaces = $this->create_placeholders($order, true, true);
-
         // Create directory to store the invoice in
-        $directory = $this->plugin()->get_temp_path('invoices/' . $replaces['{invoice_key}']);
-        $file_name = $this->settings()->get_email_filename();
-        $file_name = trim($file_name);
-
-        // Replace filename placeholders with new format (e.g. {order_id})
-        $file_name = $this->replace_placeholders($file_name, $replaces);
-
-        // Replace filename placeholders with old format (e.g. %order_id%)
-        $replaces = $this->create_placeholders($order, true, false);
-        $file_name = $this->replace_placeholders($file_name, $replaces);
-
-        // Use default filename if settings is not set
-        $file_name = empty($file_name) ? 'Rechnung' : $file_name;
-        $file_name = "{$file_name}.pdf";
-
-        // Remove characters that might interfere with the filepath
-        $file_name = str_replace("/", "_", $file_name);
-        $file_name = str_replace("\\", "_", $file_name);
+        $filename = $this->placeholders()->get_invoice_filename( $order );
+        $directory = $this->placeholders()->get_invoice_storage_path( $order );
 
         // Finally determine filepath and filedata
-        $file_path = "{$directory}/{$file_name}";
+        $file_path = "{$directory}/{$filename}";
         $file_data = base64_decode($data);
 
         // Make directory and put contents
@@ -318,16 +198,16 @@ final class FP_Email_Handler extends FP_Abstract_Module
             $content_text = $settings->get_email_content_text();
 
             // replace placeholders with new format (e.g. {order_id})
-            $replaces = $this->create_placeholders($order, false, true);
-            $subject = $this->replace_placeholders($subject, $replaces);
-            $content_text = $this->replace_placeholders($content_text, $replaces);
-            $content_html = $this->replace_placeholders($content_html, $replaces);
+            $replaces = $this->placeholders()->create($order, false, true);
+            $subject = $this->placeholders()->replace($subject, $replaces);
+            $content_text = $this->placeholders()->replace($content_text, $replaces);
+            $content_html = $this->placeholders()->replace($content_html, $replaces);
 
             // replace placeholders with old format (e.g. %order_id%)
-            $replaces = $this->create_placeholders($order, false, false);
-            $subject = $this->replace_placeholders($subject, $replaces);
-            $content_text = $this->replace_placeholders($content_text, $replaces);
-            $content_html = $this->replace_placeholders($content_html, $replaces);
+            $replaces = $this->placeholders()->create($order, false, false);
+            $subject = $this->placeholders()->replace($subject, $replaces);
+            $content_text = $this->placeholders()->replace($content_text, $replaces);
+            $content_html = $this->placeholders()->replace($content_html, $replaces);
 
             $content_html = empty($content_html) ? $content_text : $content_html;
 

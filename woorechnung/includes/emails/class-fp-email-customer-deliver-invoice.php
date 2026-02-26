@@ -9,20 +9,19 @@ if ( ! class_exists( 'FP_Email_Customer_Deliver_Invoice', false ) ):
     final class FP_Email_Customer_Deliver_Invoice extends WC_Email
     {
         /**
-         * @var FP_Email_Handler $email_handler
+         * @var FP_Plugin $plugin
          */
-        protected $email_handler;
+        protected $_fp_plugin;
 
         /**
          * FP_EmailInvoice constructor.
          *
          * @param  FP_Plugin $plugin
          * @param  FP_Settings $settings
-         * @param  FP_Email_Handler $email_handler
          */
-        function __construct( $plugin, $settings, $email_handler )
+        function __construct( $plugin, $settings )
         {
-            $this->email_handler = $email_handler;
+            $this->_fp_plugin = $plugin;
 
             // Email slug we can use to filter other data.
             $this->id          = 'fakturpro_email_customer_deliver_invoice';
@@ -34,7 +33,7 @@ if ( ! class_exists( 'FP_Email_Customer_Deliver_Invoice', false ) ):
                 '{order_date}'              => '',
                 '{order_number}'            => '',
             );
-            $placeholders = $plugin->get_invoice_placeholder_variables();
+            $placeholders = $plugin->get_placeholders()->get_invoice_variables();
             $placeholders = $plugin->array_map_assoc(
                 function ( $key, $value ) {
                     return [ $key, '' ];
@@ -82,7 +81,7 @@ if ( ! class_exists( 'FP_Email_Customer_Deliver_Invoice', false ) ):
                 $this->recipient                      = $this->object->get_billing_email();
                 $this->placeholders = array_merge(
                     $this->placeholders,
-                    $this->email_handler->create_placeholders( $order, false, true )
+                    $this->_fp_plugin->get_placeholders()->create( $order, false, true )
                 );
                 $this->placeholders['{order_date}']   = wc_format_datetime($this->object->get_date_created());
                 $this->placeholders['{order_number}'] = $this->object->get_order_number();
@@ -193,7 +192,7 @@ if ( ! class_exists( 'FP_Email_Customer_Deliver_Invoice', false ) ):
 
         /**
          * Get default main content.
-         * 
+         *
          * @return string
          */
         public function get_default_main_content() {
@@ -202,7 +201,7 @@ if ( ! class_exists( 'FP_Email_Customer_Deliver_Invoice', false ) ):
 
 		/**
 		 * Initialise settings form fields.
-         * 
+         *
          * @return void
 		 */
 		public function init_form_fields() {
