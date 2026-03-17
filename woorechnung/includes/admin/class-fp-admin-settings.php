@@ -140,6 +140,18 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             $data['fakturpro_send_error_mails_to'] = $fakturpro_send_error_mails_to;
         }
 
+        if ( isset( $_POST['fakturpro_logging_enabled'] ) ) {
+            $fakturpro_logging_enabled = strval( absint( $_POST['fakturpro_logging_enabled'] ) );
+            $fakturpro_logging_enabled = in_array( $fakturpro_logging_enabled, ['0', '1']) ? $fakturpro_logging_enabled : '1';
+            $data['fakturpro_logging_enabled'] = $fakturpro_logging_enabled;
+        }
+
+        if ( isset( $_POST['fakturpro_logging_verbose'] ) ) {
+            $fakturpro_logging_verbose = strval( absint( $_POST['fakturpro_logging_verbose'] ) );
+            $fakturpro_logging_verbose = in_array( $fakturpro_logging_verbose, ['0', '1']) ? $fakturpro_logging_verbose : '1';
+            $data['fakturpro_logging_verbose'] = $fakturpro_logging_verbose;
+        }
+
         if (isset($_POST['fakturpro_customer_vat_id_meta_name']) ) {
             $fakturpro_customer_vat_id_meta_name = sanitize_text_field( $_POST['fakturpro_customer_vat_id_meta_name'] );
             if ( empty( $fakturpro_customer_vat_id_meta_name ) || $fakturpro_customer_vat_id_meta_name = $this->validate_allowed_chars( $fakturpro_customer_vat_id_meta_name ) ) {
@@ -171,6 +183,12 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             $fakturpro_create_invoices = strval( absint( $_POST['fakturpro_create_invoices'] ) );
             $fakturpro_create_invoices = in_array( $fakturpro_create_invoices, ['0', '1']) ? $fakturpro_create_invoices : '1';
             $data['fakturpro_create_invoices'] = $fakturpro_create_invoices;
+        }
+
+        if ( isset( $_POST['fakturpro_create_invoices_legacy_mode'] ) ) {
+            $fakturpro_create_invoices_legacy_mode = strval( absint( $_POST['fakturpro_create_invoices_legacy_mode'] ) );
+            $fakturpro_create_invoices_legacy_mode = in_array( $fakturpro_create_invoices_legacy_mode, ['0', '1']) ? $fakturpro_create_invoices_legacy_mode : '1';
+            $data['fakturpro_create_invoices_legacy_mode'] = $fakturpro_create_invoices_legacy_mode;
         }
 
         if ( isset( $_POST['fakturpro_invoice_for_states'] ) ) {
@@ -653,6 +671,8 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result[] = $this->field_shop_url();
         $result[] = $this->field_shop_token();
         $result[] = $this->field_send_error_mails_to();
+        $result[] = $this->field_logging_enabled();
+        $result[] = $this->field_logging_verbose();
         $result[] = $this->section_general_end();
         return $result;
     }
@@ -683,6 +703,7 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         $result = array();
         $result[] = $this->section_invoice_start();
         $result[] = $this->field_create_invoices();
+        $result[] = $this->field_create_invoices_legacy_mode();
         $result[] = $this->field_invoices_for_states();
         $result[] = $this->field_no_invoices_for_methods();
         $result[] = $this->field_paid_for_methods();
@@ -748,6 +769,11 @@ final class FP_Admin_Settings extends FP_Abstract_Module
         return $result;
     }
 
+    /**
+     * Section separate email.
+     *
+     * @return array<array<string, mixed>>
+     */
     private function section_separate_email()
     {
         $result = array();
@@ -883,6 +909,40 @@ final class FP_Admin_Settings extends FP_Abstract_Module
     }
 
     /**
+     * Field logging enabled.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_logging_enabled()
+    {
+        return array(
+            'id'        => 'fakturpro_logging_enabled',
+            'title'     => __('Logging enabled', 'fakturpro'),
+            'type'      => 'checkbox',
+            'desc'      => __('Enable the logging of invoice creation and sending.', 'fakturpro'),
+            'default'   => 'false',
+            'desc_tip'  => null,
+        );
+    }
+
+    /**
+     * Field logging verbose.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_logging_verbose()
+    {
+        return array(
+            'id'        => 'fakturpro_logging_verbose',
+            'title'     => __('Logging verbose', 'fakturpro'),
+            'type'      => 'checkbox',
+            'desc'      => __('Extend the logging to include more details.', 'fakturpro'),
+            'default'   => 'false',
+            'desc_tip'  => null,
+        );
+    }
+
+    /**
      * Section customer start.
      *
      * @return array<string, mixed>
@@ -1006,6 +1066,23 @@ final class FP_Admin_Settings extends FP_Abstract_Module
             'desc'      => __('Automatically create invoices for orders', 'fakturpro'),
             'default'   => 'yes',
             'desc_tip'  => __('If you enable this option, invoices will automatically be created for orders when they have a specific status and payment method. You can configure the order status and payment method for which invoices should be created using the following two options.', 'fakturpro'),
+        );
+    }
+
+    /**
+     * Field create invoices.
+     *
+     * @return array<string, mixed>
+     */
+    private function field_create_invoices_legacy_mode()
+    {
+        return array(
+            'id'        => 'fakturpro_create_invoices_legacy_mode',
+            'title'     => __('Legacy mode', 'fakturpro'),
+            'type'      => 'checkbox',
+            'desc'      => __('Use the behavior that existed before update 3.1.20 to create invoices.', 'fakturpro'),
+            'default'   => 'false',
+            'desc_tip'  => __('If you enable this option, it will use the legacy mode on invoice creation to support older versions of WooCommerce and Wordpress. This option should only be used if you are using older versions of WordPress or WooCommerce and invoices are not being created at checkout, even if all settings appear to be correct.', 'fakturpro'),
         );
     }
 

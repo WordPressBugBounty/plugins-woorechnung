@@ -36,6 +36,7 @@ if ( !empty( $plugin_path ) ) {
 
     require_once ( $plugin_path . 'includes/admin/class-fp-plugin-update.php' );
     require_once ( $plugin_path . 'includes/admin/class-fp-admin-assets.php' );
+    require_once ( $plugin_path . 'includes/admin/class-fp-admin-pages.php' );
     require_once ( $plugin_path . 'includes/admin/class-fp-admin-settings.php' );
     require_once ( $plugin_path . 'includes/admin/class-fp-admin-notices.php' );
     require_once ( $plugin_path . 'includes/admin/class-fp-bulk-actions.php' );

@@ -309,13 +309,19 @@ final class FP_Admin_Notices extends FP_Abstract_Module
     public function show_notice_config()
     {
         $is_enabled = array(
-            'debugging' => $this->plugin()->is_debugging_enabled(),
-            'logging' => $this->plugin()->is_logging_enabled(),
-            'verbose' => $this->plugin()->is_logging_verbose()
+            __( 'debugging', 'fakturpro' ) => $this->plugin()->is_debugging_enabled(),
         );
-        if (in_array(true, $is_enabled)) {
-            $message = $this->plugin()->get_name().' '.implode(', ', array_keys($is_enabled, true)).' ist aktiv.';
-            self::notice_warning($message, false);
+        if ( $this->plugin()->is_logging_enabled() ) {
+            $index = __( 'logging', 'fakturpro' );
+            if ( $this->plugin()->is_logging_verbose() ) {
+                $index = __( 'verbose', 'fakturpro' ) . ' ' . $index;
+            }
+            $is_enabled[$index] = true;
+        }
+        if ( in_array( true, $is_enabled ) ) {
+            $active = implode( ', ', array_keys( $is_enabled, true ) );
+            $message = sprintf( __( 'Faktur Pro %s is active.', 'fakturpro'), $active );
+            self::notice_warning( $message, false );
         }
     }
 

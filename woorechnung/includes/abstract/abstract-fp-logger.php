@@ -173,7 +173,7 @@ abstract class FP_Abstract_Logger
      *
      * @return string
      */
-    private function read_contents()
+    public function read_contents()
     {
         return file_get_contents( $this->get_filepath() );
     }
@@ -196,6 +196,16 @@ abstract class FP_Abstract_Logger
     private function is_file_writable()
     {
         return is_writable( $this->get_filepath() );
+    }
+
+    /**
+     * Clears the log file.
+     *
+     * @return void
+     */
+    public function clear_contents()
+    {
+        file_put_contents( $this->get_filepath(), '' );
     }
 
     /**

@@ -352,7 +352,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
      */
     public function is_logging_enabled()
     {
-        return FAKTURPRO_LOGGING_ENABLED;
+        return FAKTURPRO_LOGGING_ENABLED || ( !empty( $this->_settings ) && $this->_settings->get_logging_enabled() );
     }
 
     /**
@@ -362,6 +362,9 @@ final class FP_Plugin extends FP_Abstract_Plugin
      */
     public function is_logging_verbose()
     {
+        if (!empty( $this->_settings ) && $this->_settings->get_logging_verbose() ) {
+            return true;
+        }
         if (!defined('FAKTURPRO_LOGGING_VERBOSE')) {
             return false;
         }
@@ -685,6 +688,7 @@ final class FP_Plugin extends FP_Abstract_Plugin
         new FP_Plugin_Update($this);
         new FP_Admin_Assets($this);
         new FP_Admin_Notices($this);
+        new FP_Admin_Pages($this);
         new FP_Admin_Settings($this);
         new FP_Bulk_Actions($this);
         new FP_Customer_Assets($this);

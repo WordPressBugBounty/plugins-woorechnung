@@ -34,14 +34,21 @@ final class FP_Order_Handler extends FP_Abstract_Module
         $this->add_Filter('wcs_renewal_order_created', 'process_order_object_filter', 9, 1);
 
         // Actions for processing order on status update
-        $states = $this->settings()->get_invoice_for_states();
-        foreach ( $states as $status ) {
-            $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
+        if ( $this->settings()->get_create_invoices_legacy_mode() ) {
+            $statuses = $this->plugin()->get_order_statuses();
+            foreach ( $statuses as $status => $name ) {
+                $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
+            }
+        } else {
+            $this->add_action('init', 'wp_init', 9);
+            $states = $this->settings()->get_invoice_for_states();
+            foreach ( $states as $status ) {
+                $this->add_action("woocommerce_order_status_{$status}", 'process_order_on_status', 9, 1);
+            }
         }
         // $this->add_action('woocommerce_order_status_pending', 'process_order_on_status', 9, 1);
         $this->add_action('woocommerce_order_status_changed', 'process_order_on_status_changed', 9, 4);
         $this->add_action('woocommerce_checkout_order_processed', 'process_order_on_checkout', 9, 3);
-        $this->add_action('init', 'wp_init', 9);
 
         // Actions for processing subscription order on status update
         /*if ($this->plugin()->is_woocommerce_subscriptions_active()) {

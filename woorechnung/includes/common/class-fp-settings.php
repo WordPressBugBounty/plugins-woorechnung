@@ -33,6 +33,7 @@ final class FP_Settings extends FP_Abstract_Settings
         'customer_vat_id_meta_name',
         'customer_debitor_number_meta_name',
         'create_invoices',
+        'create_invoices_legacy_mode',
         'cancel_invoices',
         'invoice_for_states',
         'no_invoice_for_methods',
@@ -247,6 +248,27 @@ final class FP_Settings extends FP_Abstract_Settings
     public function get_create_invoices()
     {
         return $this->get( 'create_invoices', 'no') === 'yes';
+    }
+
+    /**
+     * Set the create invoices legacy mode setting.
+     *
+     * @param  bool $value
+     * @return void
+     */
+    public function set_create_invoices_legacy_mode ( $value )
+    {
+        $this->set( 'create_invoices_legacy_mode' ,  $value ? 'yes' : 'no' );
+    }
+
+    /**
+     * Decide if the creation of invoices legacy mode is active.
+     *
+     * @return bool
+     */
+    public function get_create_invoices_legacy_mode()
+    {
+        return $this->get( 'create_invoices_legacy_mode', 'no') === 'yes';
     }
 
     /**
@@ -1052,6 +1074,52 @@ final class FP_Settings extends FP_Abstract_Settings
         $text = preg_replace('/\n{3,}/', "\n\n", $text);
         return $text;
     }
+
+    // #region Logging
+
+    /**
+     * Set the logging enabled setting.
+     *
+     * @param  bool $value
+     * @return void
+     */
+    public function set_logging_enabled( $value )
+    {
+        $this->set( 'logging_enabled' ,  $value ? 'yes' : 'no' );
+    }
+
+    /**
+     * Decide if the logging enabled is active.
+     *
+     * @return bool
+     */
+    public function get_logging_enabled()
+    {
+        return $this->get( 'logging_enabled', 'no') === 'yes';
+    }
+
+    /**
+     * Set the logging verbose setting.
+     *
+     * @param  bool $value
+     * @return void
+     */
+    public function set_logging_verbose( $value )
+    {
+        $this->set( 'logging_verbose' ,  $value ? 'yes' : 'no' );
+    }
+
+    /**
+     * Decide if the logging verbose is active.
+     *
+     * @return bool
+     */
+    public function get_logging_verbose()
+    {
+        return $this->get( 'logging_verbose', 'no') === 'yes';
+    }
+
+    // #endregion
 }
 
 endif;
