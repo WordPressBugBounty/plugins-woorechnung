@@ -466,6 +466,36 @@ final class FP_Factory
     }
 
     /**
+     * Get timezone as string.
+     *
+     * @return string
+     */
+    public static function get_timezone_string()
+    {
+        if ( function_exists( 'wp_timezone_string' ) ) {
+            return wp_timezone_string();
+        }
+
+        // Fallback for WordPress before 5.3.0
+        $timezone_string = get_option( 'timezone_string' );
+
+        if ( $timezone_string ) {
+            return $timezone_string;
+        }
+
+        $offset  = (float) get_option( 'gmt_offset' );
+        $hours   = (int) $offset;
+        $minutes = ( $offset - $hours );
+
+        $sign      = ( $offset < 0 ) ? '-' : '+';
+        $abs_hour  = abs( $hours );
+        $abs_mins  = abs( $minutes * 60 );
+        $tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
+
+        return $tz_offset;
+    }
+
+    /**
      * Create an invoice from a given order (using the adapter).
      *
      * @param  FP_Order_Adapter $order
@@ -514,6 +544,7 @@ final class FP_Factory
         $result['payment_title']    = (string) $payment_title;
         $result['payment_date']     = $payment_date;
         $result['base_country']     = (string) $base_country;
+        $result['base_timezone']    = self::get_timezone_string();
         $result['customer_note']    = (string) $customer_note;
         $result['vat_exempt']       = (bool) $order->is_vat_exempt();
 
@@ -578,7 +609,7 @@ final class FP_Factory
 
         $country = (string) $this->ensure_country_code( $order->get_billing_country('edit') );
         $state = (string) $order->get_billing_state('edit');
-        
+
         // Find customer vat id
         $meta_name = $plugin_settings->get_customer_vat_id_meta_name();
         $vat_id = empty($meta_name) ? '' : (string) $order->get_billing_vat_id( [ $meta_name ] );
@@ -594,7 +625,6 @@ final class FP_Factory
         $customer_reference = empty($meta_name) ? '' : (string) $order->get_customer_reference_number( [ $meta_name ] );
         $customer_reference = empty($customer_reference) ? (string) $order->get_customer_reference_number() : $customer_reference;
 
-        
         $customer = $order->get_customer();
         $vat_exempt = $customer->is_vat_exempt();
 

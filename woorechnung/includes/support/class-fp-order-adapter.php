@@ -166,21 +166,20 @@ final class FP_Order_Adapter
      */
     public function __call( $method, $args )
     {
-        if (empty($this->order)) {
+        if ( empty( $this->order ) ) {
             return null;
         }
 
-        if (empty($args)) {
-            /*return is_callable( array( $this->order, $method ) )
-                ? $this->order->{$method}()
-                : null;*/
-            return call_user_func( array( $this->order, $method ) );
+        $isCallable = is_callable( array( $this->order, $method ) )
+            || method_exists( $this->order, '__call' );
+
+        if ( ! $isCallable ) {
+            return null;
         }
 
-        /* return is_callable( array($this->order, $method ) )
-            ? $this->order->{$method}($args)
-            : null; */
-        return call_user_func_array( array( $this->order, $method ), $args );
+        return empty( $args )
+            ? call_user_func( array( $this->order, $method ) )
+            : call_user_func_array( array( $this->order, $method ), $args );
     }
 
     /**

@@ -1,14 +1,14 @@
 === Faktur Pro for WooCommerce ===
 Contributors: ZWEISCHNEIDER
-Version: 3.1.21
-Stable tag: 3.1.21
+Version: 3.1.22
+Stable tag: 3.1.22
 Donate link: https://www.faktur.pro/
 Tags: woocommerce, rechnung, lieferschein, buchhaltung, schnittstelle
 Requires at least: 3.0.0
 Requires WooCommerce: 3.2.0
-Tested up to: 6.9.4
+Tested up to: 7.0
 Tested PHP up to: 8.5
-Tested WooCommerce up to: 10.6.1
+Tested WooCommerce up to: 10.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,8 +60,11 @@ Faktur Pro benötigt mindestens WooCommerce 3 (oder höher).
 
 == Changelog ==
 
+= 3.1.22 (2026-07-27) =
+* Fixed: Prüfung ob eine Methode bei einer Bestellung existiert um z.B. Bestellungen ohne Zahlungsmethoden zu unterstützen wie es bei dem Germanized for WooCommerce Plugin für einen Wiederuf einer Bestellung der Fall ist.
+
 = 3.1.21 (2026-03-17) =
-* Added: Legacy Modus als Einstellung um das alte Verhalten bei der Rechnungserstllung zu aktivieren um ältere Versionen von WooCommerce und Wordpress zu unterstützen.
+* Added: Legacy Modus Einstellung zum Aktivieren des alten Verhaltens bei der Rechnungserstellung um ältere Versionen von WooCommerce und Wordpress zu unterstützen.
 * Added: Einstellungen "Protokollierung aktiv" und "Protokollierung erweitert" sowie eine "Faktur Pro Protokoll" Seite hinzugefügt.
 
 = 3.1.20 (2026-02-26) =

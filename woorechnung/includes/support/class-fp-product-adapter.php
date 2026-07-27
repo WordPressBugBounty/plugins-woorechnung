@@ -69,27 +69,26 @@ final class FP_Product_Adapter
      */
     public function __call( $method, $args )
     {
-        if (empty($this->product)) {
+        if ( empty( $this->product ) ) {
             return null;
         }
 
-        if (empty($args)) {
-            /*return is_callable( array( $this->product, $method ) )
-                ? $this->product->{$method}()
-                : null;*/
-            return call_user_func( array( $this->product, $method ) );
+        $isCallable = is_callable( array( $this->product, $method ) )
+            || method_exists( $this->product, '__call' );
+
+        if ( ! $isCallable ) {
+            return null;
         }
 
-        /*return is_callable( array($this->product, $method ) )
-            ? $this->product->{$method}($args)
-            : null;*/
-        return call_user_func_array( array( $this->product, $method ), $args );
+        return empty( $args )
+            ? call_user_func( array( $this->product, $method ) )
+            : call_user_func_array( array( $this->product, $method ), $args );
     }
 
     /**
      * Load the actual product object using the ID.
      *
-     * @param  int|WC_Product|WC_OrderItem $item
+     * @param  int|WC_Product|WC_Order_Item $item
      * @param  bool $strict
      * @return void
      */
